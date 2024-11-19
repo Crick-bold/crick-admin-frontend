@@ -63,7 +63,7 @@
 }
 .matchStatus{
     padding: 30px;
-   margin: auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }
