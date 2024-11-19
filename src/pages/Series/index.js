@@ -5,12 +5,13 @@ import Tabs from '../Components/Tabs'
 import { useState } from 'react'
 import MatchCard from '../Match/MatchCard'
 import Table from '../Components/Table'
-import { batsmanTableColumns, bowlerTableColumns } from './utlis/top-perfromers-columns'
-
+import { batsmanTableColumns, bowlerTableColumns, highestRunsColumns } from './utlis/top-perfromers-columns'
+import { HighestRuns } from './utlis/Dummy/HighestRuns'
 const Series = () => {
   const { id: seriesId } = useParams()
   const [active, setActive] = useState(0)
   const { loading, data: seriesData } = useGetSeries({ seriesId })
+
   return (<>
         <div className={styles.series_heading}>
             <img src = {seriesData?.image_url} className={styles.series_image}/>
@@ -52,7 +53,7 @@ const Series = () => {
                     }
                     { active === 1 &&
                         <div className={styles.topPerformerContainer}>
-                        <Table
+                            <Table
                             columns={batsmanTableColumns}
                             data={seriesData?.topPerformers?.batsmans}
                         />
@@ -60,6 +61,10 @@ const Series = () => {
                             columns={bowlerTableColumns}
                             data={seriesData?.topPerformers?.bowlers}
                         />
+                        <Table
+                        columns={highestRunsColumns}
+                        data={HighestRuns}
+                    />
                         </div>
                     }
 
