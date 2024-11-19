@@ -21,8 +21,8 @@ const Series = () => {
         <Tabs tabs={['Matches', 'Top Performers', 'News']} active={active} onChange={(index) => setActive((index))}/>
                     { active === 0 &&
                         <div>
-                                <div className='matchStatus'>
-                                    Live Match
+                                <div className={styles.matchStatus}>
+                                    <div className={styles.matchStatusHeader}>Live Match</div>
                                 <div className={styles.matchContainer}>
                             {
                         !loading && seriesData?.matches?.live?.map((match, index) => (
@@ -30,8 +30,8 @@ const Series = () => {
                         ))}
                           </div>
                         </div>
-                        <div className='matchStatus'>
-                            Upcoming Matches
+                        <div className={styles.matchStatus}>
+                            <div className={styles.matchStatusHeader}>Upcoming Matches</div>
                         <div className={styles.matchContainer}>
                         {
                         !loading && seriesData?.matches?.upcoming?.map((match, index) => (
@@ -39,8 +39,8 @@ const Series = () => {
                         ))}
                          </div>
                         </div>
-                        <div className='matchStatus'>
-                            Past Matches
+                        <div className={styles.matchStatus}>
+                            <div className={styles.matchStatusHeader} >Past Matches</div>
                         <div className={styles.matchContainer}>
                         {
                         !loading && seriesData?.matches?.past?.map((match, index) => (
