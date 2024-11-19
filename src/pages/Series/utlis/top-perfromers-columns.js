@@ -33,3 +33,25 @@ export const bowlerTableColumns = [
     accessor: 'wickets'
   }
 ]
+export const highestRunsColumns = [
+  {
+    key: 'index',
+    Header: ' ',
+    accessor: ''
+  },
+  {
+    key: 'name',
+    header: 'Name',
+    accessor: 'name'
+  },
+  {
+    key: 'runs',
+    header: 'Runs',
+    accessor: 'runs'
+  }
+
+]
+
+export const HighestWicket = [
+
+]
