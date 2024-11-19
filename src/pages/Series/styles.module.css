@@ -58,7 +58,20 @@
     gap:10px;
     border-top: 1px solid rgb(109, 109, 109);
 }
-
 .topPerformerContainer >*{
     width:50%;
+}
+.matchStatus{
+    padding: 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.matchStatusHeader{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 16px;
+    margin-bottom: 4px;
 }
