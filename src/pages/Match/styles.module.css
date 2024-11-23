@@ -1,17 +1,17 @@
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
-.container{
-    height:auto;
-    margin:auto;
-    margin-top:40px;
-    border-radius:4px;
+.container {
+  height: auto;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 4px;
 }
-.welcome_title{
-    font-size:20px;
-    padding:20px;
+.welcome_title {
+  font-size: 20px;
+  padding: 20px;
 }
-.heading_colour{
-    color:rgb(255, 187, 0);
-    font-size:22px;
+.heading_colour {
+  color: rgb(255, 187, 0);
+  font-size: 22px;
 }

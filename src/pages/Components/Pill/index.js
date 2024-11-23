@@ -1,18 +1,26 @@
-import styles from './styles.module.css'
-const Pill = ({ content, color = 'green', textColor = 'white', type = 'primary' }) => {
-  return (<>
-    <div className={
-      {
-        primary: styles.primary,
-        secondary: styles.secondary,
-        tertiary: styles.tertiary,
-        transparent: styles.transparent
-      }[type]
-
-    } >
+import styles from "./styles.module.css";
+const Pill = ({
+  content,
+  color = "green",
+  textColor = "white",
+  type = "primary",
+}) => {
+  return (
+    <>
+      <div
+        className={
+          {
+            primary: styles.primary,
+            secondary: styles.secondary,
+            tertiary: styles.tertiary,
+            transparent: styles.transparent,
+          }[type]
+        }
+      >
         {content}
-    </div>
-    </>)
-}
+      </div>
+    </>
+  );
+};
 
-export default Pill
+export default Pill;

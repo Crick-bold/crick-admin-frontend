@@ -1,95 +1,151 @@
-import { useForm } from 'react-hook-form'
-import ScoreCard from './ScoreCard'
-import style from './styles.module.css'
-import control from './addplayer'
-import Layout from '../../Components/Layout'
-import useUpdateStrike from '../hooks/useUpdateStrike'
-import { useEffect, useState } from 'react'
-import Pill from '../../Components/Pill'
-import Button from '../../Components/Button'
-import useStartMatch from '../hooks/useStartMatch'
-import ResultOptions from './ResultOptions'
-import Tabs from '../../Components/Tabs'
-import useGetScore from '../hooks/useGetScore'
-import Dashboard from '../Dashboard'
+import { useForm } from "react-hook-form";
+import ScoreCard from "./ScoreCard";
+import style from "./styles.module.css";
+import control from "./addplayer";
+import Layout from "../../Components/Layout";
+import useUpdateStrike from "../hooks/useUpdateStrike";
+import { useEffect, useState } from "react";
+import Pill from "../../Components/Pill";
+import Button from "../../Components/Button";
+import useStartMatch from "../hooks/useStartMatch";
+import ResultOptions from "./ResultOptions";
+import Tabs from "../../Components/Tabs";
+import useGetScore from "../hooks/useGetScore";
+import Dashboard from "../Dashboard";
 
-const Score = ({ squad1, squad2, battingTeam, getMatchById, matchId, matchData, loading, active, setActive }) => {
-  const { loading: loadingScore, score, getScoreData } = useGetScore({ matchId, team1: matchData?.team1?.id, team2: matchData?.team2?.id })
+const Score = ({
+  squad1,
+  squad2,
+  battingTeam,
+  getMatchById,
+  matchId,
+  matchData,
+  loading,
+  active,
+  setActive,
+}) => {
+  const {
+    loading: loadingScore,
+    score,
+    getScoreData,
+  } = useGetScore({
+    matchId,
+    team1: matchData?.team1?.id,
+    team2: matchData?.team2?.id,
+  });
 
   const controls = control({
     playerOptions1: battingTeam === 1 ? squad1?.players : squad2?.players,
     playerOptions2: battingTeam === 1 ? squad2?.players : squad1?.players,
-    squad: battingTeam === 1 ? squad1 : squad2
-  })
+    squad: battingTeam === 1 ? squad1 : squad2,
+  });
 
-  const [firstBatting, setFirstBatting] = useState(-1)
-  const { startMatch } = useStartMatch({ matchId, getMatchById, firstBatting })
+  const [firstBatting, setFirstBatting] = useState(-1);
+  const { startMatch } = useStartMatch({ matchId, getMatchById, firstBatting });
 
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
   const { updateStrike } = useUpdateStrike({
     battingTeam,
-    squadId: (battingTeam === 1) ? (squad1?.id) : (squad2?.id),
+    squadId: battingTeam === 1 ? squad1?.id : squad2?.id,
     getMatchById,
     matchId,
-    wickets: (battingTeam === 1) ? (score?.team1?.wickets) : (score?.team2?.wickets)
-  })
+    wickets: battingTeam === 1 ? score?.team1?.wickets : score?.team2?.wickets,
+  });
   useEffect(() => {
-    setValue('batsman_on_strike', battingTeam === 1 ? squad1?.batsman_on_strike : squad2?.batsman_on_strike)
-    setValue('batsman_on_non_strike', battingTeam === 1 ? squad1?.batsman_on_non_strike : squad2?.batsman_on_non_strike)
-    setValue('bowler', battingTeam === 1 ? squad1?.bowler : squad2?.bowler)
-  }, [battingTeam, squad1, squad2])
+    setValue(
+      "batsman_on_strike",
+      battingTeam === 1 ? squad1?.batsman_on_strike : squad2?.batsman_on_strike,
+    );
+    setValue(
+      "batsman_on_non_strike",
+      battingTeam === 1
+        ? squad1?.batsman_on_non_strike
+        : squad2?.batsman_on_non_strike,
+    );
+    setValue("bowler", battingTeam === 1 ? squad1?.bowler : squad2?.bowler);
+  }, [battingTeam, squad1, squad2]);
 
-  return (<>
-           <div className={style.dashboard}>
-        {
-          battingTeam === 0 && (<div className={style.flex}>
-              <Pill content="Not started yet" type="secondary" />
-              <div>
-                <Pill content ="First Batting" type="transparent" textColor="white"/>
-                <select className={style.select} onChange={(e) => setFirstBatting(e.target.value)} value={firstBatting}>
-                  <option value={-1}>{matchData?.team1?.name}</option>
-                  <option value={1}>{matchData?.team2?.name}</option>
-                </select>
-                <Button value="Start Match" onClick={startMatch}/>
-              </div>
-            </div>)
-        }
-        {
-          [1, 2].includes(battingTeam) &&
-              <Pill content="Running" type="primary"/>
-        }
-       {
-          battingTeam === 3 && <Pill content="Finished" type="secondary"/>
-        }
-        <Tabs tabs={[score?.team1?.name, score?.team2?.name]} active={active} onChange={() => setActive((active + 1) % 2)}>
-        </Tabs>
+  return (
+    <>
+      <div className={style.dashboard}>
+        {battingTeam === 0 && (
+          <div className={style.flex}>
+            <Pill content="Not started yet" type="secondary" />
+            <div>
+              <Pill
+                content="First Batting"
+                type="transparent"
+                textColor="white"
+              />
+              <select
+                className={style.select}
+                onChange={(e) => setFirstBatting(e.target.value)}
+                value={firstBatting}
+              >
+                <option value={-1}>{matchData?.team1?.name}</option>
+                <option value={1}>{matchData?.team2?.name}</option>
+              </select>
+              <Button value="Start Match" onClick={startMatch} />
+            </div>
+          </div>
+        )}
+        {[1, 2].includes(battingTeam) && (
+          <Pill content="Running" type="primary" />
+        )}
+        {battingTeam === 3 && <Pill content="Finished" type="secondary" />}
+        <Tabs
+          tabs={[score?.team1?.name, score?.team2?.name]}
+          active={active}
+          onChange={() => setActive((active + 1) % 2)}
+        ></Tabs>
 
         <div className={style.scoreCardBox}>
-
-             <ScoreCard
-                team={active === 0 ? score?.team1 : score?.team2}
-                batsmanOnStrike={active === 0 ? squad1?.batsman_on_strike : squad2?.batsman_on_strike}
-                batsmanOnNonStrike={active === 0 ? squad1?.batsman_on_non_strike : squad1?.batsman_on_non_strike}
-                index={active}
-                battingTeam={battingTeam}
-                loadingScore={loadingScore}
-                allBattingPlayers = {active === 0 ? squad1?.players : squad2?.players}
-             />
+          <ScoreCard
+            team={active === 0 ? score?.team1 : score?.team2}
+            batsmanOnStrike={
+              active === 0
+                ? squad1?.batsman_on_strike
+                : squad2?.batsman_on_strike
+            }
+            batsmanOnNonStrike={
+              active === 0
+                ? squad1?.batsman_on_non_strike
+                : squad1?.batsman_on_non_strike
+            }
+            index={active}
+            battingTeam={battingTeam}
+            loadingScore={loadingScore}
+            allBattingPlayers={active === 0 ? squad1?.players : squad2?.players}
+          />
         </div>
-        {
-        !loading && battingTeam === active + 1 &&
-        <div className={style.entry_box}>
-            <Layout register={register} handleSubmit={handleSubmit} onSubmit={updateStrike} controls={controls} errors={errors}/>
-            <ResultOptions score={score} data={matchData} loading={loading} battingTeam={battingTeam} getScoreData={getScoreData} getMatchById={getMatchById} />
-        </div>
+        {!loading && battingTeam === active + 1 && (
+          <div className={style.entry_box}>
+            <Layout
+              register={register}
+              handleSubmit={handleSubmit}
+              onSubmit={updateStrike}
+              controls={controls}
+              errors={errors}
+            />
+            <ResultOptions
+              score={score}
+              data={matchData}
+              loading={loading}
+              battingTeam={battingTeam}
+              getScoreData={getScoreData}
+              getMatchById={getMatchById}
+            />
+          </div>
+        )}
+      </div>
+      <Dashboard score={score} battingTeam={battingTeam} active={active} />
+    </>
+  );
+};
 
-        }
-
-    </div>
-            <Dashboard score={score} battingTeam={battingTeam} active={active}/>
-        </>
-
-  )
-}
-
-export default Score
+export default Score;

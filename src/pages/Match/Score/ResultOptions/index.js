@@ -1,128 +1,160 @@
-import { useState } from 'react'
-import useInsertBall from '../../hooks/useInsertBall'
-import styles from './styles.module.css'
-import { shotOptions } from './utils'
+import { useState } from "react";
+import useInsertBall from "../../hooks/useInsertBall";
+import styles from "./styles.module.css";
+import { shotOptions } from "./utils";
 
-const ResultOptions = ({ score, data, loading, battingTeam, getScoreData, getMatchById }) => {
-  const [playedShot, setPlayedShot] = useState(null)
-  const [result, setResult] = useState(null)
-  const [outType, setOutType] = useState(null)
+const ResultOptions = ({
+  score,
+  data,
+  loading,
+  battingTeam,
+  getScoreData,
+  getMatchById,
+}) => {
+  const [playedShot, setPlayedShot] = useState(null);
+  const [result, setResult] = useState(null);
+  const [outType, setOutType] = useState(null);
 
   const { insertBall, loading: loadingIns } = useInsertBall({
     matchLoading: loading,
     matchData: data,
-    ballOftheMatch: battingTeam === 1 ? score?.team1?.totalBalls : score?.team2?.totalBalls,
-    batPlayerId: battingTeam === 1 ? data?.squad1?.batsman_on_strike : data?.squad2?.batsman_on_strike,
-    batsmanOnNonStrike: battingTeam === 1 ? data?.squad1?.batsman_on_non_strike : data?.squad2?.batsman_on_non_strike,
-    ballPlayerId: battingTeam === 1 ? data?.squad1?.bowler : data?.squad2?.bowler,
+    ballOftheMatch:
+      battingTeam === 1 ? score?.team1?.totalBalls : score?.team2?.totalBalls,
+    batPlayerId:
+      battingTeam === 1
+        ? data?.squad1?.batsman_on_strike
+        : data?.squad2?.batsman_on_strike,
+    batsmanOnNonStrike:
+      battingTeam === 1
+        ? data?.squad1?.batsman_on_non_strike
+        : data?.squad2?.batsman_on_non_strike,
+    ballPlayerId:
+      battingTeam === 1 ? data?.squad1?.bowler : data?.squad2?.bowler,
     squadId: battingTeam === 1 ? data?.squad1?.id : data?.squad2?.id,
-    legalBalls: battingTeam === 1 ? score?.team1?.legalBalls : score?.team2?.legalBalls,
+    legalBalls:
+      battingTeam === 1 ? score?.team1?.legalBalls : score?.team2?.legalBalls,
     battingTeam,
     getScoreData,
     getMatchById,
-    autoLoad: false
-  })
+    autoLoad: false,
+  });
 
   const options = [
     {
-      label: '0',
+      label: "0",
       value: 0,
-      color: 'gray'
+      color: "gray",
     },
     {
-      label: '1',
+      label: "1",
       value: 1,
-      color: 'gray'
+      color: "gray",
     },
     {
-      label: '2',
+      label: "2",
       value: 2,
-      color: 'gray'
+      color: "gray",
     },
     {
-      label: '3',
+      label: "3",
       value: 3,
-      color: 'gray'
+      color: "gray",
     },
     {
-      label: '4',
+      label: "4",
       value: 4,
-      color: 'orange'
+      color: "orange",
     },
     {
-      label: '6',
+      label: "6",
       value: 6,
-      color: 'green'
+      color: "green",
     },
     {
-      label: 'W',
+      label: "W",
       value: 25,
-      color: 'red'
+      color: "red",
     },
     {
-      label: 'Wd',
+      label: "Wd",
       value: 11,
-      color: 'gray'
+      color: "gray",
     },
     {
-      label: 'Nb',
+      label: "Nb",
       value: 12,
-      color: '#0000aa'
-    }
+      color: "#0000aa",
+    },
+  ];
 
-  ]
+  const outOptions = [
+    {
+      label: "Catch Out",
+      value: "catch_out",
+    },
+    {
+      label: "Run Out",
+      value: "run_out",
+    },
+  ];
 
-  const outOptions = [{
-    label: 'Catch Out',
-    value: 'catch_out'
-  },
-  {
-    label: 'Run Out',
-    value: 'run_out'
-  }]
+  return (
+    <>
+      <div className={styles.parent}>
+        <div className={styles.result_options}>
+          {!loadingIns &&
+            options?.map((option) => (
+              <button
+                key={option?.value}
+                className={styles.result_option}
+                style={{ backgroundColor: option?.color }}
+                onClick={() => setResult(option?.value)}
+              >
+                {option?.label}
+              </button>
+            ))}
+        </div>
 
-  return <>
-          <div className={styles.parent}>
-          <div className={styles.result_options}>
-                {
-                  !loadingIns &&
-                    options?.map((option) => (
-                        <button key={option?.value} className={styles.result_option} style={{ backgroundColor: option?.color }} onClick={() => setResult(option?.value)}>
-                            {option?.label}
-                        </button>
-                    ))
+        <div className={styles.shot_container}>
+          {[0, 1, 2, 3, 4, 6].includes(result) &&
+            shotOptions?.[result]?.map((shot, index) => (
+              <div
+                className={
+                  shot.value === playedShot
+                    ? styles.selected_child
+                    : styles.child
                 }
-            </div>
-
-            <div className={styles.shot_container}>
-                {[0, 1, 2, 3, 4, 6].includes(result) && shotOptions?.[result]?.map((shot, index) => (
-                <div className={shot.value === playedShot
-                  ? styles.selected_child
-                  : styles.child
-                } onClick={async () => {
-                  await setPlayedShot(shot?.value)
-                  await insertBall({ result, playedShot: shot?.value })
+                onClick={async () => {
+                  await setPlayedShot(shot?.value);
+                  await insertBall({ result, playedShot: shot?.value });
+                }}
+                key={index}
+              >
+                {shot?.label}
+              </div>
+            ))}
+          {[25, 11, 12].includes(result) &&
+            outOptions.map((shot, index) => (
+              <div
+                className={
+                  shot.value === outType ? styles.selected_child : styles.child
                 }
-
-                }
-                  key={index}>
-                    {shot?.label}
-                  </div>))}
-                  {[25, 11, 12].includes(result) && outOptions.map((shot, index) => (
-                <div className={shot.value === outType
-                  ? styles.selected_child
-                  : styles.child
-                } onClick={async () => {
-                  await setOutType(shot?.value)
-                  await insertBall({ result, playedShot: null, outType: shot?.value })
-                }
-                }
-                  key={index}>
-                    {shot?.label}
-                  </div>))}
-
-            </div>
-          </div>
-        </>
-}
-export default ResultOptions
+                onClick={async () => {
+                  await setOutType(shot?.value);
+                  await insertBall({
+                    result,
+                    playedShot: null,
+                    outType: shot?.value,
+                  });
+                }}
+                key={index}
+              >
+                {shot?.label}
+              </div>
+            ))}
+        </div>
+      </div>
+    </>
+  );
+};
+export default ResultOptions;

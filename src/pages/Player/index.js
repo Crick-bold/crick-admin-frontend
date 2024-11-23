@@ -1,11 +1,11 @@
-import List from './List'
+import List from "./List";
 
 const PlayerPage = () => {
   return (
-        <>
-        <List/>
-        </>
-  )
-}
+    <>
+      <List />
+    </>
+  );
+};
 
-export default PlayerPage
+export default PlayerPage;

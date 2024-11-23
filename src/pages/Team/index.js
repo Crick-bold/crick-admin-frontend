@@ -1,10 +1,11 @@
-import List from './List'
+import List from "./List";
 
 const TeamPage = () => {
-  return (<>
-        <List/>
+  return (
+    <>
+      <List />
+    </>
+  );
+};
 
-    </>)
-}
-
-export default TeamPage
+export default TeamPage;

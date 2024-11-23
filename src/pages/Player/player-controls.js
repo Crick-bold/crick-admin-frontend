@@ -1,49 +1,49 @@
 const playerControls = () => {
   const controls = [
     {
-      label: 'Name',
-      type: 'text',
-      value: '',
-      key: 'name',
-      placeholder: 'Enter Player Name',
+      label: "Name",
+      type: "text",
+      value: "",
+      key: "name",
+      placeholder: "Enter Player Name",
       rules: {
-        required: 'Name is Required'
-      }
+        required: "Name is Required",
+      },
     },
     {
-      label: 'DOB',
-      type: 'date',
-      key: 'dob',
+      label: "DOB",
+      type: "date",
+      key: "dob",
       rules: {
-        required: 'DOB is Required'
-      }
+        required: "DOB is Required",
+      },
     },
     {
-      label: 'Country',
-      type: 'text',
-      value: '',
-      key: 'country',
-      placeholder: 'Enter Country Name',
+      label: "Country",
+      type: "text",
+      value: "",
+      key: "country",
+      placeholder: "Enter Country Name",
       rules: {
-        required: 'Country is Required'
-      }
+        required: "Country is Required",
+      },
     },
     {
-      label: 'Expertise',
-      type: 'select',
-      value: '',
-      key: 'expertise',
+      label: "Expertise",
+      type: "select",
+      value: "",
+      key: "expertise",
       options: [
-        { label: 'Batting', value: 'bat' },
-        { label: 'Bowling', value: 'bowl' },
-        { label: 'Wicket Keeping', value: 'wk' },
-        { label: 'Allrounder', value: 'all' }
+        { label: "Batting", value: "bat" },
+        { label: "Bowling", value: "bowl" },
+        { label: "Wicket Keeping", value: "wk" },
+        { label: "Allrounder", value: "all" },
       ],
       rules: {
-        required: 'Expertise is Required'
-      }
-    }
-  ]
-  return controls
-}
-export default playerControls
+        required: "Expertise is Required",
+      },
+    },
+  ];
+  return controls;
+};
+export default playerControls;

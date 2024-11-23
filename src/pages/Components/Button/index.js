@@ -1,17 +1,21 @@
-import styles from './styles.module.css'
-const Button = ({ value, onClick = () => {}, type = 'primary' }) => {
-  return (<>
-    <button onClick={() => onClick()} className={
-      {
-        primary: styles.primary,
-        submit: styles.primary,
-        secondary: styles.secondary
-      }[type]
-      }>
-
+import styles from "./styles.module.css";
+const Button = ({ value, onClick = () => {}, type = "primary" }) => {
+  return (
+    <>
+      <button
+        onClick={() => onClick()}
+        className={
+          {
+            primary: styles.primary,
+            submit: styles.primary,
+            secondary: styles.secondary,
+          }[type]
+        }
+      >
         {value}
-    </button>
-    </>)
-}
+      </button>
+    </>
+  );
+};
 
-export default Button
+export default Button;

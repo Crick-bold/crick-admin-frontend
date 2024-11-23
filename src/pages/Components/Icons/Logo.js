@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-        <>
-        <Link to="/" style={{ color: 'white', textDecoration: 'none', fontSize: '20px' }}>
-            Crickshow
-        </Link>
-        </>
-  )
-}
+    <>
+      <Link
+        to="/"
+        style={{ color: "white", textDecoration: "none", fontSize: "20px" }}
+      >
+        Crickshow
+      </Link>
+    </>
+  );
+};
 
-export default Logo
+export default Logo;

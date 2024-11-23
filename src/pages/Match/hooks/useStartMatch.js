@@ -1,21 +1,28 @@
-import axios from 'axios'
-import { useState } from 'react'
+import axios from "axios";
+import { useState } from "react";
 const useStartMatch = ({ matchId, getMatchById, firstBatting }) => {
-  const [loading, setLoading] = useState(true)
-  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
   const startMatchNow = async () => {
-    const res = await axios.put(process.env.REACT_APP_BACKEND + 'match/update_match/start_match', { matchId, firstBatting })
-    return res
-  }
+    const res = await axios.put(
+      process.env.REACT_APP_BACKEND + "match/update_match/start_match",
+      { matchId, firstBatting },
+    );
+    return res;
+  };
 
   const startMatch = () => {
-    startMatchNow().then((res) => { setLoading(false); setData(res); getMatchById(matchId) })
-  }
+    startMatchNow().then((res) => {
+      setLoading(false);
+      setData(res);
+      getMatchById(matchId);
+    });
+  };
 
   return {
     loading,
     data: data?.data,
-    startMatch
-  }
-}
-export default useStartMatch
+    startMatch,
+  };
+};
+export default useStartMatch;

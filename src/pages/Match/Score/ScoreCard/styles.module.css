@@ -1,108 +1,110 @@
-.score_card{
-    width:100%;
-    background-color: var(--color-primary_background);
-    padding:20px;
-    color:white;
-    border-radius: 4px;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.137);
+.score_card {
+  width: 100%;
+  background-color: var(--color-primary_background);
+  padding: 20px;
+  color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.137);
 }
-.team_name{
-    font-size:22px;
-    color:rgb(255, 174, 0);
-    display: flex;
-    gap:10px;
-    align-items: center;
-}
-
-.team_logo{
-    width:50px;
-    height:50px;
+.team_name {
+  font-size: 22px;
+  color: rgb(255, 174, 0);
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-.over{
-    color:rgba(229, 255, 0, 0.692)
+.team_logo {
+  width: 50px;
+  height: 50px;
 }
 
-.player_list{
-    background-color: var(--color-primary_background);
-    color:rgb(197, 197, 197);
-    font-size:14px;
-    margin-top: 10px;
-    border-radius: 4px;
+.over {
+  color: rgba(229, 255, 0, 0.692);
 }
 
-.player_list_row,.player_list_row_striker{
-    padding:10px;
-    display: flex;
-    text-align: center;
+.player_list {
+  background-color: var(--color-primary_background);
+  color: rgb(197, 197, 197);
+  font-size: 14px;
+  margin-top: 10px;
+  border-radius: 4px;
 }
 
-.player_list_row >*,.player_list_row_striker >*{
-    width:100%;
-}
-.player_list_row >:first-child,.player_list_row_striker>:first-child{
-    width:100%;
-}
-.player_list_row_striker{
-    color:rgb(207, 205, 205);
-}
-.name_run_over{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4px;
-    font-size:18px;
-    color:rgb(185, 192, 160);
-    font-size:22px;
-
+.player_list_row,
+.player_list_row_striker {
+  padding: 10px;
+  display: flex;
+  text-align: center;
 }
 
-.run{
-    font-size:22px;
+.player_list_row > *,
+.player_list_row_striker > * {
+  width: 100%;
+}
+.player_list_row > :first-child,
+.player_list_row_striker > :first-child {
+  width: 100%;
+}
+.player_list_row_striker {
+  color: rgb(207, 205, 205);
+}
+.name_run_over {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 18px;
+  color: rgb(185, 192, 160);
+  font-size: 22px;
 }
 
-.balls{
-    display: flex;
-    gap:4px;
+.run {
+  font-size: 22px;
 }
 
-.balls >*{
-    width:12px;
-    height:12px;
-    padding:6px;
-    font-size:12px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
+.balls {
+  display: flex;
+  gap: 4px;
 }
 
-.flex{
-    display: flex;
-    gap:10px;
-}
-.flex >*{
-    width: 50%;
+.balls > * {
+  width: 12px;
+  height: 12px;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
 }
 
-.commentary{
-    margin:10px;
-    background-color: var(--color-primary_background);
-    font-size:16px;
-    height:400px;
-    padding:10px;
-    border-radius: 2px;
-    overflow: scroll;
+.flex {
+  display: flex;
+  gap: 10px;
+}
+.flex > * {
+  width: 50%;
+}
+
+.commentary {
+  margin: 10px;
+  background-color: var(--color-primary_background);
+  font-size: 16px;
+  height: 400px;
+  padding: 10px;
+  border-radius: 2px;
+  overflow: scroll;
 }
 .commentary::-webkit-scrollbar {
-    display: none;
-  }
-  .run_over{
-    display: flex;
-    align-items: center;
-    gap:10px;
-  }
-  .target{
-    font-size: 16px;
-  }
+  display: none;
+}
+.run_over {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.target {
+  font-size: 16px;
+}

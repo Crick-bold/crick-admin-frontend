@@ -1,77 +1,76 @@
-.container{
-    background-color: rgb(20, 20, 20);
-    padding:10px 0;
-    height:auto;
-    width:90%;
-    margin:auto;
-    margin-top:40px;
+.container {
+  background-color: rgb(20, 20, 20);
+  padding: 10px 0;
+  height: auto;
+  width: 90%;
+  margin: auto;
+  margin-top: 40px;
 }
 
-.series_heading{
-    background-color: rgb(34, 34, 34);
-    padding:20px;
-    font-size:26px;
-    display: flex;
-    align-items: center;
-    gap:20px;
+.series_heading {
+  background-color: rgb(34, 34, 34);
+  padding: 20px;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.series_image{
-    width:40px;
-    height:40px;
-    border-radius: 50%;
+.series_image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-.matchContainer{
-    display: flex;
-    flex-wrap: wrap;
+.matchContainer {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.match_card{
-    width:300px;
-    height:100px;
-    margin:10px;
-    padding:10px;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 18px;
-    font-style: italic;
-    /* background-color: rgb(29, 29, 29); */
-    background:  linear-gradient(135deg, rgb(49, 49, 54) 50%,rgb(29, 29, 29) 50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap:20px;
-    color:white;
-    text-decoration: none;
+.match_card {
+  width: 300px;
+  height: 100px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+  /* background-color: rgb(29, 29, 29); */
+  background: linear-gradient(135deg, rgb(49, 49, 54) 50%, rgb(29, 29, 29) 50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  color: white;
+  text-decoration: none;
 }
 
-.match_card_img{
-    width:30px;
-    height:30px;
+.match_card_img {
+  width: 30px;
+  height: 30px;
 }
 
-
-.topPerformerContainer{
-    display: flex;
-    padding-top:10px;
-    gap:10px;
-    border-top: 1px solid rgb(109, 109, 109);
+.topPerformerContainer {
+  display: flex;
+  padding-top: 10px;
+  gap: 10px;
+  border-top: 1px solid rgb(109, 109, 109);
 }
-.topPerformerContainer >*{
-    width:50%;
+.topPerformerContainer > * {
+  width: 50%;
 }
-.matchStatus{
-    padding: 30px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+.matchStatus {
+  padding: 30px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
-.matchStatusHeader{
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    margin-left: 20px;
-    font-size: 16px;
-    margin-bottom: 4px;
+.matchStatusHeader {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  margin-left: 20px;
+  font-size: 16px;
+  margin-bottom: 4px;
 }

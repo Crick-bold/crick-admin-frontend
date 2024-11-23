@@ -1,47 +1,47 @@
-.teamName{
-    font-size:20px;
-    padding:0 10px;
+.teamName {
+  font-size: 20px;
+  padding: 0 10px;
 }
-.squad{
-    background-color: var(--color-primary_background);
-    height:calc(100% - 24px);
-    border-radius:4px;
-    padding:20px;
+.squad {
+  background-color: var(--color-primary_background);
+  height: calc(100% - 24px);
+  border-radius: 4px;
+  padding: 20px;
 }
-.flex{
-    display: flex;
-    flex-wrap: wrap;
-    gap:20px;
-    padding:10px;
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
 }
 .more_players_option {
-    display: flex;
-    justify-content: space-between;   
-    background-color: var(--color-primary_background);
-    border-radius: 10px;
-    margin:40px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary_background);
+  border-radius: 10px;
+  margin: 40px;
 }
 
-.more_players_option >*{
-    width:50%;
-    height:200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:30px;
-    text-align: center;
+.more_players_option > * {
+  width: 50%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  text-align: center;
 }
 
-.more_players_option >:first-child{
-    border-right: 1px solid rgba(255, 255, 255, 0.144);
+.more_players_option > :first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.144);
 }
-.h2{
-    font-size:28px;   
-    color:rgba(255, 187, 0, 0.87);    
-    font-weight: 500;
+.h2 {
+  font-size: 28px;
+  color: rgba(255, 187, 0, 0.87);
+  font-weight: 500;
 }
-.h5{
-    font-size:20px;   
-    color:rgb(201, 201, 201);    
-    font-weight: 500;
+.h5 {
+  font-size: 20px;
+  color: rgb(201, 201, 201);
+  font-weight: 500;
 }

@@ -1,13 +1,13 @@
-.on_hover{
-    width:100px;
-    overflow-wrap:nowrap;
+.on_hover {
+  width: 100px;
+  overflow-wrap: nowrap;
 }
-.parent{
-    width:calc(90% + 60px);
-    margin:auto;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    gap:10px;
-    flex-direction: column;
+.parent {
+  width: calc(90% + 60px);
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-direction: column;
 }

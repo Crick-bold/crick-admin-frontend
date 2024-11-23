@@ -1,32 +1,32 @@
-.scoreCardBox{
-    display: flex;
-    gap:10px;
-    justify-content: center;
-    margin-top: 4px;
+.scoreCardBox {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 4px;
 }
-.flex{
-    display: flex;
-    justify-content: space-between;
+.flex {
+  display: flex;
+  justify-content: space-between;
 }
-.select{
-    font-size: 14px;
-    padding:6px;
-    border-radius: 4px;
-    margin:10px;
-    border:0;
-    outline: none;
+.select {
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 4px;
+  margin: 10px;
+  border: 0;
+  outline: none;
 }
-.entry_box{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top:10px;
-    background-color: var(--color-primary_background);
-    padding:10px;
+.entry_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  background-color: var(--color-primary_background);
+  padding: 10px;
 }
-.entry_box >:first-child{
-    width:45%;
+.entry_box > :first-child {
+  width: 45%;
 }
-.entry_box >:last-child{
-    width:60%;
+.entry_box > :last-child {
+  width: 60%;
 }

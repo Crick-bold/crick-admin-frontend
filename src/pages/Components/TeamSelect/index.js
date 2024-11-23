@@ -1,25 +1,54 @@
-import React from 'react'
-import style from '../Layout/styles.module.css'
+import React from "react";
+import style from "../Layout/styles.module.css";
 // eslint-disable-next-line react/display-name
-const TeamSelect = React.forwardRef(({ onChange, onBlur, name, label, options, placeholder, loading, error, rules, disabled }, ref) => (
+const TeamSelect = React.forwardRef(
+  (
+    {
+      onChange,
+      onBlur,
+      name,
+      label,
+      options,
+      placeholder,
+      loading,
+      error,
+      rules,
+      disabled,
+    },
+    ref,
+  ) => (
     <>
-    <div>
+      <div>
         <div>
-        <label className={style.label}>{label}</label>
+          <label className={style.label}>{label}</label>
         </div>
         <div>
-        <select className ={style.input} name={name} onChange={onChange} onBlur={onBlur} ref={ref} disabled={disabled} placeholder='Select'>
-        <option value="" disabled selected style={{ display: 'none' }}>{placeholder || 'Select Team'} </option>
-            {!loading && options?.map((option, index) => (
-                    <option key={index} value={option.id}>{option.name}</option>
-            ))}
-        </select>
+          <select
+            className={style.input}
+            name={name}
+            onChange={onChange}
+            onBlur={onBlur}
+            ref={ref}
+            disabled={disabled}
+            placeholder="Select"
+          >
+            <option value="" disabled selected style={{ display: "none" }}>
+              {placeholder || "Select Team"}{" "}
+            </option>
+            {!loading &&
+              options?.map((option, index) => (
+                <option key={index} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+          </select>
         </div>
         <span className={style.error_text}>
-            { error ? (rules?.required || 'Required') : null}
+          {error ? rules?.required || "Required" : null}
         </span>
-    </div>
+      </div>
     </>
-))
+  ),
+);
 
-export default TeamSelect
+export default TeamSelect;

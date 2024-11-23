@@ -11,12 +11,12 @@ const useAuth = ({ setUser, setUserLoaded }) => {
       const res = await axios.post(
         process.env.REACT_APP_BACKEND + "login/",
         {},
-        config
+        config,
       );
       localStorage.setItem("token", response.credential);
       localStorage.setItem(
         "profileData",
-        JSON.stringify(res?.data?.profileData)
+        JSON.stringify(res?.data?.profileData),
       );
       setUser(res?.data?.profileData);
       setUserLoaded(true);
