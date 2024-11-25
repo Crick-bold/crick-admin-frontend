@@ -4,10 +4,10 @@ const useListTeams = ({ searchText = "", primaryCall = true }) => {
   const [count, setCount] = useState(0);
 
   const { data, loading, trigger } = useRequest({
-    url: "team/list_teams",
-    method: "post",
-    isConfig: true,
-  });
+    url: 'list_teams',
+    method: 'get',
+    isConfig: true
+  })
 
   const listTeams = async () => {
     const payload = {

@@ -1,8 +1,8 @@
 import useRequest from "../../../common/hooks/useRequest";
 const useGetMatches = () => {
   const { data, loading, trigger } = useRequest({
-    url: "match/list_matches",
-    method: "post",
+    url: "list_matches",
+    method: "get",
     isConfig: true,
   });
 

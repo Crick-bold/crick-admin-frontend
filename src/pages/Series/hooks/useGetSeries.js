@@ -5,8 +5,8 @@ const useGetSeries = ({ seriesId }) => {
   const [data, setData] = useState([]);
   const getPlayers = async (data) => {
     const res = await axios.get(
-      process.env.REACT_APP_BACKEND + "series?id=" + seriesId,
-      data,
+      process.env.REACT_APP_BACKEND + "series/" + seriesId,
+      data
     );
     return res;
   };

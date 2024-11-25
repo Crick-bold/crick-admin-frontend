@@ -4,10 +4,10 @@ const useListVenues = ({ searchText = "", primaryCall = true }) => {
   const [count, setCount] = useState(0);
 
   const { data, loading, trigger } = useRequest({
-    url: "venue/list_venues",
-    method: "post",
-    isConfig: true,
-  });
+    url: 'list_venues',
+    method: 'get',
+    isConfig: true
+  })
 
   const listVenues = async () => {
     const payload = {
@@ -22,6 +22,7 @@ const useListVenues = ({ searchText = "", primaryCall = true }) => {
   };
 
   useEffect(() => {
+    console.log("hii",primaryCall)
     if (primaryCall) {
       listVenues();
     } else {

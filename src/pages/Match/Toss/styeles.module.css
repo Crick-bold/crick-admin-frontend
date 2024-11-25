@@ -1,0 +1,30 @@
+.container{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px
+}
+
+.match_card, .selected_match_card{
+    background-color: var(--color-secondary_background);
+    padding:10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.selected_match_card:hover ,.match_card:hover{
+    transform: scale(1.01);
+    transition:  transform 0.1s;
+}
+
+.selected_match_card{
+    border-bottom: 10px solid green;
+}
+
+
+.match_card_image{
+    width:200px;
+    height:200px;
+}

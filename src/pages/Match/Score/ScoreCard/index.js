@@ -11,8 +11,9 @@ const ScoreCard = ({
   loadingScore,
   target,
   allBattingPlayers,
+  currentInning,
+  result,
 }) => {
-  console.log(allBattingPlayers, "all");
   return (
     <>
       <div className={styles.score_card}>
@@ -23,7 +24,7 @@ const ScoreCard = ({
               <div className={styles.team_name}>
                 <div className={styles.team_logo}>
                   <img
-                    src={team?.image_url}
+                    src={team?.imageUrl}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -37,9 +38,12 @@ const ScoreCard = ({
                     (battingTeam === 2 && index === 2)) && <>*</>}
                 </div>
               </div>
-              {team?.target && (
-                <div className={styles.target}>Target :{team?.target}</div>
-              )}
+
+              {team?.target ? (
+                <div className={styles.target}>
+                  {currentInning === 3 ? result : `Target : ${team?.target}`}
+                </div>
+              ) : null}
 
               <div className={styles.run_over}>
                 <div className={styles.run}>
@@ -71,9 +75,7 @@ const ScoreCard = ({
                   </div>
                   {allBattingPlayers
                     ?.filter((player) => {
-                      return (
-                        player?.selected === 1 && player?.batting_order < 12
-                      );
+                      return player?.selected && player?.battingOrder < 12;
                     })
                     ?.map((player) => {
                       const playerId = player?.id;
@@ -87,22 +89,22 @@ const ScoreCard = ({
                             }
                           >
                             <div>
-                              {team?.batting_players[playerId]?.name ||
+                              {team?.battingPlayers[playerId]?.name ||
                                 player?.name}
-                              {parseInt(player) ===
+                              {parseInt(player.id) ===
                                 parseInt(batsmanOnStrike) && <>*</>}
                             </div>
                             <div>
-                              {team?.batting_players[playerId]?.runs || 0}
+                              {team?.battingPlayers[playerId]?.runs || 0}
                             </div>
                             <div>
-                              {team?.batting_players[playerId]?.balls || 0}
+                              {team?.battingPlayers[playerId]?.balls || 0}
                             </div>
                             <div>
-                              {team?.batting_players[playerId]?.fours || 0}
+                              {team?.battingPlayers[playerId]?.fours || 0}
                             </div>
                             <div>
-                              {team?.batting_players[playerId]?.sixes || 0}
+                              {team?.battingPlayers[playerId]?.sixes || 0}
                             </div>
                           </div>
                         </>
@@ -128,7 +130,7 @@ const ScoreCard = ({
                       <b>Ecc</b>
                     </div>
                   </div>
-                  {(Object.keys(team?.bowling_players || {}) || []).map(
+                  {(Object.keys(team?.bowlingPlayers || {}) || []).map(
                     (player) => (
                       <>
                         <div
@@ -139,26 +141,26 @@ const ScoreCard = ({
                           }
                         >
                           <div>
-                            {team?.bowling_players[player].name}
+                            {team?.bowlingPlayers[player].name}
                             {parseInt(player) === parseInt(batsmanOnStrike) && (
                               <>*</>
                             )}
                           </div>
                           <div>
-                            {parseInt(team?.bowling_players[player].balls / 6)}.
-                            {parseInt(team?.bowling_players[player].balls % 6)}
+                            {parseInt(team?.bowlingPlayers[player].balls / 6)}.
+                            {parseInt(team?.bowlingPlayers[player].balls % 6)}
                           </div>
-                          <div>{team?.bowling_players[player].wickets}</div>
-                          <div>{team?.bowling_players[player].runs}</div>
+                          <div>{team?.bowlingPlayers[player].wickets}</div>
+                          <div>{team?.bowlingPlayers[player].runs}</div>
                           <div>
                             {parseInt(
-                              team?.bowling_players[player].runs /
-                                (team?.bowling_players[player].balls / 6),
+                              team?.bowlingPlayers[player].runs /
+                                (team?.bowlingPlayers[player].balls / 6)
                             )}
                           </div>
                         </div>
                       </>
-                    ),
+                    )
                   )}
                 </div>
 

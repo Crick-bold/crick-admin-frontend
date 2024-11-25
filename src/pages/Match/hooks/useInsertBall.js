@@ -15,7 +15,7 @@ const useInsertBall = ({
   outType,
 }) => {
   const { data, loading, trigger } = useRequest({
-    url: "ball/insert_ball",
+    url: "ball",
     method: "post",
     autoLoad,
   });

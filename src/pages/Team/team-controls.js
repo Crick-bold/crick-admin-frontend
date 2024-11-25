@@ -14,11 +14,8 @@ const TeamControls = () => {
       label: "Image Url",
       type: "text",
       value: "",
-      key: "image_url",
+      key: "imageUrl",
       placeholder: "Enter Team Image",
-      rules: {
-        required: "Image URL is Required",
-      },
     },
   ];
   return controls;

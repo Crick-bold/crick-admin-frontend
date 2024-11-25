@@ -34,7 +34,6 @@ const PlayerItem = ({
     <>
       <div
         className={checked ? style.selected_item : style.not_selected_item}
-        onClick={() => changeSelection()}
       >
         {checked ? <IconSuccss /> : <IconFailed />}
         {player.name} &nbsp;

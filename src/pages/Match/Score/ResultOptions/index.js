@@ -22,12 +22,12 @@ const ResultOptions = ({
       battingTeam === 1 ? score?.team1?.totalBalls : score?.team2?.totalBalls,
     batPlayerId:
       battingTeam === 1
-        ? data?.squad1?.batsman_on_strike
-        : data?.squad2?.batsman_on_strike,
+        ? data?.squad1?.batsmanOnStrike
+        : data?.squad2?.batsmanOnStrike,
     batsmanOnNonStrike:
       battingTeam === 1
-        ? data?.squad1?.batsman_on_non_strike
-        : data?.squad2?.batsman_on_non_strike,
+        ? data?.squad1?.batsmanOnNonStrike
+        : data?.squad2?.batsmanOnNonStrike,
     ballPlayerId:
       battingTeam === 1 ? data?.squad1?.bowler : data?.squad2?.bowler,
     squadId: battingTeam === 1 ? data?.squad1?.id : data?.squad2?.id,
@@ -98,22 +98,18 @@ const ResultOptions = ({
     },
   ];
 
-  return (
-    <>
-      <div className={styles.parent}>
-        <div className={styles.result_options}>
-          {!loadingIns &&
-            options?.map((option) => (
-              <button
-                key={option?.value}
-                className={styles.result_option}
-                style={{ backgroundColor: option?.color }}
-                onClick={() => setResult(option?.value)}
-              >
-                {option?.label}
-              </button>
-            ))}
-        </div>
+  return <>
+          <div className={styles.parent}>
+          <div className={styles.result_options}>
+                {
+                  !loadingIns &&
+                    options?.map((option) => (
+                        <button key={option?.value} className={styles.result_option} style={{ backgroundColor: option?.color }} onClick={() => setResult(option?.value)}>
+                            {option?.label}
+                        </button>
+                    ))
+                }
+            </div>
 
         <div className={styles.shot_container}>
           {[0, 1, 2, 3, 4, 6].includes(result) &&
@@ -155,6 +151,6 @@ const ResultOptions = ({
         </div>
       </div>
     </>
-  );
+  
 };
 export default ResultOptions;

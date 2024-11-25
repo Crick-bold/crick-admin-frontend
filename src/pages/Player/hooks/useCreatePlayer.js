@@ -8,14 +8,10 @@ const useCreatePlayer = ({ listPlayers, setShow }) => {
   };
   let res;
   const createPlayer = async (data) => {
-    res = await axios.post(
-      process.env.REACT_APP_BACKEND + "player/insert_player",
-      data,
-      config,
-    );
-    listPlayers();
-    setShow(false);
-  };
+    res = await axios.post(process.env.REACT_APP_BACKEND + 'player', data, config)
+    listPlayers()
+    setShow(false)
+  }
 
   return {
     createPlayer,

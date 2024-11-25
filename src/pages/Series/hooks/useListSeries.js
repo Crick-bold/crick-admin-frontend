@@ -4,10 +4,10 @@ const useListSeries = ({ searchText = "", primaryCall = true }) => {
   const [count, setCount] = useState(0);
 
   const { data, loading, trigger } = useRequest({
-    url: "series/list_series",
-    method: "post",
-    isConfig: true,
-  });
+    url: 'list_series',
+    method: 'get',
+    isConfig: true
+  })
 
   const listSeries = async () => {
     const payload = {

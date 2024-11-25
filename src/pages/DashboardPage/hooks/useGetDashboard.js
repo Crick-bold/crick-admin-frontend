@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import useRequest from "../../../common/hooks/useRequest";
 const useGetDashboard = () => {
   const { data, loading, trigger } = useRequest({
-    url: "dashboard/get_dashboard",
-    method: "post",
-    isConfig: true,
-  });
+    url: 'dashboard',
+    method: 'get',
+    isConfig: true
+  })
 
   const getDashboard = async () => {
     const payload = {
@@ -22,8 +22,8 @@ const useGetDashboard = () => {
   }, []);
   return {
     loading,
-    data: data?.data?.data,
-    getDashboard,
-  };
-};
-export default useGetDashboard;
+    data: data?.data,
+    getDashboard
+  }
+}
+export default useGetDashboard

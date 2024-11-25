@@ -6,6 +6,7 @@ const useUpdateStrike = ({
   matchId,
   battingTeam,
   wickets,
+  squadPlayerMappingId,
 }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -16,8 +17,8 @@ const useUpdateStrike = ({
       return;
     }
     const {
-      batsman_on_strike: batsmanOnStrike,
-      batsman_on_non_strike: batsmanOnNonStrike,
+      batsmanOnStrike: batsmanOnStrike,
+      batsmanOnNonStrike: batsmanOnNonStrike,
       bowler,
     } = values;
 
@@ -29,12 +30,13 @@ const useUpdateStrike = ({
     ) {
       const payload = {
         squadId,
+        squadPlayerMappingId,
         wickets,
         ...values,
       };
-      const res = await axios.put(
-        process.env.REACT_APP_BACKEND + "squad/update_squad",
-        payload,
+      const res = await axios.post(
+        process.env.REACT_APP_BACKEND + "squad/update-strike",
+        payload
       );
       setLoading(false);
       getMatchById(matchId);

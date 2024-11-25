@@ -1,0 +1,24 @@
+.p-multiselect,.p-multiselect-label-container,.p-multiselect-header{
+    background-color: rgb(43, 41, 41);
+    width: 400px;
+  }
+  
+  .p-multiselect-item{
+    background-color: rgb(40, 40, 41);
+    color:white;
+  }
+  .p-multiselect-item:hover{
+      background-color: rgb(128, 128, 128);
+  }
+  
+  .p-multiselect-filter-container{
+    background-color: rgb(43, 41, 41);
+  }
+
+  .p-multiselect-filter{
+    background-color: rgb(40, 40, 41);
+  }
+  
+  .p-multiselect-panel{
+    background-color: rgb(43, 41, 41);
+  }

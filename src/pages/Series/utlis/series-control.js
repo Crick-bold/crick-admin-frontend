@@ -14,11 +14,8 @@ const playerControls = () => {
       label: "Image Url",
       type: "text",
       value: "",
-      key: "image_url",
+      key: "imageUrl",
       placeholder: "Enter Series Image",
-      rules: {
-        required: "Image Url Name is Required",
-      },
     },
   ];
   return controls;

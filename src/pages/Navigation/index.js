@@ -34,7 +34,7 @@ const Navigations = ({ user, setUser, setUserLoaded }) => {
         )}
         {user && (
           <img
-            src={user?.image_url}
+            src={user?.imageUrl}
             style={{ width: "40px", height: "40px", borderRadius: "50%" }}
             onClick={() => logout()}
           />

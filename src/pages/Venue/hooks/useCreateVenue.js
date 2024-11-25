@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const useCreateVenue = ({ getTeams, setShow, getVenues }) => {
+const useCreateVenue = ({  setShow, listVenues }) => {
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -11,22 +11,21 @@ const useCreateVenue = ({ getTeams, setShow, getVenues }) => {
   const [data, setData] = useState([]);
   const createVenue = async (data) => {
     const res = await axios.post(
-      process.env.REACT_APP_BACKEND + "venue/insert_venue",
+      process.env.REACT_APP_BACKEND + "venue",
       data,
       config,
     );
     setShow(false);
-    getVenues();
+    listVenues();
     return res;
   };
 
-  const addTeam = (data) => {
+  const addVenue = (data) => {
     createVenue(data).then((res) => {
       setLoading(false);
       setData(res);
-      getTeams();
     });
   };
-  return { addTeam, loading, data };
+  return { addVenue, loading, data };
 };
 export default useCreateVenue;

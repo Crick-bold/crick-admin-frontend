@@ -3,11 +3,11 @@ import styles from "../../Team/List/styles.module.css";
 
 export const columns = [
   {
-    key: "img_url",
+    key: "imageUrl",
     header: "Image",
     accessor: (row) => (
       <>
-        <img src={row?.image_url} className={styles.img} />
+        <img src={row?.imageUrl} className={styles.img} />
       </>
     ),
   },

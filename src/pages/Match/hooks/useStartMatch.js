@@ -1,22 +1,38 @@
 import axios from "axios";
 import { useState } from "react";
-const useStartMatch = ({ matchId, getMatchById, firstBatting }) => {
+const useStartMatch = ({ matchId, getMatchById, tossWinner, battingOrBowling}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const startMatchNow = async () => {
-    const res = await axios.put(
-      process.env.REACT_APP_BACKEND + "match/update_match/start_match",
-      { matchId, firstBatting },
+
+    let firstBatting = -1;
+    if(battingOrBowling === 'batting'){
+      if(tossWinner === 1)
+      firstBatting = -1
+      else
+      firstBatting = 1
+    } else{
+      if(tossWinner === 1)
+      firstBatting = 1
+      else
+      firstBatting = -1
+    }
+
+    const res = await axios.get(
+      process.env.REACT_APP_BACKEND + "match/start-match/"+ matchId+"/"+firstBatting,
     );
     return res;
   };
 
   const startMatch = () => {
+    console.log("hii", )
     startMatchNow().then((res) => {
       setLoading(false);
       setData(res);
       getMatchById(matchId);
+
     });
+
   };
 
   return {

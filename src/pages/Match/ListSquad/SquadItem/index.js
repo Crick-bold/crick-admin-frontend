@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form";
-import Layout from "../../../Components/Layout";
-import useCreateSquad from "../../../Squad/hooks/useCreateSquad";
-import control from "./add-player";
+
 import PlayerItem from "./PlayerItem";
 import styles from "./styles.module.css";
 // import OpenRegistraiton from './OpenRegistration'
-
+import { useState } from "react";
+import useListPlayers from "../../../Player/hooks/useListPlayers";
+import Button from "../../../Components/Button";
+import useBulkUploadPlayers from "../../../Squad/hooks/useBulkUploadPlayers";
+import PrimeMultiSelect from "../../../Components/PrimeReact/MultiSelect";
+        
 const SquadItem = ({
   squad,
   matchId,
@@ -13,40 +15,24 @@ const SquadItem = ({
   isSquadFinal,
   antiSquad,
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const controls = control({ squad, antiSquad });
-  const { addPlayerInSquad } = useCreateSquad({
-    squadId: squad?.id,
-    getMatchById,
-    matchId,
-  });
+
+  const [players, setPlayers] = useState([]);
+  const {data: playersOptions} = useListPlayers({});
+  const { uploadPlayersInSquad} = useBulkUploadPlayers({squadId:squad.id,players, getMatchById, matchId, setPlayers})
+
+
   return (
     <>
       <div className={styles.squad}>
-        {/* {
-                    squad?.free_seats === 0 && <div className={styles.more_players_option}>
-                    <div>
-                      <div>
-                        <h2 className={styles.h2}>
-                           {squad?.teamName} dosn&apos;t  have 11 players ?
-                        </h2>
-                        <h5 className={styles.h5}>
-                            Ask Peaple to Register for {squad?.teamName} Trial.
-                        </h5>
-                      </div>
-                    </div>
-                    <div>
-                        <OpenRegistraiton {...{ squad, getMatchById }}/>
-                    </div>
+        {
+          squad?.players?.length === 0 ?
+          <div className="p-8">
+            {players?.length || "No"} Players selected               
+          </div>
+          : null
+        }
 
-                </div>
-
-                  } */}
-        <div className={styles.flex}>
+      <div className={styles.flex}>
           {squad?.players?.map((player, index) => (
             <PlayerItem
               key={index}
@@ -59,16 +45,14 @@ const SquadItem = ({
             />
           ))}
         </div>
-        {!isSquadFinal && (
-          <Layout
-            register={register}
-            handleSubmit={handleSubmit}
-            onSubmit={addPlayerInSquad}
-            controls={controls}
-            errors={errors}
-            submitBtnName="Add Player"
-          />
-        )}
+        {!squad?.players?.length&& (
+          <>
+          <PrimeMultiSelect options={playersOptions} values={players} setValues={setPlayers} placeholder={"Select Players"} />
+          &nbsp;&nbsp;
+          <Button value="Update Squad" onClick={uploadPlayersInSquad}/>
+        </>
+         
+)}
       </div>
     </>
   );

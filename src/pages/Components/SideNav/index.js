@@ -50,7 +50,7 @@ const SideNav = ({ user, setUser, setUserLoaded }) => {
           {user && (
             <div>
               <img
-                src={user?.image_url}
+                src={user?.imageUrl}
                 style={{ width: "66px", height: "66px", borderRadius: "50%" }}
               />
             </div>

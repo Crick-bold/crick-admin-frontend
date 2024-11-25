@@ -1,18 +1,23 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./styles.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import RouterPage from "./pages/RouterPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { PrimeReactProvider } from 'primereact/api';
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <GoogleOAuthProvider clientId="244695757173-q8p1fdj9dohmfg0s066ie0fik88chbpo.apps.googleusercontent.com">
-    <BrowserRouter>
-      <RouterPage />
-    </BrowserRouter>
-  </GoogleOAuthProvider>,
-);
+      <GoogleOAuthProvider clientId="244695757173-q8p1fdj9dohmfg0s066ie0fik88chbpo.apps.googleusercontent.com">
+        <PrimeReactProvider>
+          <BrowserRouter>
+            <RouterPage  />
+          </BrowserRouter>
+        </PrimeReactProvider>
+        </GoogleOAuthProvider>
+);;
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

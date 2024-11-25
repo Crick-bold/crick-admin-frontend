@@ -17,7 +17,7 @@ const Series = () => {
   return (
     <>
       <div className={styles.series_heading}>
-        <img src={seriesData?.image_url} className={styles.series_image} />
+        <img src={seriesData?.imageUrl} className={styles.series_image} />
         <div>{seriesData?.name}</div>
       </div>
       <Tabs
@@ -31,7 +31,7 @@ const Series = () => {
             <div className={styles.matchStatusHeader}>Live Match</div>
             <div className={styles.matchContainer}>
               {!loading &&
-                seriesData?.matches?.live?.map((match, index) => (
+                seriesData?.liveMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />
                 ))}
             </div>
@@ -40,7 +40,7 @@ const Series = () => {
             <div className={styles.matchStatusHeader}>Upcoming Matches</div>
             <div className={styles.matchContainer}>
               {!loading &&
-                seriesData?.matches?.upcoming?.map((match, index) => (
+                seriesData?.upcomingMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />
                 ))}
             </div>
@@ -49,7 +49,7 @@ const Series = () => {
             <div className={styles.matchStatusHeader}>Past Matches</div>
             <div className={styles.matchContainer}>
               {!loading &&
-                seriesData?.matches?.past?.map((match, index) => (
+                seriesData?.pastMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />
                 ))}
             </div>

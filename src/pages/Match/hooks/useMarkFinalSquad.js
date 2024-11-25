@@ -17,9 +17,8 @@ const useMarkFinalSquads = ({ matchId, getMatchById, squad1, squad2 }) => {
     return false;
   };
   const markSquads = async (data) => {
-    const res = await axios.put(
-      process.env.REACT_APP_BACKEND + "match/update_match/mark_final_squads",
-      { matchId, squad1, squad2 },
+    const res = await axios.get(
+      process.env.REACT_APP_BACKEND + "match/mark-squads-final/"+matchId,
     );
     return res;
   };

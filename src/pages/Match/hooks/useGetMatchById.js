@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import useRequest from "../../../common/hooks/useRequest";
 const useGetMatchById = (id) => {
   const { data, loading, trigger } = useRequest({
-    url: "match?id=" + id,
-    method: "get",
-    isConfig: true,
-  });
+    url: 'match/' + id,
+    method: 'get',
+    isConfig: true
+  })
 
   const getMatchById = () => {
     trigger();

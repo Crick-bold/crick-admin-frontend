@@ -4,10 +4,10 @@ const useListPlayers = ({ searchText = "", primaryCall = true }) => {
   const [count, setCount] = useState(0);
 
   const { data, loading, trigger } = useRequest({
-    url: "player/list_players",
-    method: "post",
-    isConfig: true,
-  });
+    url: 'list_players',
+    method: 'get',
+    isConfig: true
+  })
 
   const listPlayers = async () => {
     const payload = {

@@ -22,7 +22,7 @@ const List = ({
   const {
     data: venuesFromMain,
     loadingFromMain,
-    getVenues,
+    listVenues,
   } = useListVenues({ searchText, primaryCall });
 
   useEffect(() => {
@@ -42,14 +42,14 @@ const List = ({
   } = useForm();
   const controls = control();
   const [show, setShow] = useState(false);
-  const { addTeam } = useCreateVenue({ getVenues, setShow });
+  const { addVenue } = useCreateVenue({ listVenues, setShow });
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
         <Layout
           register={register}
           handleSubmit={handleSubmit}
-          onSubmit={addTeam}
+          onSubmit={addVenue}
           controls={controls}
           errors={errors}
         />
