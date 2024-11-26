@@ -18,7 +18,7 @@ const SquadItem = ({
 
   const [players, setPlayers] = useState([]);
   const {data: playersOptions} = useListPlayers({});
-  const { uploadPlayersInSquad} = useBulkUploadPlayers({squadId:squad.id,players, getMatchById, matchId, setPlayers})
+  const { uploadPlayersInSquad, loading} = useBulkUploadPlayers({squadId:squad.id,players, getMatchById, matchId, setPlayers})
 
 
   return (
@@ -49,7 +49,7 @@ const SquadItem = ({
           <>
           <PrimeMultiSelect options={playersOptions} values={players} setValues={setPlayers} placeholder={"Select Players"} />
           &nbsp;&nbsp;
-          <Button value="Update Squad" onClick={uploadPlayersInSquad}/>
+          <Button value="Update Squad" onClick={uploadPlayersInSquad} disabled={loading}/>
         </>
          
 )}

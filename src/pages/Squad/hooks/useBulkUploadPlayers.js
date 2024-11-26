@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
+import { setToast } from "../../../common/store/toastSlice";
+import { useDispatch } from "react-redux";
 
 const useBulkUploadPlayers = ({ squadId, players, getMatchById, matchId,setPlayers}) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   const uploadPlayers = async (data) => {
     const payload = {
       squadId,
+      matchId,
     players : players?.map((player)=>(player.id))
     };
       const res = await axios.post(
@@ -18,14 +22,22 @@ const useBulkUploadPlayers = ({ squadId, players, getMatchById, matchId,setPlaye
   };
 
   const uploadPlayersInSquad = (data) => {
+    setLoading(true)
     uploadPlayers(data).then((res) => {
       setLoading(false);
       setData(res);
       getMatchById(matchId);
       setPlayers([])
-      console.log(res,'hey')
     }).catch((err)=>{
-      console.log(err.response.data.players)
+      setLoading(false);
+      dispatch(
+        setToast({
+          severity: 'error',
+          summary: 'Please select  11 players.',
+          detail: err.response.data?.players || err.response.data,
+          life: 3000,
+        }
+      ))
     })
   };
 

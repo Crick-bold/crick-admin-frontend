@@ -1,15 +1,20 @@
 import ReactDOM from "react-dom/client";
 import "./styles.css";
+import "./prime-react.css"
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import RouterPage from "./pages/RouterPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { PrimeReactProvider } from 'primereact/api';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
+import store from "./common/store";
+import { Provider } from "react-redux";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
+      <Provider store={store}>
       <GoogleOAuthProvider clientId="244695757173-q8p1fdj9dohmfg0s066ie0fik88chbpo.apps.googleusercontent.com">
         <PrimeReactProvider>
           <BrowserRouter>
@@ -17,6 +22,7 @@ root.render(
           </BrowserRouter>
         </PrimeReactProvider>
         </GoogleOAuthProvider>
+        </Provider>
 );;
 
 // If you want to start measuring performance in your app, pass a function

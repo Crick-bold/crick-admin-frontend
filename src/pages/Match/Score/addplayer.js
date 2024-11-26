@@ -1,11 +1,14 @@
 const AddPlayerControls = ({ playerOptions1, playerOptions2, squad }) => {
   const afterFilterPlayerOptions = playerOptions1?.filter(function (player) {
     return (
-      (player?.battingOrder === 12 && player?.selected) ||
-      [squad?.batsmanOnStrike, squad?.batsmanOnNonStrike].includes(player?.id)
+      (player?.battingOrder === 12 && player?.selected) || 
+      (!playerOptions1 && player?.id === squad?.batsmanOnStrike) ||
+      (!playerOptions2 && player?.id === squad?.batsmanOnNonStrike) 
     );
   });
-  console.log(playerOptions1, "pll", playerOptions2, squad?.bowler);
+
+  const batsmanOnStrike = playerOptions1?.find((player)=>player?.id === squad?.batsmanOnStrike)
+  const batsmanOnNonStrike = playerOptions1?.find((player)=>player?.id === squad?.batsmanOnNonStrike)
 
   const controls = [
     {
@@ -13,7 +16,7 @@ const AddPlayerControls = ({ playerOptions1, playerOptions2, squad }) => {
       type: "player-select",
       value: null,
       key: "batsmanOnStrike",
-      options: afterFilterPlayerOptions,
+      options: squad?.batsmanOnStrike ? [...afterFilterPlayerOptions, batsmanOnStrike] : afterFilterPlayerOptions,
       disabled: squad?.batsmanOnStrike,
       rules: {
         required: "Player on strike is Required",
@@ -24,7 +27,7 @@ const AddPlayerControls = ({ playerOptions1, playerOptions2, squad }) => {
       type: "player-select",
       value: null,
       key: "batsmanOnNonStrike",
-      options: afterFilterPlayerOptions,
+      options: squad?.batsmanOnNonStrike ? [...afterFilterPlayerOptions, batsmanOnNonStrike] : afterFilterPlayerOptions,
       disabled: squad?.batsmanOnNonStrike,
       rules: {
         required: "Player on non-strike is Required",

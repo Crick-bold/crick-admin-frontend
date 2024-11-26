@@ -1,0 +1,9 @@
+/* Example: Customizing PrimeReact Toast */
+.p-toast {
+    z-index: 1000; /* Ensure it appears on top */
+  }
+  
+  .p-toast-message {
+    font-size: 14px;
+    background-color: rgb(19, 19, 19);
+  }

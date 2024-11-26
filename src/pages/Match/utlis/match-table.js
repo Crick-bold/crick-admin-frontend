@@ -33,7 +33,11 @@ export const columns = [
   {
     key: "venue",
     header: "Venue",
-    accessor: "venue_name",
+    accessor: (row) => (
+      <>
+        {row?.venue?.name}
+      </>
+    )
   },
   {
     key: "overs",
@@ -47,7 +51,7 @@ export const columns = [
       <>
         {
             {
-              0: <Pill type="transparent" content={moment(row?.start_time).format('hh:mm DD MMM YYYY') }/>,
+              0: <Pill type="transparent" content={moment(row?.start_time).format('LLL') }/>,
               '-1': <Pill content="Runnng"/>,
               1: <Pill content="Runnng"/>,
               '-2': <Pill content="Runnng"/>,

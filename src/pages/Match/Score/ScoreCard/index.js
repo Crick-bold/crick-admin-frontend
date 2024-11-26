@@ -39,11 +39,9 @@ const ScoreCard = ({
                 </div>
               </div>
 
-              {team?.target ? (
                 <div className={styles.target}>
-                  {currentInning === 3 ? result : `Target : ${team?.target}`}
+                  {currentInning === 3 ? result : `Target : ${team?.target || ''}`}
                 </div>
-              ) : null}
 
               <div className={styles.run_over}>
                 <div className={styles.run}>

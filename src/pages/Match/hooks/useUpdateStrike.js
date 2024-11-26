@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
+import { setToast } from "../../../common/store/toastSlice";
+import { useDispatch } from "react-redux";
 const useUpdateStrike = ({
   squadId,
   getMatchById,
@@ -10,6 +12,7 @@ const useUpdateStrike = ({
 }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const dispatch = useDispatch()
 
   const updateStrike = async (values) => {
     if ([0, 3].includes(battingTeam)) {
@@ -21,6 +24,17 @@ const useUpdateStrike = ({
       batsmanOnNonStrike: batsmanOnNonStrike,
       bowler,
     } = values;
+
+    if(batsmanOnStrike === batsmanOnNonStrike){   
+      dispatch(
+        setToast({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Please select different strike player and not strike player',
+          life: 3000,
+        })
+      );
+    }
 
     if (
       batsmanOnStrike &&

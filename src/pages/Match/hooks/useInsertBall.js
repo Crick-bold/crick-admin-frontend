@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import useRequest from "../../../common/hooks/useRequest";
+import { setToast } from "../../../common/store/toastSlice";
 const useInsertBall = ({
   matchData,
   ballOftheMatch,
@@ -20,9 +22,18 @@ const useInsertBall = ({
     autoLoad,
   });
 
+  const dispatch = useDispatch();
+
   const insertBall = async ({ result, playedShot, outType }) => {
     if (battingTeam === 0) {
-      alert("Match has not started yet");
+      dispatch(
+        setToast({
+          severity: 'error',
+          summary: 'Match not started yet',
+          detail: "Please start the match first.",
+          life: 3000,
+        }
+      ))
       return;
     }
     if (batPlayerId && batsmanOnNonStrike && ballPlayerId) {
@@ -37,8 +48,14 @@ const useInsertBall = ({
       await getMatchById(matchData?.id);
       return data;
     } else {
-      alert("Insert Batsmans and Bowlers");
-    }
+      dispatch(
+        setToast({
+          severity: 'error',
+          summary: 'No Batsman/ Bowler Selected',
+          detail: "Please select batsman and bowler.",
+          life: 3000,
+        }
+      ))    }
   };
 
   return {

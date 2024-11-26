@@ -7,12 +7,15 @@ import SeriesList from "../Series/List";
 import SeriesPage from "../Series";
 import MatchList from "../Match/List";
 import VenueList from "../Venue/List";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Dashboard from "../../common/Dashboard";
 import WelcomePage from "../Welcome";
 import Navigations from "../Navigation";
 import { navigation } from "./navigation";
 import DashboardPage from "../DashboardPage";
+import { useSelector, useDispatch } from 'react-redux';
+import { Toast } from "primereact/toast";
+import { clearToast } from "../../common/store/toastSlice";
 
 const Comp = ({ path }) => {
   return {
@@ -33,8 +36,20 @@ const Router = () => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [user, setUser] = useState(null);
 
+  const toastRef = useRef(null);
+  const dispatch = useDispatch();
+  const toastConfig = useSelector(state => state.toast);
+
+  useEffect(() => {
+    if (toastConfig && toastRef.current) {
+      toastRef.current.show(toastConfig); // Show the toast
+      dispatch(clearToast()); // Clear toast state after showing
+    }
+  }, [toastConfig, dispatch]);
+
   return (
     <>
+    <Toast ref={toastRef} />
       {!user && (
         <Navigations
           user={user}

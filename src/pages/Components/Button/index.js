@@ -1,9 +1,10 @@
 import styles from "./styles.module.css";
-const Button = ({ value, onClick = () => {}, type = "primary" }) => {
+const Button = ({ value, onClick = () => {}, type = "primary" , disabled=false}) => {
   return (
     <>
       <button
         onClick={() => onClick()}
+        disabled={disabled}
         className={
           {
             primary: styles.primary,
