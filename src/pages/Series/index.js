@@ -5,8 +5,9 @@ import Tabs from '../Components/Tabs'
 import { useState } from 'react'
 import MatchCard from '../Match/MatchCard'
 import Table from '../Components/Table'
-import { batsmanTableColumns, bowlerTableColumns, highestRunsColumns } from './utlis/top-perfromers-columns'
-import { HighestRuns } from './utlis/Dummy/HighestRuns'
+import { batsmanTableColumns, battingAverageColumns, bestBowlingColumns, bowlerTableColumns, bowlingAverageColumns, highestRunsColumns, mostfiftiesColumns, mostHundredColumns } from './utlis/top-perfromers-columns'
+import { battingAverage, bestBowlingFigures, bowlingAverage, highestRuns, mostfifties, mostHundred } from './utlis/Dummy/HighestRuns'
+
 const Series = () => {
   const { id: seriesId } = useParams()
   const [active, setActive] = useState(0)
@@ -38,19 +39,64 @@ const Series = () => {
                         </div>
                     }
                     { active === 1 &&
-                        <div className={styles.topPerformerContainer}>
-                            <Table
+          <div className={styles.topPerformerContainer}>
+              <div >
+                  <div className={styles.title}>Runs</div>
+                        <Table
+
                             columns={batsmanTableColumns}
                             data={seriesData?.topPerformers?.batsmans}
-                        />
+                  />
+                  </div>
+          <div>
+             <div className={styles.title}>Wicket</div>
                         <Table
                             columns={bowlerTableColumns}
                             data={seriesData?.topPerformers?.bowlers}
-                        />
+                  />
+              </div>
+              <div>
+              <div className={styles.title}>HighestRuns</div>
                         <Table
                         columns={highestRunsColumns}
-                        data={HighestRuns}
-                    />
+                        data={highestRuns}
+                  />
+              </div>
+              <div>
+              <div className={styles.title}>BestBowlingFigures</div>
+              <Table
+                  columns={bestBowlingColumns}
+                  data={bestBowlingFigures}
+                  />
+              </div>
+              <div>
+              <div className={styles.title}>BattingAverage</div>
+               <Table
+                  columns={battingAverageColumns}
+                  data={battingAverage}
+                  />
+              </div>
+              <div>
+              <div className={styles.title}>BowlingAverage</div>
+                <Table
+                  columns={bowlingAverageColumns}
+                  data={bowlingAverage}
+                  />
+              </div>
+              <div>
+              <div className={styles.title}>MostHundred</div>
+               <Table
+                  columns={mostHundredColumns}
+                  data={mostHundred}
+                  />
+              </div>
+              <div>
+              <div className={styles.title}>MostFifties</div>
+               <Table
+                  columns={mostfiftiesColumns}
+                  data={mostfifties}
+                  />
+                  </div>
                         </div>
                     }
 
