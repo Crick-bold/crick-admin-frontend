@@ -74,3 +74,11 @@
   font-size: 16px;
   margin-bottom: 4px;
 }
+.noMatch{
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+  margin-left: 20px;
+  margin-bottom: 4px;
+  margin-top: 5px;
+}

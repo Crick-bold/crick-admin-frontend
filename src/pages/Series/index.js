@@ -31,6 +31,9 @@ const Series = () => {
             <div className={styles.matchStatusHeader}>Live Match</div>
             <div className={styles.matchContainer}>
               {!loading &&
+                seriesData?.liveMatches?.length===0?
+                <div className={styles.noMatch}> No Live match</div>
+                :
                 seriesData?.liveMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />
                 ))}
@@ -40,6 +43,9 @@ const Series = () => {
             <div className={styles.matchStatusHeader}>Upcoming Matches</div>
             <div className={styles.matchContainer}>
               {!loading &&
+                seriesData?.upcomingMatches?.length===0?
+                <div className={styles.noMatch}>No upcoming Matches</div>
+                :
                 seriesData?.upcomingMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />
                 ))}
@@ -49,6 +55,9 @@ const Series = () => {
             <div className={styles.matchStatusHeader}>Past Matches</div>
             <div className={styles.matchContainer}>
               {!loading &&
+                seriesData?.pastMatches?.length===0?
+                <div className={styles.noMatch} >No past matches to display</div>
+                :
                 seriesData?.pastMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />
                 ))}
