@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "../Layout/styles.module.css";
+import AddVenueLayout from "../../Venue/AddVenueLayout";
+import Modal from "../Modal";
 // eslint-disable-next-line react/display-name
 const VenueSelect = React.forwardRef(
   (
@@ -14,10 +16,18 @@ const VenueSelect = React.forwardRef(
       error,
       rules,
       disabled,
+      onCreateVenue = ()=>{},
+      showCreateNewBtn = false,
     },
     ref,
-  ) => (
+  ) => 
+  {
+    const [show, setShow] = useState(false)
+    return (
     <>
+      <Modal show={show} setShow={setShow} size="md">
+        <AddVenueLayout setShow={setShow} listVenues={onCreateVenue}/>
+      </Modal>
       <div>
         <div>
           <label className={style.label}>{label}</label>
@@ -42,12 +52,21 @@ const VenueSelect = React.forwardRef(
               ))}
           </select>
         </div>
+        {
+          showCreateNewBtn?
+          <div className={style.create_new_div}>
+              Not in the list 
+              <button onClick={()=>setShow(true)}>Create New</button>
+          </div>
+
+          : null
+        }
         <span className={style.error_text}>
           {error ? rules?.required || "Required" : null}
         </span>
       </div>
     </>
-  ),
+  )}
 );
 
 export default VenueSelect;

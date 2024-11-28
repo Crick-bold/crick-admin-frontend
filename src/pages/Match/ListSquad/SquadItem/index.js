@@ -7,6 +7,8 @@ import useListPlayers from "../../../Player/hooks/useListPlayers";
 import Button from "../../../Components/Button";
 import useBulkUploadPlayers from "../../../Squad/hooks/useBulkUploadPlayers";
 import PrimeMultiSelect from "../../../Components/PrimeReact/MultiSelect";
+import Modal from "../../../Components/Modal";
+import AddPlayerLayout from "../../../Player/AddPlayerLayout";
         
 const SquadItem = ({
   squad,
@@ -17,20 +19,35 @@ const SquadItem = ({
 }) => {
 
   const [players, setPlayers] = useState([]);
-  const {data: playersOptions} = useListPlayers({});
+  const {data: playersOptions,listPlayers} = useListPlayers({});
   const { uploadPlayersInSquad, loading} = useBulkUploadPlayers({squadId:squad.id,players, getMatchById, matchId, setPlayers})
 
+  const [show, setShow] = useState(false)
 
   return (
-    <>
+    <>  
+        {
+          show?
+            <Modal show={show} setShow={setShow} size="md">
+              <AddPlayerLayout setShow={setShow} onCreatePlayers={listPlayers}/>
+            </Modal>
+          : null
+        }
+
       <div className={styles.squad}>
         {
           squad?.players?.length === 0 ?
           <div className="p-8">
             {players?.length || "No"} Players selected               
+            <div className={styles.create_new_div}>
+              Player not in the list 
+              <button onClick={()=>setShow(true)}>Create New</button>
+          </div>
+
           </div>
           : null
         }
+
 
       <div className={styles.flex}>
           {squad?.players?.map((player, index) => (

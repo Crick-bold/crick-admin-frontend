@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "../Layout/styles.module.css";
+import Modal from "../Modal";
+import AddTeamLayout from "../../Team/AddTeamLayout";
 // eslint-disable-next-line react/display-name
 const TeamSelect = React.forwardRef(
   (
@@ -14,10 +16,19 @@ const TeamSelect = React.forwardRef(
       error,
       rules,
       disabled,
+      onCreateTeam = ()=>{},
+      showCreateNewBtn = false,
     },
     ref,
-  ) => (
+  ) => {
+    
+    const [show, setShow] = useState(false)
+    return (
     <>
+      <Modal show={show} setShow={setShow} size="md">
+        <AddTeamLayout setShow={setShow} listTeams={onCreateTeam}/>
+      </Modal>
+
       <div>
         <div>
           <label className={style.label}>{label}</label>
@@ -43,12 +54,21 @@ const TeamSelect = React.forwardRef(
               ))}
           </select>
         </div>
+        {
+          showCreateNewBtn?
+          <div className={style.create_new_div}>
+              Not in the list 
+              <button onClick={()=>setShow(true)}>Create New</button>
+          </div>
+
+          : null
+        }
         <span className={style.error_text}>
           {error ? rules?.required || "Required" : null}
         </span>
       </div>
     </>
-  ),
+  )}
 );
 
 export default TeamSelect;

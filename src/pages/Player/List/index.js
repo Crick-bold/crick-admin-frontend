@@ -10,6 +10,7 @@ import Table from "../../Components/Table";
 import { columns } from "../utlis/player-table";
 import layoutStyle from "../../Components/Layout/styles.module.css";
 import useListPlayers from "../hooks/useListPlayers";
+import AddPlayerLayout from "../AddPlayerLayout";
 
 const List = ({
   players: playersFromDashboard,
@@ -35,30 +36,17 @@ const List = ({
     setLoading(loadingFromMain);
   }, [JSON.stringify(playersFromMain)]);
 
-  const controls = control();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   const [show, setShow] = useState(false);
-  const { createPlayer } = useCreatePlayer({ listPlayers, setShow });
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
-        <Layout
-          register={register}
-          handleSubmit={handleSubmit}
-          onSubmit={createPlayer}
-          controls={controls}
-          errors={errors}
-        />
+        <AddPlayerLayout setShow={setShow} onCreatePlayers={listPlayers} />
       </Modal>
 
       <div className={globalStyle.container}>
         <div className={globalStyle.flex_right}>
           <div className={globalStyle.heading}>Players</div>
-          <input
+          {/* <input
             type="text"
             placeholder="Search player..."
             className={layoutStyle.input}
@@ -66,7 +54,7 @@ const List = ({
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-          />
+          /> */}
           <Button value="+" onClick={() => setShow(true)} />
         </div>
         <div className={globalStyle.table_content}>

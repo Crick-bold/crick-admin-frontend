@@ -10,6 +10,7 @@ import Button from "../../Components/Button";
 import Table from "../../Components/Table";
 import { columns } from "../utlis/venue-table";
 import layoutStyle from "../../Components/Layout/styles.module.css";
+import AddVenueLayout from "../AddVenueLayout";
 
 const List = ({
   venues: venuesFromDashboard,
@@ -35,30 +36,17 @@ const List = ({
     setLoading(loadingFromMain);
   }, [JSON.stringify(venuesFromMain)]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const controls = control();
   const [show, setShow] = useState(false);
-  const { addVenue } = useCreateVenue({ listVenues, setShow });
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
-        <Layout
-          register={register}
-          handleSubmit={handleSubmit}
-          onSubmit={addVenue}
-          controls={controls}
-          errors={errors}
-        />
+        <AddVenueLayout setShow={setShow} listVenues={listVenues} />
       </Modal>
 
       <div className={style.container}>
         <div className={style.flex_right}>
           <div className={style.heading}>Venues</div>
-          <input
+          {/* <input
             type="text"
             placeholder="Search venue..."
             className={layoutStyle.input}
@@ -66,7 +54,7 @@ const List = ({
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-          />
+          /> */}
 
           <Button value="+" onClick={() => setShow(true)} />
         </div>

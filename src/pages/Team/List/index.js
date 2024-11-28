@@ -10,6 +10,7 @@ import Button from "../../Components/Button";
 import Table from "../../Components/Table";
 import { columns } from "../utlis/team-table";
 import layoutStyle from "../../Components/Layout/styles.module.css";
+import AddTeamLayout from "../AddTeamLayout";
 
 const List = ({
   teams: teamsFromDashboard,
@@ -35,30 +36,17 @@ const List = ({
     setLoading(loadingFromMain);
   }, [JSON.stringify(teamsFromMain)]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const controls = control();
   const [show, setShow] = useState(false);
-  const { addTeam } = useCreateTeam({ listTeams, setShow });
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
-        <Layout
-          register={register}
-          handleSubmit={handleSubmit}
-          onSubmit={addTeam}
-          errors={errors}
-          controls={controls}
-        />
+        <AddTeamLayout />
       </Modal>
 
       <div className={globalStyle.container}>
         <div className={globalStyle.flex_right}>
           <div className={globalStyle.heading}>Teams</div>
-          <input
+          {/* <input
             type="text"
             placeholder="Search Team..."
             className={layoutStyle.input}
@@ -66,7 +54,7 @@ const List = ({
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-          />
+          /> */}
           <Button value="+" onClick={() => setShow(true)} />
         </div>
         <div className={globalStyle.table_content}>

@@ -6,15 +6,14 @@
   padding: 10px;
   border-radius: 4px;
   font-size: 14px;
-  background-color: var(--color-primary_background);
+  background-color: var(--color-secondary_background);
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid rgba(47, 138, 47, 0.185);
   transition: background-color 0.2s;
 }
 
 .match_card:hover {
-  background-color: var(--color-secondary_background);
+  background-color: var(--color-tirtary_background);
 }
 
 .match_card > * {
@@ -42,5 +41,5 @@
   color: rgba(255, 255, 255, 0.705);
 }
 .match_status {
-  color: rgb(65, 212, 65);
+  text-align: right;
 }

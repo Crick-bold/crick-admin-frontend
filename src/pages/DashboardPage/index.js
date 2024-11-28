@@ -5,8 +5,10 @@ import VenueList from "../Venue/List";
 import PlayerList from "../Player/List";
 import styles from "./styles.module.css";
 import useGetDashboard from "./hooks/useGetDashboard";
+import SeriesContainer from "./Container/Series";
+import MatchContainer from "./Container/Match";
 const DashboardPage = () => {
-  const { data, loading } = useGetDashboard();
+  const { data, loading, getDashboard } = useGetDashboard();
 
   const {
     matches = [],
@@ -19,25 +21,12 @@ const DashboardPage = () => {
   return (
     <>
       <div className={styles.cards}>
-        <div className={styles.card} style={{ width: "66%" }}>
-          <MatchList
-            matches={matches}
-            loading={loading}
-            isFromDashboard={true}
-          />
-        </div>
-        <div className={styles.card}>
-          <SeriesList series={series} loading={loading} primaryCall={false} />
-        </div>
-        <div className={styles.card}>
-          <TeamList teams={teams} loading={loading} primaryCall={false} />
-        </div>
-        <div className={styles.card}>
-          <PlayerList players={players} loading={loading} primaryCall={false} />
-        </div>
-        <div className={styles.card}>
-          <VenueList venues={venues} loading={loading} primaryCall={false} />
-        </div>
+        <SeriesContainer
+          series={series}
+          loading={loading}
+          getDashboard={getDashboard}
+        />
+        <MatchContainer matches={matches} loading={loading} />
       </div>
     </>
   );

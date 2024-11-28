@@ -10,6 +10,7 @@ import Modal from "../../Components/Modal";
 import Layout from "../../Components/Layout";
 import playerControls from "../utlis/series-control";
 import layoutStyle from "../../Components/Layout/styles.module.css";
+import AddSeriesLayout from "../AddSeriesLayout";
 const List = ({
   series: seriesFromDashboard,
   loading: loadingFromDashboard,
@@ -34,29 +35,16 @@ const List = ({
     setLoading(loadingFromMain);
   }, [JSON.stringify(seriesFromMain)]);
 
-  const controls = playerControls();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   const [show, setShow] = useState(false);
-  const { createSeries } = useCreateSeries({ setShow, listSeries });
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
-        <Layout
-          register={register}
-          handleSubmit={handleSubmit}
-          onSubmit={createSeries}
-          controls={controls}
-          errors={errors}
-        />
+        <AddSeriesLayout setShow={setShow} onCreateSeries={listSeries} />
       </Modal>
       <div className={globalStyle.container}>
         <div className={globalStyle.flex_right}>
           <div className={globalStyle.heading}>Series</div>
-          <input
+          {/* <input
             type="text"
             placeholder="Search series..."
             className={layoutStyle.input}
@@ -64,7 +52,7 @@ const List = ({
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-          />
+          /> */}
           <Button value="+" onClick={() => setShow(true)} />
         </div>
         <div className={globalStyle.table_content}>

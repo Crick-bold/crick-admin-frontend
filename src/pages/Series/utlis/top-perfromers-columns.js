@@ -33,3 +33,40 @@ export const bowlerTableColumns = [
     accessor: "wickets",
   },
 ];
+
+export const top4sPlayers = [
+  {
+    key: "index",
+    Header: " ",
+    accessor: "",
+  },
+  {
+    key: "name",
+    header: "Name",
+    accessor: "name",
+  },
+  {
+    key: "fours",
+    header: "4s",
+    accessor: "fours",
+  },
+];
+
+export const top6sPlayers = [
+  {
+    key: "index",
+    Header: " ",
+    accessor: "",
+  },
+  {
+    key: "name",
+    header: "Name",
+    accessor: "name",
+  },
+  {
+    key: "sixes",
+    header: "6s",
+    accessor: "sixes",
+  },
+];
+

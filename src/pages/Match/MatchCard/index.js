@@ -1,26 +1,29 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import moment from "moment";
+import { useEffect, useState } from "react";
 const MatchCard = ({ loading = true, match = {} }) => {
+  const [matchStatus, setMatchStatus] = useState("");
+
+  useEffect(() => {
+    if ([1, 2, -1, -2].includes(match?.currentInning)) setMatchStatus("Live");
+    else if (match.result) setMatchStatus(match.result);
+    else setMatchStatus(moment(match?.start_time).format("L"));
+  }, [match]);
+
   return (
     <>
       <Link to={"/match/" + match?.id} className={styles.match_card}>
         <div className={styles.header}>
           <div className={styles.series_name}>{match?.series?.name}</div>
-          <div className={styles.match_status}>
-            {[1, 2, -1, -2].includes(match?.currentInning) ? "Live" : null}
-          </div>
-          {
-            match?.result
-            ?
-              match.result
-            :
-            <>
-              {moment(match?.start_time).format('L')}
-            </>
-          }
-
-          <div>
+          <div
+            className={
+              matchStatus === "Live"
+                ? `color-highlight ${styles.match_status}`
+                : styles.match_status
+            }
+          >
+            {matchStatus}
           </div>
         </div>
 

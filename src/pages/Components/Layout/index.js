@@ -13,6 +13,8 @@ const Layout = ({
   controls,
   submitBtnName = "Submit",
   errors,
+  onCreateTeam,
+  onCreateVenue
 }) => {
   // eslint-disable-next-line react/display-name
 
@@ -116,6 +118,7 @@ const Layout = ({
             disabled,
             placeholder = "",
             rules,
+            showCreateNewBtn = false
           } = control;
           if (type === "text") {
             return (
@@ -178,6 +181,8 @@ const Layout = ({
                   disabled={disabled}
                   error={errors?.[key]}
                   rules={rules}
+                  onCreateTeam={onCreateTeam}
+                  showCreateNewBtn={showCreateNewBtn}
                 />
               </>
             );
@@ -194,6 +199,8 @@ const Layout = ({
                   loading={loading}
                   disabled={disabled}
                   error={errors?.[key]}
+                  onCreateVenue={onCreateVenue}
+                  showCreateNewBtn={showCreateNewBtn}
                   rules={rules}
                 />
               </>

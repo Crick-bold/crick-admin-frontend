@@ -45,3 +45,17 @@
   color: rgb(201, 201, 201);
   font-weight: 500;
 }
+
+.create_new_div{
+  font-size: 14px;
+  color:rgb(197, 197, 197);
+  padding: 4px 0;
+  font-style: italic;
+}
+
+.create_new_div button{
+  color: var(--color-highlight);
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  cursor: pointer;
+}
