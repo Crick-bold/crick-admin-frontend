@@ -5,7 +5,7 @@ import useCreateMatch from "../../hooks/useCreateMatch";
 import MatchControls from "../../match-controls";
 import useGetDashboard from "../../../DashboardPage/hooks/useGetDashboard";
 
-const AddMatchModal = ({ show, getMatches, setShow }) => {
+const AddMatchModal = ({ show, getMatches, setShow, overs }) => {
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ const AddMatchModal = ({ show, getMatches, setShow }) => {
     seriesOptions: series,
   });
 
-  const { createMatch } = useCreateMatch({ getMatches, setShow });
+  const { createMatch } = useCreateMatch({ getMatches, setShow, overs });
 
   return (
     <>

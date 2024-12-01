@@ -1,12 +1,8 @@
-import TeamList from "../Team/List";
-import SeriesList from "../Series/List";
-import MatchList from "../Match/List";
-import VenueList from "../Venue/List";
-import PlayerList from "../Player/List";
 import styles from "./styles.module.css";
 import useGetDashboard from "./hooks/useGetDashboard";
 import SeriesContainer from "./Container/Series";
-import MatchContainer from "./Container/Match";
+import LiveMatchContainer from "./Container/LiveMatch";
+import UpcomingMatchContainer from "./Container/UpcomingMatch";
 const DashboardPage = () => {
   const { data, loading, getDashboard } = useGetDashboard();
 
@@ -26,7 +22,8 @@ const DashboardPage = () => {
           loading={loading}
           getDashboard={getDashboard}
         />
-        <MatchContainer matches={matches} loading={loading} />
+        <LiveMatchContainer matches={matches} loading={loading} />
+        <UpcomingMatchContainer matches={matches} loading={loading} />
       </div>
     </>
   );

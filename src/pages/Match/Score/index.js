@@ -42,7 +42,6 @@ const Score = ({
     squad: battingTeam === 1 ? squad1 : squad2,
   });
 
-
   const {
     register,
     handleSubmit,
@@ -73,62 +72,87 @@ const Score = ({
 
   return (
     <>
-
-       {battingTeam === 0
-       ?
-       <Toss battingTeam={battingTeam} matchData={matchData} getMatchById={getMatchById}/>
-        :
-       
+      {battingTeam === 0 ? (
+        <Toss
+          battingTeam={battingTeam}
+          matchData={matchData}
+          getMatchById={getMatchById}
+        />
+      ) : (
         <>
-      <div className={style.dashboard}>
-        <Tabs
-          tabs={[score?.team1?.name, score?.team2?.name]}
-          active={active}
-          onChange={() => setActive((active + 1) % 2)}
-        ></Tabs>
-        <div className={style.scoreCardBox}>
-          <ScoreCard
-            team={active === 0 ? score?.team1 : score?.team2}
-            batsmanOnStrike={
-              active === 0 ? squad1?.batsmanOnStrike : squad2?.batsmanOnStrike
-            }
-            batsmanOnNonStrike={
-              active === 0
-                ? squad1?.batsmanOnNonStrike
-                : squad2?.batsmanOnNonStrike
-            }
-            currentInning={matchData?.currentInning}
-            result={score?.result}
-            index={active}
-            battingTeam={battingTeam}
-            loadingScore={loadingScore}
-            allBattingPlayers={active === 0 ? squad1?.players : squad2?.players}
-          />
-        </div>
-        
-        {!loading && battingTeam === active + 1 && ![0,3]?.includes(matchData?.currentInning) && (
-          <div className={style.entry_box}>
-            <Layout
-              register={register}
-              handleSubmit={handleSubmit}
-              onSubmit={updateStrike}
-              controls={controls}
-              errors={errors}
-            />
-            <ResultOptions
-              score={score}
-              data={matchData}
-              loading={loading}
-              battingTeam={battingTeam}
-              getScoreData={getScoreData}
-              getMatchById={getMatchById}
-            />
+          <div className={style.dashboard}>
+            <Tabs
+              tabs={[score?.team1?.name, score?.team2?.name]}
+              active={active}
+              onChange={() => setActive((active + 1) % 2)}
+            ></Tabs>
+            <div className={style.scoreCardBox}>
+              <ScoreCard
+                team={active === 0 ? score?.team1 : score?.team2}
+                batsmanOnStrike={
+                  active === 0
+                    ? squad1?.batsmanOnStrike
+                    : squad2?.batsmanOnStrike
+                }
+                batsmanOnNonStrike={
+                  active === 0
+                    ? squad1?.batsmanOnNonStrike
+                    : squad2?.batsmanOnNonStrike
+                }
+                currentInning={matchData?.currentInning}
+                result={score?.result}
+                index={active}
+                battingTeam={battingTeam}
+                loadingScore={loadingScore}
+                allBattingPlayers={
+                  active === 0 ? squad1?.players : squad2?.players
+                }
+              />
+            </div>
+
+            {!loading &&
+              battingTeam === active + 1 &&
+              ![0, 3]?.includes(matchData?.currentInning) && (
+                <div className={style.entry_box}>
+                  <Layout
+                    register={register}
+                    handleSubmit={handleSubmit}
+                    onSubmit={updateStrike}
+                    controls={controls}
+                    errors={errors}
+                    submitBtnName="Update"
+                  />
+                  <ResultOptions
+                    score={score}
+                    data={matchData}
+                    loading={loading}
+                    battingTeam={battingTeam}
+                    getScoreData={getScoreData}
+                    getMatchById={getMatchById}
+                    antiSquad={battingTeam === 1 ? squad2 : squad1}
+                    batsmanOnStrike={
+                      battingTeam === 1
+                        ? matchData?.squad1?.batsmanOnStrike
+                        : matchData?.squad2?.batsmanOnStrike
+                    }
+                    batsmanOnNonStrike={
+                      battingTeam === 1
+                        ? matchData?.squad1?.batsmanOnNonStrike
+                        : matchData?.squad2?.batsmanOnNonStrike
+                    }
+                    bowler={
+                      battingTeam === 1
+                        ? matchData?.squad1?.bowler
+                        : matchData?.squad2?.bowler
+                    }
+                    squad={battingTeam === 1 ? squad1 : squad2}
+                  />
+                </div>
+              )}
           </div>
-        )}
-      </div>
-      <Dashboard score={score} battingTeam={battingTeam} active={active} />
-      </>
-      }
+          <Dashboard score={score} battingTeam={battingTeam} active={active} />
+        </>
+      )}
     </>
   );
 };

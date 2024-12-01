@@ -11,6 +11,13 @@ const playerControls = () => {
       },
     },
     {
+      label: "Overs",
+      type: "text",
+      value: "",
+      key: "overs",
+      placeholder: "Enter Overs",
+    },
+    {
       label: "Image Url",
       type: "text",
       value: "",

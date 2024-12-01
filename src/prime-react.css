@@ -1,9 +1,24 @@
 /* Example: Customizing PrimeReact Toast */
 .p-toast {
-    z-index: 1000; /* Ensure it appears on top */
-  }
-  
-  .p-toast-message {
-    font-size: 14px;
-    background-color: rgb(19, 19, 19);
-  }
+  z-index: 1000; /* Ensure it appears on top */
+}
+
+.p-toast-message {
+  font-size: 14px;
+  background-color: rgb(19, 19, 19);
+}
+
+.p-inputtext {
+  background-color: var(--color-primary_background);
+  color: var(--color-secondary_text);
+}
+
+.p-inputtext[type="number"]::-webkit-inner-spin-button,
+.p-inputtext[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.p-inputtext[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+}

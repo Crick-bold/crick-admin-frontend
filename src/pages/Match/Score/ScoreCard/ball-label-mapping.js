@@ -5,6 +5,7 @@ const color = {
   green: "rgb(58, 167, 7)",
   orange: "rgb(243, 183, 30)",
   black: "black",
+  blue: "blue",
 };
 export const ballLabelMaping = {
   0: {
@@ -51,6 +52,20 @@ export const ballLabelMaping = {
   },
   11: {
     label: "wd",
+    style: {
+      backgroundColor: color.gray,
+      color: color.black,
+    },
+  },
+  12: {
+    label: "nb",
+    style: {
+      backgroundColor: color.blue,
+      color: color.white,
+    },
+  },
+  13: {
+    label: "",
     style: {
       backgroundColor: color.gray,
       color: color.black,

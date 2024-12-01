@@ -2,6 +2,8 @@ import Pill from "../../../Components/Pill";
 import styles from "./styles.module.css";
 import Skelton from "../../../Components/Skelton";
 import Commentary from "./Commentary";
+import BatsmanTable from "./BatsmanTable";
+import { isSecondInning } from "../../../../common";
 const ScoreCard = ({
   team,
   batsmanOnStrike,
@@ -39,9 +41,13 @@ const ScoreCard = ({
                 </div>
               </div>
 
-                <div className={styles.target}>
-                  {currentInning === 3 ? result : `Target : ${team?.target || ''}`}
-                </div>
+              <div className={styles.target}>
+                {currentInning === 3
+                  ? result
+                  : isSecondInning(currentInning)
+                  ? `Target : ${team?.target}`
+                  : ""}
+              </div>
 
               <div className={styles.run_over}>
                 <div className={styles.run}>
@@ -53,63 +59,11 @@ const ScoreCard = ({
 
             <div className={styles.flex}>
               <div>
-                <div className={styles.player_list}>
-                  <div className={styles.player_list_row}>
-                    <div>
-                      <b>Player</b>
-                    </div>
-                    <div>
-                      <b>Runs</b>
-                    </div>
-                    <div>
-                      <b>Balls</b>
-                    </div>
-                    <div>
-                      <b>4s</b>
-                    </div>
-                    <div>
-                      <b>6s</b>
-                    </div>
-                  </div>
-                  {allBattingPlayers
-                    ?.filter((player) => {
-                      return player?.selected && player?.battingOrder < 12;
-                    })
-                    ?.map((player) => {
-                      const playerId = player?.id;
-                      return (
-                        <>
-                          <div
-                            className={
-                              parseInt(batsmanOnStrike) === parseInt(playerId)
-                                ? styles.player_list_row_striker
-                                : styles.player_list_row
-                            }
-                          >
-                            <div>
-                              {team?.battingPlayers[playerId]?.name ||
-                                player?.name}
-                              {parseInt(player.id) ===
-                                parseInt(batsmanOnStrike) && <>*</>}
-                            </div>
-                            <div>
-                              {team?.battingPlayers[playerId]?.runs || 0}
-                            </div>
-                            <div>
-                              {team?.battingPlayers[playerId]?.balls || 0}
-                            </div>
-                            <div>
-                              {team?.battingPlayers[playerId]?.fours || 0}
-                            </div>
-                            <div>
-                              {team?.battingPlayers[playerId]?.sixes || 0}
-                            </div>
-                          </div>
-                        </>
-                      );
-                    })}
-                </div>
-
+                <BatsmanTable
+                  allBattingPlayers={allBattingPlayers}
+                  team={team}
+                  batsmanOnStrike={batsmanOnStrike}
+                />
                 <div className={styles.player_list}>
                   <div className={styles.player_list_row}>
                     <div>

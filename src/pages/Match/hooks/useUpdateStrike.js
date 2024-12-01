@@ -10,11 +10,12 @@ const useUpdateStrike = ({
   wickets,
   squadPlayerMappingId,
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const updateStrike = async (values) => {
+    if (loading) return;
     if ([0, 3].includes(battingTeam)) {
       alert("Match has not started yet.");
       return;
@@ -25,12 +26,12 @@ const useUpdateStrike = ({
       bowler,
     } = values;
 
-    if(batsmanOnStrike === batsmanOnNonStrike){   
+    if (batsmanOnStrike === batsmanOnNonStrike) {
       dispatch(
         setToast({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Please select different strike player and not strike player',
+          severity: "error",
+          summary: "Error",
+          detail: "Please select different strike player and not strike player",
           life: 3000,
         })
       );

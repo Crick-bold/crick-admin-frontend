@@ -28,5 +28,8 @@
   width: 45%;
 }
 .entry_box > :last-child {
-  width: 60%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -8,9 +8,9 @@ import Button from "../../../Components/Button";
 const SeriesContainer = ({ series, loading, getDashboard }) => {
   const [show, setShow] = useState(false);
   return (
-    <div className="bg-color-secondary w-100 p-16 border-radius-4">
-      <div className="flex justify-between">
-        <div className="text-24 p-8">Your Series</div>
+    <div className="bg-color-primary w-100 border-radius-4">
+      <div className="flex justify-between bg-color-secondary p-8">
+        <div className="text-16 p-8">Latest Series</div>
         <Button value="Create New" onClick={() => setShow(true)} />
       </div>
       {show ? (
@@ -19,7 +19,7 @@ const SeriesContainer = ({ series, loading, getDashboard }) => {
         </Modal>
       ) : null}
 
-      <div className="flex my-8 flex-wrap">
+      <div className="flex my-8 flex-wrap p-16">
         {loading ? (
           <Skelton width="100%" height="100px" />
         ) : (

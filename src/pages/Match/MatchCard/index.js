@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { isLiveMatch } from "../../../common";
 const MatchCard = ({ loading = true, match = {} }) => {
   const [matchStatus, setMatchStatus] = useState("");
 
   useEffect(() => {
-    if ([1, 2, -1, -2].includes(match?.currentInning)) setMatchStatus("Live");
+    if (isLiveMatch(match?.currentInning)) setMatchStatus("Live");
     else if (match.result) setMatchStatus(match.result);
     else setMatchStatus(moment(match?.start_time).format("L"));
   }, [match]);
