@@ -17,8 +17,14 @@ const useMarkFinalSquads = ({ matchId, getMatchById, squad1, squad2 }) => {
     return false;
   };
   const markSquads = async (data) => {
+    const config = {
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    };
     const res = await axios.get(
-      process.env.REACT_APP_BACKEND + "match/mark-squads-final/"+matchId,
+      process.env.REACT_APP_BACKEND + "match/mark-squads-final/" + matchId,
+      config
     );
     return res;
   };

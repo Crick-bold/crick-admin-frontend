@@ -9,7 +9,7 @@ const useRequest = ({
 }) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `${localStorage.getItem("token")}`,
     },
   };
   const [loading, setLoading] = useState(autoLoad);
@@ -22,13 +22,13 @@ const useRequest = ({
       res = await axios.post(
         process.env.REACT_APP_BACKEND + url,
         data,
-        isConfig ? config : {},
+        isConfig ? config : {}
       );
     }
     if (method === "get") {
       res = await axios.get(
         process.env.REACT_APP_BACKEND + url,
-        isConfig ? config : {},
+        isConfig ? config : {}
       );
     }
     setData(res);

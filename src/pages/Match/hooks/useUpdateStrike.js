@@ -49,9 +49,15 @@ const useUpdateStrike = ({
         wickets,
         ...values,
       };
+      const config = {
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+        },
+      };
       const res = await axios.post(
         process.env.REACT_APP_BACKEND + "squad/update-strike",
-        payload
+        payload,
+        config
       );
       setLoading(false);
       getMatchById(matchId);

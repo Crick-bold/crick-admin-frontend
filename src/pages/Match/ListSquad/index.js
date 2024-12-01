@@ -52,9 +52,11 @@ const ListSquad = ({ squad1, squad2, getMatchById, matchId, isSquadFinal }) => {
         </div>
       </Tabs>
       <div className={styles.finalSquadsBtn}>
-        {!isSquadFinal && (
-          <Button onClick={() => markFinalSquads()} value="Finalize Squads" />
-        )}
+        {!isSquadFinal &&
+          squad1.players?.length === 11 &&
+          squad2.players?.length === 11 && (
+            <Button onClick={() => markFinalSquads()} value="Finalize Squads" />
+          )}
       </div>
     </>
   );

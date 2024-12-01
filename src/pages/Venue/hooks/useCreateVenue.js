@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 const useCreateVenue = ({ setShow, listVenues }) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `${localStorage.getItem("token")}`,
     },
   };
   const [loading, setLoading] = useState(true);

@@ -19,7 +19,7 @@ const SeriesContainer = ({ series, loading, getDashboard }) => {
         </Modal>
       ) : null}
 
-      <div className="flex my-8 flex-wrap p-16">
+      <div className="flex my-8 flex-wrap">
         {loading ? (
           <Skelton width="100%" height="100px" />
         ) : (

@@ -25,6 +25,7 @@ const useInsertBall = ({
     url: "ball",
     method: "post",
     autoLoad,
+    isConfig: true,
   });
 
   const dispatch = useDispatch();
@@ -52,7 +53,9 @@ const useInsertBall = ({
           noBall: isNoBall,
           wide: isWide,
           extraRuns: [byeRuns || 0, legByeRuns || 0, penatlyRuns || 0],
-          validRuns: [25, 12, 11, 14, 15].includes(result) ? validRuns : result,
+          validRuns: [25, 12, 11, 13, 14, 15].includes(result)
+            ? validRuns
+            : result,
           runOutPlayerId: runOutPlayer,
         },
 

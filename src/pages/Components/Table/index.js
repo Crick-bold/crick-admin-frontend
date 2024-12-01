@@ -23,10 +23,10 @@ const Table = ({ columns, data, loading }) => {
 
               {data?.map((item, index) => (
                 <tr className={styles.tr} key={index}>
-                  {columns?.map((column) => (
+                  {columns?.map((column, idx) => (
                     <td className={styles.td} key={column?.key}>
                       {typeof column?.accessor === "string"
-                        ? item[column?.accessor] || index + 1
+                        ? item[column?.accessor] || (idx === 0 ? index + 1 : "")
                         : column?.accessor(item)}
                     </td>
                   ))}

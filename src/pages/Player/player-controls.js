@@ -14,9 +14,6 @@ const playerControls = () => {
       label: "DOB",
       type: "date",
       key: "dob",
-      rules: {
-        required: "DOB is Required",
-      },
     },
     {
       label: "Country",
@@ -24,14 +21,11 @@ const playerControls = () => {
       value: "",
       key: "country",
       placeholder: "Enter Country Name",
-      rules: {
-        required: "Country is Required",
-      },
     },
     {
       label: "Expertise",
       type: "select",
-      value: "",
+      value: "bat",
       key: "expertise",
       options: [
         { label: "Batting", value: "bat" },
