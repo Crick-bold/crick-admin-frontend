@@ -6,9 +6,7 @@ import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import Button from "../Components/Button";
 import Login from "./Login";
 const Navigations = ({ user, setUser, setUserLoaded }) => {
-  console.log({ "user": user });
-  console.log({ "setUser": setUser });
-  console.log({ "setUserLoaded": setUserLoaded });
+
   const { responseMessage, errorMessage } = useAuth({ setUser, setUserLoaded });
 
   useEffect(() => {
@@ -20,20 +18,7 @@ const Navigations = ({ user, setUser, setUserLoaded }) => {
     localStorage.removeItem("profileData");
     setUser(null);
   };
-//   const login = useGoogleLogin({
-//      flow: 'implicit',
-//     onSuccess: (credentialResponse) => {
-//       const token = credentialResponse.credential;
-      
-//       console.log(credentialResponse);
-//       responseMessage({ credential: credentialResponse?.credential });
-      
-//     },
-    
-//     onError: () => {
-//       errorMessage("login failed");
-//     }
-// })
+
   return (
     <div className={style.navigation}>
       <div className={style.logo}>

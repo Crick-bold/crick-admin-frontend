@@ -13,13 +13,9 @@ import {
 const Series = () => {
   const { id: seriesId } = useParams();
     const [active, setActive] = useState(0);
-    const [createMatchIndex, setCreateMatchIndex] = useState(0);
+  
   const { loading, data: seriesData } = useGetSeries({ seriesId });
-    const createNewMatchHandler = () => {
-        let count = active + 5;
-        setActive(count);
-        setCreateMatchIndex(1);
-    }
+   
     
     return (
     <>
@@ -49,7 +45,7 @@ const Series = () => {
           <div className={styles.matchStatus}>
             <div className={styles.matchStatusHeader}>Upcoming Matches</div>
                         <div className={styles.matchContainer}>
-                             {createMatchIndex ===1?( <div>ranjeet</div> ): ( <div>no match created here</div>)}  
+                          
               {!loading &&
                               seriesData?.upcomingMatches?.length === 0 ?
                               

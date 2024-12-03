@@ -8,7 +8,7 @@ const useAuth = ({ setUser, setUserLoaded }) => {
           Authorization: `${response.credential}`
         }
       }
-      console.log(response);
+    
       const res = await axios.post(process.env.REACT_APP_BACKEND + 'login', {}, config)
       localStorage.setItem('token', response.credential)
       localStorage.setItem('profileData', JSON.stringify(res?.data))
