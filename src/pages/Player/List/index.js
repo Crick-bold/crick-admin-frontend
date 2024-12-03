@@ -7,7 +7,7 @@ import { columns } from "../utlis/player-table";
 import layoutStyle from "../../Components/Layout/styles.module.css";
 import useListPlayers from "../hooks/useListPlayers";
 import AddPlayerLayout from "../AddPlayerLayout";
-import UploadPlayersList from "../UploadList";
+import UploadPlayersList from "./UploadPlayerList";
 
 const List = ({
   players: playersFromDashboard,
