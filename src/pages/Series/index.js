@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useGetSeries from "./hooks/useGetSeries";
 import styles from "./styles.module.css";
 import Tabs from "../Components/Tabs";
@@ -12,9 +12,16 @@ import {
 
 const Series = () => {
   const { id: seriesId } = useParams();
-  const [active, setActive] = useState(0);
+    const [active, setActive] = useState(0);
+    const [createMatchIndex, setCreateMatchIndex] = useState(0);
   const { loading, data: seriesData } = useGetSeries({ seriesId });
-  return (
+    const createNewMatchHandler = () => {
+        let count = active + 5;
+        setActive(count);
+        setCreateMatchIndex(1);
+    }
+    
+    return (
     <>
       <div className={styles.series_heading}>
         <img src={seriesData?.imageUrl} className={styles.series_image} />
@@ -41,10 +48,19 @@ const Series = () => {
           </div>
           <div className={styles.matchStatus}>
             <div className={styles.matchStatusHeader}>Upcoming Matches</div>
-            <div className={styles.matchContainer}>
+                        <div className={styles.matchContainer}>
+                             {createMatchIndex ===1?( <div>ranjeet</div> ): ( <div>no match created here</div>)}  
               {!loading &&
-                seriesData?.upcomingMatches?.length===0?
-                <div className={styles.noMatch}>No upcoming Matches</div>
+                              seriesData?.upcomingMatches?.length === 0 ?
+                              
+                                (<><div className={styles.noMatch}>No upcoming Matches</div>
+                                    <Link to="/series/10">
+                                  <button onClick={createNewMatchHandler}>create new Matches</button>
+                                    </Link>
+                                    
+                                </>
+                         
+                )
                 :
                 seriesData?.upcomingMatches?.map((match, index) => (
                   <MatchCard match={match} key={index} />

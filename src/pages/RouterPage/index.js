@@ -17,9 +17,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Toast } from "primereact/toast";
 import { clearToast } from "../../common/store/toastSlice";
 
-const Comp = ({ path }) => {
+const Comp = ({ path,user,setUser,setUserLoaded }) => {
   return {
-    "/": <WelcomePage />,
+    "/": <WelcomePage user={user} setUser={setUser} setUserLoaded={setUserLoaded} />,
     "/dashboard": <DashboardPage />,
     "/player": <PlayerPage />,
     "/squad": <SquadPage />,
@@ -50,13 +50,14 @@ const Router = () => {
   return (
     <>
     <Toast ref={toastRef} />
-      {!user && (
+      {/* {!user && (
         <Navigations
           user={user}
           setUser={setUser}
           setUserLoaded={setUserLoaded}
         />
-      )}
+      )} */}
+
       <Dashboard
         user={user}
         setUser={setUser}
@@ -68,7 +69,7 @@ const Router = () => {
             <Route
               key={index}
               path={nav?.path}
-              element={<Comp {...{ path: nav?.path }} />}
+              element={<Comp {...{ path: nav?.path }} user={user} setUser={setUser} setUserLoaded={setUserLoaded} />}
             />
           ))}
         </Routes>
