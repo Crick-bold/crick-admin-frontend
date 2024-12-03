@@ -40,7 +40,7 @@ const List = ({
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
-        <AddTeamLayout />
+        <AddTeamLayout setShow={setShow} listTeams={listTeams} />
       </Modal>
 
       <div className={globalStyle.container}>

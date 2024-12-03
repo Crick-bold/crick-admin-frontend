@@ -11,9 +11,11 @@ const playerControls = () => {
       },
     },
     {
-      label: "DOB",
-      type: "date",
-      key: "dob",
+      label: "Mobile no",
+      type: "text",
+      value: "",
+      key: "mobileNo",
+      placeholder: "Enter Mobile No",
     },
     {
       label: "Country",
@@ -36,6 +38,11 @@ const playerControls = () => {
       rules: {
         required: "Expertise is Required",
       },
+    },
+    {
+      label: "DOB",
+      type: "date",
+      key: "dob",
     },
   ];
   return controls;

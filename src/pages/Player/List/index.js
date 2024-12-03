@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import Layout from "../../Components/Layout";
 import control from "../player-controls";
 import globalStyle from "../../Venue/List/styles.module.css";
-import useCreatePlayer from "../hooks/useCreatePlayer";
 import Button from "../../Components/Button";
 import Modal from "../../Components/Modal";
 import { useEffect, useState } from "react";
