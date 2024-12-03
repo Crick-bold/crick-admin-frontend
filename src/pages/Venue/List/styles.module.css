@@ -46,3 +46,9 @@
   color: rgb(179, 179, 179);
   border-radius: 6px;
 }
+.playersHead {
+  display: flex;
+  font-size: 16px;
+  margin: 10px;
+  justify-content: space-evenly;
+}
