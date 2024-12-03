@@ -1,6 +1,3 @@
-import { useForm } from "react-hook-form";
-import Layout from "../../Components/Layout";
-import control from "../player-controls";
 import globalStyle from "../../Venue/List/styles.module.css";
 import Button from "../../Components/Button";
 import Modal from "../../Components/Modal";
@@ -10,6 +7,7 @@ import { columns } from "../utlis/player-table";
 import layoutStyle from "../../Components/Layout/styles.module.css";
 import useListPlayers from "../hooks/useListPlayers";
 import AddPlayerLayout from "../AddPlayerLayout";
+import UploadPlayersList from "./UploadPlayerList";
 
 const List = ({
   players: playersFromDashboard,
@@ -36,12 +34,20 @@ const List = ({
   }, [JSON.stringify(playersFromMain)]);
 
   const [show, setShow] = useState(false);
+  const [showUploadPlayers, setShowUploadPlayers] = useState(false);
+
   return (
     <>
+      <Modal show={showUploadPlayers} setShow={setShowUploadPlayers} size="md">
+        <UploadPlayersList
+          setShow={setShowUploadPlayers}
+          listPlayers={listPlayers}
+        />
+      </Modal>
+
       <Modal show={show} setShow={setShow} size="md">
         <AddPlayerLayout setShow={setShow} onCreatePlayers={listPlayers} />
       </Modal>
-
       <div className={globalStyle.container}>
         <div className={globalStyle.flex_right}>
           <div className={globalStyle.heading}>Players</div>
@@ -54,6 +60,10 @@ const List = ({
               setSearchText(e.target.value);
             }}
           /> */}
+          <Button
+            value="Upload Players List"
+            onClick={() => setShowUploadPlayers(true)}
+          />
           <Button value="+" onClick={() => setShow(true)} />
         </div>
         <div className={globalStyle.table_content}>
