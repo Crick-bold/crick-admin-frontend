@@ -1,75 +1,91 @@
-import IconScreen from "../Components/Icons/IconScreen";
-import styles from "./styles.module.css";
-const Welcome = () => {
-  const galaryImages = [
-    {
-      text: "Dashboard",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/54130c23-c773-4bed-af9d-be43a3dc1bc5",
-    },
-    {
-      text: "Match (Starting)",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/4f3442ba-cc31-4da0-bb64-13f8b9a5fead",
-    },
-    {
-      text: "Match (Running)",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/8c671bbf-0666-4c4a-91d2-797ffd55ad94",
-    },
-    {
-      text: "Match (Running)",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/57b6e452-665e-4e22-8941-3fd328691bbd",
-    },
-    {
-      text: "Series",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/46b97f83-3fff-43d4-b797-1a2ac5159eda",
-    },
-    {
-      text: "Venue",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/c3bf0cd5-bd6b-446b-8fd8-bb8c7c818032",
-    },
+// import IconScreen from "../Components/Icons/IconScreen";
 
-    {
-      text: "Match",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/ecbc84fa-1501-49a2-a478-79eac73f5acf",
-    },
-    {
-      text: "Team",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/bfaf60c4-b7e1-491f-ab31-207d114297b6",
-    },
-    {
-      text: "Player",
-      url: "https://github.com/ankitkumar1578114/crick-admin-frontend/assets/57772916/8e5bc310-1d4e-4b83-adb6-a7ba8d77892d",
-    },
-  ];
+import styles from "./styles.module.css";
+import img7 from "./image7.svg"
+import img2 from "./img2.png"
+import img3 from "./img3.png"
+import img4 from "./img4.png"
+import Login from "../Navigation/Login";
+import useAuth from '../Navigation/hooks/useAuth'
+import { useEffect } from "react";
+const Welcome = ({ user, setUser, setUserLoaded }) => {
+  const { responseMessage, errorMessage } = useAuth({ setUser, setUserLoaded });
+  useEffect(() => {
+    responseMessage({ credential: localStorage.getItem("token") });
+  }, [])
+
+
   return (
     <>
-      <div className={styles.parent}>
-        <div className={styles.flex}>
-          <div className={styles.welcome_text}>
-            <div>
-              <h1 className={styles.h1}>WELCOME !</h1>
-              <h4 className={styles.h4}>
-                WHY WASTING TIME ON PEN & PAPER ?<br />
-                TIME TO BE DIGITAL
-              </h4>
-            </div>
-          </div>
-          <div className={styles.center}>
-            <IconScreen />
-          </div>
+      <div className={styles["main-container"]}>
+        <div className={styles["navbar"]}>
+          <div className={styles["navbar-text"]}>Crick Bold</div>
         </div>
-      </div>
-      <div className={styles.how_does_it_work}>
-        <h2>How Does It Work ?</h2>
-        <div className={styles.galary}>
-          {galaryImages?.map((image) => (
-            <div key={image?.url}>
-              <img src={image?.url} style={{ width: "100%" }} />
-              {image?.text}
+      
+        <div className={styles["container-1"]}>
+          <div className={styles["container-1-1"]}>
+            <div className={styles["container-1-1-text"]}>
+              <div className={styles["container-1-1-text1"]}>Say No to Pen & Paper</div>
+              
+              <p>Organise Cricket Tournament in Just few Click</p>
+              {/* <button onClick={()=>setUser(!user)}>START NOW</button> */}
+              <Login responseMessage={responseMessage} errorMessage={errorMessage} />
             </div>
-          ))}
+            <div className={styles["container-1-1-img"]}>
+              <img src={img7} alt='img1' />
+            </div>
+          </div>
+          <div className={styles["what-crick"]}>What we do ?</div>
+          <hr className={ styles["horizontal-line"]} />
+        </div>
+       
+        <div className={styles["container-2"]}>
+          
+          <div className={styles["container-2-text"]}>
+            <div className={styles["container-2-text-2"]}>HOST TOURNAMENTS</div>
+            <p>Create and mangage cricket tournaments with <br />ease.Set up matches, manage teams,and keep track <br />of scores all in one place.</p>
+            {/* <button>HOST NOW</button> */}
+            <Login responseMessage={responseMessage} errorMessage={errorMessage} />
+           
+          </div>
+          <div className={styles["container-2-img"]}>
+            <img src={img2} alt='img2' />
+          </div>
+    
+        </div>
+         <hr className={styles["horizontal-line"]} />
+        <div className={styles["container-3"]}>
+              
+          <div className={styles["container-2-img"]}>
+            <img src={img3} alt='img3' />
+          </div>
+          <div className={styles["container-2-text"]}>
+            <div className={styles["container-2-text-2"]}>MANAGE TEAMS</div>
+            <p>Easily build teams by adding players, customizing<br />names, and assigning roles Schedule matches,
+              and track <br /> progess-all in one place.</p>
+            {/* <button>CREATE NOW</button> */}
+            <Login responseMessage={responseMessage} errorMessage={errorMessage} />
+          </div>
+              
+    
+          
+        </div>
+        <hr className={styles["horizontal-line"]} />
+        <div className={styles["container-4"]}>
+             
+          <div className={styles["container-2-text"]}>
+            <div className={styles["container-2-text-2"]}>SCHEDULE MATCH</div>
+            <p>Set match dates, times, and venues in just a few clicks<br />Create a seamless schedule that keeps teams <br /> and
+              fans on track</p>
+            {/* <button>SCHEDULE NOW</button> */}
+            <Login responseMessage={responseMessage} errorMessage={errorMessage} />
+          </div>
+          <div className={styles["container-2-img"]}>
+            <img src={img4} alt='img4' />
+          </div>
         </div>
       </div>
     </>
-  );
+  )
 };
-export default Welcome;
+export default  Welcome;
