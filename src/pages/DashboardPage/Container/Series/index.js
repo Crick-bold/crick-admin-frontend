@@ -21,7 +21,9 @@ const SeriesContainer = ({ series, loading, getDashboard }) => {
 
       <div className="flex my-8 flex-wrap">
         {loading ? (
-          <Skelton width="100%" height="100px" />
+          <Skelton width="100%" height="250px" />
+        ) : series.length === 0 ? (
+          <div className={globalStyle.no_data_found}>No Data Found</div>
         ) : (
           series.map((item) => (
             <Link to={"/series/" + item?.id}>
