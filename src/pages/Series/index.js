@@ -49,12 +49,9 @@ const Series = () => {
               {!loading &&
                               seriesData?.upcomingMatches?.length === 0 ?
                               
-                                (<><div className={styles.noMatch}>No upcoming Matches</div>
-                                    <Link to="/series/10">
-                                  <button onClick={createNewMatchHandler}>create new Matches</button>
-                                    </Link>
-                                    
-                                </>
+                                (<div className={styles.noMatch}>No upcoming Matches</div>
+                                   
+                              
                          
                 )
                 :
