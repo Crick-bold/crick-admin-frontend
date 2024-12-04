@@ -1,7 +1,7 @@
 import React from "react";
 import { FileUpload } from "primereact/fileupload";
 import useBulkUploadPlayers from "../hooks/useBulkUploadPlayers";
-
+// import logo from "../../../../public/PlayerList.csv";
 const UploadPlayersList = ({ setShow, listPlayers }) => {
   const { bulkUploadPlayers } = useBulkUploadPlayers({ setShow, listPlayers });
   const handleUpload = (event) => {
@@ -34,6 +34,10 @@ const UploadPlayersList = ({ setShow, listPlayers }) => {
         customUpload
         uploadHandler={handleUpload}
       />
+      <div style={{marginTop: '10px',padding: '10px'}}>
+        <a href="/PlayersList.csv" download style={{ color: '#fecc00' }}>Download</a>&nbsp; sample file.
+      </div>
+
     </div>
   );
 };
