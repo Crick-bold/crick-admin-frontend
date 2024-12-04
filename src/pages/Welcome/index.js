@@ -18,11 +18,16 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
   return (
     <>
       <div className={styles["main-container"]}>
+        <div className={styles["navbar"]}>
+          <div className={styles["navbar-text"]}>Crick Bold</div>
+        </div>
+      
         <div className={styles["container-1"]}>
           <div className={styles["container-1-1"]}>
             <div className={styles["container-1-1-text"]}>
-              <h5>SAY NO TO PEN & PAPER</h5>
-              <p>Organise Cricket Tournament in<br /> Just One Click</p>
+              <div className={styles["container-1-1-text1"]}>Say No to Pen & Paper</div>
+              
+              <p>Organise Cricket Tournament in Just few Click</p>
               {/* <button onClick={()=>setUser(!user)}>START NOW</button> */}
               <Login responseMessage={responseMessage} errorMessage={errorMessage} />
             </div>
@@ -30,31 +35,34 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
               <img src={img7} alt='img1' />
             </div>
           </div>
-          <div className={styles["what-crick"]}>What is Crick Bold</div>
+          <div className={styles["what-crick"]}>What we do ?</div>
+          <hr className={ styles["horizontal-line"]} />
         </div>
-
+       
         <div className={styles["container-2"]}>
-              
+          
           <div className={styles["container-2-text"]}>
-            <h3>HOST TOURNAMENTS</h3>
-            <p>Create and mangage cricket tournaments with ease<br />.Set up matches, manage teams,and keep track of scores all in one place.</p>
+            <div className={styles["container-2-text-2"]}>HOST TOURNAMENTS</div>
+            <p>Create and mangage cricket tournaments with <br />ease.Set up matches, manage teams,and keep track <br />of scores all in one place.</p>
             {/* <button>HOST NOW</button> */}
             <Login responseMessage={responseMessage} errorMessage={errorMessage} />
+           
           </div>
           <div className={styles["container-2-img"]}>
             <img src={img2} alt='img2' />
           </div>
     
         </div>
+         <hr className={styles["horizontal-line"]} />
         <div className={styles["container-3"]}>
               
           <div className={styles["container-2-img"]}>
             <img src={img3} alt='img3' />
           </div>
           <div className={styles["container-2-text"]}>
-            <h3>MANAGE TEAMS</h3>
+            <div className={styles["container-2-text-2"]}>MANAGE TEAMS</div>
             <p>Easily build teams by adding players, customizing<br />names, and assigning roles Schedule matches,
-              and track progess-all in one place.</p>
+              and track <br /> progess-all in one place.</p>
             {/* <button>CREATE NOW</button> */}
             <Login responseMessage={responseMessage} errorMessage={errorMessage} />
           </div>
@@ -62,11 +70,12 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
     
           
         </div>
+        <hr className={styles["horizontal-line"]} />
         <div className={styles["container-4"]}>
              
           <div className={styles["container-2-text"]}>
-            <h3>SCHEDULE MATCH</h3>
-            <p>Set match dates, times, and venues in just a few clicks<br />Create a seamless schedule that keeps teams and
+            <div className={styles["container-2-text-2"]}>SCHEDULE MATCH</div>
+            <p>Set match dates, times, and venues in just a few clicks<br />Create a seamless schedule that keeps teams <br /> and
               fans on track</p>
             {/* <button>SCHEDULE NOW</button> */}
             <Login responseMessage={responseMessage} errorMessage={errorMessage} />
