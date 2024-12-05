@@ -11,6 +11,7 @@
   font-weight: 600;
   opacity: 0.8;
   transition: opacity 0.2s;
+  width: max-content;
 }
 .primary {
   background-color: var(--theme-color);
