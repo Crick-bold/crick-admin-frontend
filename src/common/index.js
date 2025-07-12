@@ -19,3 +19,11 @@ export const isSecondInning = (currentInning) => {
 export const isFirstInning = (currentInning) => {
   return [1, -1].includes(currentInning);
 };
+
+export const getOversFromBalls = (balls) => {
+  return parseInt(balls / 6) + "." + (balls % 6);
+};
+
+export const findPlayerById = ({ players = [], playerId }) => {
+  return players.find((player) => player.id === playerId);
+};

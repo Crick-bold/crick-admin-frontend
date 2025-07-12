@@ -4,25 +4,31 @@
   flex-direction: column;
 }
 .result_options {
-  width: 280px;
+  width: 500px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 2px;
   justify-content: center;
   margin-top: 20px;
 }
 .result_option {
-  width: 60px;
+  width: 80px;
   height: 60px;
   color: rgb(221, 221, 221);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 2px;
   cursor: pointer;
   border: 0;
   font-size: 16px;
+  opacity: 0.8;
 }
+
+.result_option:hover {
+  opacity: 1;
+}
+
 .shot_container {
   display: flex;
   gap: 10px;

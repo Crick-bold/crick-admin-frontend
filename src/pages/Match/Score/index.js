@@ -14,8 +14,12 @@ import useGetScore from "../hooks/useGetScore";
 import Dashboard from "../Dashboard";
 import Toss from "../Toss";
 import { act } from "react";
+import Modal from "../../Components/Modal";
+import { findPlayerById, getOversFromBalls } from "../../../common";
 
 const Score = ({
+  squad,
+  antiSquad,
   squad1,
   squad2,
   battingTeam,
@@ -37,9 +41,9 @@ const Score = ({
   });
 
   const controls = control({
-    playerOptions1: battingTeam === 1 ? squad1?.players : squad2?.players,
-    playerOptions2: battingTeam === 1 ? squad2?.players : squad1?.players,
-    squad: battingTeam === 1 ? squad1 : squad2,
+    playerOptions1: squad?.players,
+    playerOptions2: antiSquad?.players,
+    squad,
   });
 
   const {
@@ -50,25 +54,17 @@ const Score = ({
   } = useForm();
   const { updateStrike } = useUpdateStrike({
     battingTeam,
-    squadId: battingTeam === 1 ? squad1?.id : squad2?.id,
+    squadId: squad?.id,
     getMatchById,
     matchId,
     wickets: battingTeam === 1 ? score?.team1?.wickets : score?.team2?.wickets,
   });
-  console.log(squad1, squad2, "sss");
+
   useEffect(() => {
-    setValue(
-      "batsmanOnStrike",
-      battingTeam === 1 ? squad1?.batsmanOnStrike : squad2?.batsmanOnStrike
-    );
-    setValue(
-      "batsmanOnNonStrike",
-      battingTeam === 1
-        ? squad1?.batsmanOnNonStrike
-        : squad2?.batsmanOnNonStrike
-    );
-    setValue("bowler", battingTeam === 1 ? squad1?.bowler : squad2?.bowler);
-  }, [battingTeam, squad1, squad2]);
+    setValue("batsmanOnStrike", squad?.batsmanOnStrike);
+    setValue("batsmanOnNonStrike", squad?.batsmanOnNonStrike);
+    setValue("bowler", squad?.bowler);
+  }, [battingTeam, squad]);
 
   return (
     <>
@@ -81,6 +77,22 @@ const Score = ({
       ) : (
         <>
           <div className={style.dashboard}>
+            {squad &&
+            (!squad?.batsmanOnStrike ||
+              !squad?.batsmanOnNonStrike ||
+              !squad?.bowler) ? (
+              <Modal show={true} setShow={() => {}} size="md">
+                <Layout
+                  register={register}
+                  handleSubmit={handleSubmit}
+                  onSubmit={updateStrike}
+                  controls={controls}
+                  errors={errors}
+                  submitBtnName="Update"
+                />
+              </Modal>
+            ) : null}
+
             <Tabs
               tabs={[score?.team1?.name, score?.team2?.name]}
               active={active}
@@ -99,6 +111,7 @@ const Score = ({
                     ? squad1?.batsmanOnNonStrike
                     : squad2?.batsmanOnNonStrike
                 }
+                bowler={active === 0 ? squad1?.bowler : squad2?.bowler}
                 currentInning={matchData?.currentInning}
                 result={score?.result}
                 index={active}
@@ -114,14 +127,6 @@ const Score = ({
               battingTeam === active + 1 &&
               ![0, 3]?.includes(matchData?.currentInning) && (
                 <div className={style.entry_box}>
-                  <Layout
-                    register={register}
-                    handleSubmit={handleSubmit}
-                    onSubmit={updateStrike}
-                    controls={controls}
-                    errors={errors}
-                    submitBtnName="Update"
-                  />
                   <ResultOptions
                     score={score}
                     data={matchData}

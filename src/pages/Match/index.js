@@ -11,24 +11,23 @@ const MatchPage = () => {
   const { loading, data, getMatchById } = useGetMatchById(matchId);
   const [battingTeam, setBattingTeam] = useState(data?.currentInning);
 
-  const [active, setActive] = useState(parseInt(data?.currentInning) <= 0 ? 0 : 1);
+  const [active, setActive] = useState(
+    parseInt(data?.currentInning) <= 0 ? 0 : 1
+  );
 
   useEffect(() => {
-    let battingTeam ={
+    let battingTeam = {
       0: 0,
       "-1": 1,
       1: 2,
       "-2": 1,
       2: 2,
       3: 3,
-    }[data?.currentInning]
+    }[data?.currentInning];
     setBattingTeam(battingTeam);
-    if(battingTeam === 3)
-    setActive(0)
-    else
-    setActive(battingTeam - 1)
+    if (battingTeam === 3) setActive(0);
+    else setActive(battingTeam - 1);
   }, [data]);
-
 
   return (
     <>
@@ -49,6 +48,8 @@ const MatchPage = () => {
             <Score
               squad1={data?.squad1}
               squad2={data?.squad2}
+              squad={battingTeam === 1 ? data?.squad1 : data?.squad2}
+              antiSquad={battingTeam === 1 ? data?.squad2 : data?.squad1}
               battingTeam={battingTeam}
               getMatchById={getMatchById}
               matchId={matchId}

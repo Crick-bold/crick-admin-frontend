@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import Skelton from "../../../Components/Skelton";
 import Commentary from "./Commentary";
 import BatsmanTable from "./BatsmanTable";
-import { isSecondInning } from "../../../../common";
+import { getOversFromBalls, isSecondInning } from "../../../../common";
 const ScoreCard = ({
   team,
   batsmanOnStrike,
@@ -15,7 +15,14 @@ const ScoreCard = ({
   allBattingPlayers,
   currentInning,
   result,
+  bowler,
 }) => {
+  const batsmanOnStrikeData = team?.battingPlayers?.[batsmanOnStrike];
+
+  const batsmanOnNonStrikeData = team?.battingPlayers?.[batsmanOnNonStrike];
+
+  const bowlereData = team?.bowlingPlayers?.[bowler];
+
   return (
     <>
       <div className={styles.score_card}>
@@ -116,6 +123,22 @@ const ScoreCard = ({
                   )}
                 </div>
 
+                <div className="flex justify-between gap-10 text-14 color-secondary my-8 p-8 bg-color-primary">
+                  <div>
+                    {batsmanOnStrikeData?.name}* {batsmanOnStrikeData?.runs}(
+                    {batsmanOnStrikeData?.balls})
+                  </div>
+                  <div>
+                    {batsmanOnNonStrikeData?.name}{" "}
+                    {batsmanOnNonStrikeData?.runs}(
+                    {batsmanOnNonStrikeData?.balls})
+                  </div>
+                  <div>
+                    {bowlereData?.name} {bowlereData?.wickets}-
+                    {bowlereData?.runs} ({getOversFromBalls(bowlereData?.balls)}
+                    )
+                  </div>
+                </div>
                 <Pill content={`Extras : ${team?.extra}`} type="transparent" />
               </div>
               <div className={styles.commentary}>

@@ -34,6 +34,10 @@ code {
   color: var(--color-primary_text);
 }
 
+.color-secondary {
+  color: var(--color-secondary_text);
+}
+
 .color-theme {
   color: var(--theme-color);
 }
@@ -43,6 +47,10 @@ code {
 
 .w-100 {
   width: 100%;
+}
+
+.text-14 {
+  font-size: 14px;
 }
 
 .text-16 {
@@ -99,6 +107,10 @@ code {
 
 .flex {
   display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .flex-wrap {
