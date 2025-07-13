@@ -1,5 +1,3 @@
-import { current } from '@reduxjs/toolkit'
-
 export const isLiveMatch = (currentInning) => {
   return [1, 2, -1, -2].includes(currentInning)
 }

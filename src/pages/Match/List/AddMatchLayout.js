@@ -24,9 +24,7 @@ const AddMatchLayout = ({ onCreateMatch = () => {}, seriesData, setShow }) => {
   })
 
   const {
-    data: matchesFromMain,
-    getMatches,
-    loadingFromMain
+    getMatches
   } = useGetMatches()
 
   const { createMatch } = useCreateMatch({

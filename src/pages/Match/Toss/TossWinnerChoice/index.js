@@ -48,7 +48,8 @@ const TossWiinnerChoice = ({
           <Button
             value="Start Match"
             onClick={() => {
-              setSteps(3), startMatch()
+              setSteps(3)
+              startMatch()
             }}
           />
         </div>

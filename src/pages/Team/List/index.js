@@ -1,7 +1,3 @@
-import { useForm } from 'react-hook-form'
-import Layout from '../../Components/Layout'
-import control from '../team-controls'
-import useCreateTeam from '../hooks/useCreateTeam'
 import useListTeams from '../hooks/useListTeams'
 import globalStyle from '../../Venue/List/styles.module.css'
 import Modal from '../../Components/Modal'
@@ -9,7 +5,6 @@ import { useEffect, useState } from 'react'
 import Button from '../../Components/Button'
 import Table from '../../Components/Table'
 import { columns } from '../utlis/team-table'
-import layoutStyle from '../../Components/Layout/styles.module.css'
 import AddTeamLayout from '../AddTeamLayout'
 
 const List = ({
@@ -19,7 +14,7 @@ const List = ({
 }) => {
   const [teams, setTeams] = useState([])
   const [loading, setLoading] = useState(false)
-  const [searchText, setSearchText] = useState('')
+  const [searchText] = useState('')
   const {
     data: teamsFromMain,
     loadingFromMain,

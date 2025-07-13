@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import MatchCard from '../../../Match/MatchCard'
 import Skelton from '../../../Components/Skelton'
 import { isLiveMatch } from '../../../../common'
@@ -22,7 +21,7 @@ const LiveMatchContainer = ({ matches, loading }) => {
           <div className={globalStyle.no_data_found}>No Data Found</div>
               )
             : (
-                liveMatchList.map((match) => <MatchCard match={match} />)
+                liveMatchList.map((match) => <MatchCard key={match.id} match={match} />)
               )}
       </div>
     </div>

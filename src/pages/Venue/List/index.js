@@ -1,7 +1,3 @@
-import { useForm } from 'react-hook-form'
-import Layout from '../../Components/Layout'
-import control from '../venue-controls'
-import useCreateVenue from '../hooks/useCreateVenue'
 import useListVenues from '../hooks/useListVenues'
 import style from './styles.module.css'
 import Modal from '../../Components/Modal'
@@ -9,7 +5,6 @@ import { useEffect, useState } from 'react'
 import Button from '../../Components/Button'
 import Table from '../../Components/Table'
 import { columns } from '../utlis/venue-table'
-import layoutStyle from '../../Components/Layout/styles.module.css'
 import AddVenueLayout from '../AddVenueLayout'
 
 const List = ({
@@ -19,7 +14,7 @@ const List = ({
 }) => {
   const [venues, setVenues] = useState([])
   const [loading, setLoading] = useState(false)
-  const [searchText, setSearchText] = useState('')
+  const [searchText] = useState('')
   const {
     data: venuesFromMain,
     loadingFromMain,

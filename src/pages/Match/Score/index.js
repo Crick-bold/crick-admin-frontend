@@ -4,17 +4,13 @@ import style from './styles.module.css'
 import control from './addplayer'
 import Layout from '../../Components/Layout'
 import useUpdateStrike from '../hooks/useUpdateStrike'
-import { useEffect, useState, act } from 'react'
-import Pill from '../../Components/Pill'
-import Button from '../../Components/Button'
-import useStartMatch from '../hooks/useStartMatch'
+import { useEffect } from 'react'
 import ResultOptions from './ResultOptions'
 import Tabs from '../../Components/Tabs'
 import useGetScore from '../hooks/useGetScore'
 import Dashboard from '../Dashboard'
 import Toss from '../Toss'
 import Modal from '../../Components/Modal'
-import { findPlayerById, getOversFromBalls } from '../../../common'
 
 const Score = ({
   squad,
