@@ -1,17 +1,17 @@
-import React from "react";
-import Button from "../Button";
-import Input from "../Input";
-import PlayerSelect from "../PlayerSelect";
-import TeamSelect from "../TeamSelect";
-import VenueSelect from "../VenueSelect";
-import style from "./styles.module.css";
-import SeriesSelect from "../SeriesSelect";
+import React from 'react'
+import Button from '../Button'
+import Input from '../Input'
+import PlayerSelect from '../PlayerSelect'
+import TeamSelect from '../TeamSelect'
+import VenueSelect from '../VenueSelect'
+import style from './styles.module.css'
+import SeriesSelect from '../SeriesSelect'
 const Layout = ({
   handleSubmit,
   register,
   onSubmit,
   controls,
-  submitBtnName = "Submit",
+  submitBtnName = 'Submit',
   errors,
   onCreateTeam,
   onCreateVenue
@@ -31,9 +31,9 @@ const Layout = ({
         loading,
         disabled,
         error,
-        rules,
+        rules
       },
-      ref,
+      ref
     ) => (
       <>
         <div>
@@ -59,12 +59,12 @@ const Layout = ({
             </select>
           </div>
           <span className={style.error_text}>
-            {error ? rules?.required || "Required" : null}
+            {error ? rules?.required || 'Required' : null}
           </span>
         </div>
       </>
-    ),
-  );
+    )
+  )
 
   const Date = ({ label, _key, register, required, error, rules }) => (
     <>
@@ -80,11 +80,11 @@ const Layout = ({
           />
         </div>
         <span className={style.error_text}>
-          {error ? rules?.required || "Required" : null}
+          {error ? rules?.required || 'Required' : null}
         </span>
       </div>
     </>
-  );
+  )
   const DateTimeLocal = ({ label, _key, register, required, error, rules }) => (
     <>
       <div>
@@ -99,11 +99,11 @@ const Layout = ({
           />
         </div>
         <span className={style.error_text}>
-          {error ? rules?.required || "Required" : null}
+          {error ? rules?.required || 'Required' : null}
         </span>
       </div>
     </>
-  );
+  )
 
   return (
     <>
@@ -116,11 +116,11 @@ const Layout = ({
             type,
             loading,
             disabled,
-            placeholder = "",
+            placeholder = '',
             rules,
             showCreateNewBtn = false
-          } = control;
-          if (type === "text") {
+          } = control
+          if (type === 'text') {
             return (
               <>
                 <Input
@@ -132,12 +132,12 @@ const Layout = ({
                   placeholder={placeholder}
                 />
               </>
-            );
+            )
           }
-          if (type === "select") {
+          if (type === 'select') {
             return (
               <>
-                {" "}
+                {' '}
                 <Select
                   label={label}
                   {...register(key, { required: rules?.required })}
@@ -149,12 +149,12 @@ const Layout = ({
                   rules={rules}
                 />
               </>
-            );
+            )
           }
-          if (type === "player-select") {
+          if (type === 'player-select') {
             return (
               <>
-                {" "}
+                {' '}
                 <PlayerSelect
                   label={label}
                   {...register(key, { required: rules?.required })}
@@ -166,12 +166,12 @@ const Layout = ({
                   rules={rules}
                 />
               </>
-            );
+            )
           }
-          if (type === "team-select") {
+          if (type === 'team-select') {
             return (
               <>
-                {" "}
+                {' '}
                 <TeamSelect
                   label={label}
                   {...register(key, { required: rules?.required })}
@@ -185,12 +185,12 @@ const Layout = ({
                   showCreateNewBtn={showCreateNewBtn}
                 />
               </>
-            );
+            )
           }
-          if (type === "venue-select") {
+          if (type === 'venue-select') {
             return (
               <>
-                {" "}
+                {' '}
                 <VenueSelect
                   label={label}
                   {...register(key, { required: rules?.required })}
@@ -204,12 +204,12 @@ const Layout = ({
                   rules={rules}
                 />
               </>
-            );
+            )
           }
-          if (type === "series-select") {
+          if (type === 'series-select') {
             return (
               <>
-                {" "}
+                {' '}
                 <SeriesSelect
                   label={label}
                   {...register(key, { required: rules?.required })}
@@ -221,9 +221,9 @@ const Layout = ({
                   rules={rules}
                 />
               </>
-            );
+            )
           }
-          if (type === "date") {
+          if (type === 'date') {
             return (
               <>
                 <Date
@@ -236,9 +236,9 @@ const Layout = ({
                   disabled={disabled}
                 />
               </>
-            );
+            )
           }
-          if (type === "datetime") {
+          if (type === 'datetime') {
             return (
               <>
                 <DateTimeLocal
@@ -251,9 +251,9 @@ const Layout = ({
                   error={errors?.[key]}
                 />
               </>
-            );
+            )
           }
-          return null;
+          return null
         })}
         <div>
           <div className={style.label}>&nbsp;</div>
@@ -267,7 +267,7 @@ const Layout = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

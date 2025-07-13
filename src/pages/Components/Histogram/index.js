@@ -1,14 +1,14 @@
-import Poll from "./Poll";
-import styles from "./styles.module.css";
+import Poll from './Poll'
+import styles from './styles.module.css'
 const Histogram = ({
   data,
   hoverItem = () => {},
   _key,
   height = 200,
   xName,
-  title,
+  title
 }) => {
-  const maxElment = data ? Math.max(...data?.map((o) => o?.[_key])) : 1;
+  const maxElment = data ? Math.max(...data?.map((o) => o?.[_key])) : 1
   return (
     <>
       {data && data?.length >= 1 && (
@@ -31,7 +31,7 @@ const Histogram = ({
                       key={index}
                       item={item}
                       _key={_key}
-                      height={height * (item?.[_key] / maxElment) + "px"}
+                      height={height * (item?.[_key] / maxElment) + 'px'}
                     >
                       {hoverItem(item)}
                     </Poll>
@@ -44,6 +44,6 @@ const Histogram = ({
         </>
       )}
     </>
-  );
-};
-export default Histogram;
+  )
+}
+export default Histogram

@@ -1,15 +1,15 @@
-import { useState } from "react";
-import useInsertBall from "../../hooks/useInsertBall";
-import styles from "./styles.module.css";
-import { ToggleButton } from "primereact/togglebutton";
-import { InputText } from "primereact/inputtext";
-import Modal from "../../../Components/Modal";
-import Button from "../../../Components/Button";
+import { useState } from 'react'
+import useInsertBall from '../../hooks/useInsertBall'
+import styles from './styles.module.css'
+import { ToggleButton } from 'primereact/togglebutton'
+import { InputText } from 'primereact/inputtext'
+import Modal from '../../../Components/Modal'
+import Button from '../../../Components/Button'
 
-import { OUT_OPTIONS, RESULT_OPTIONS, SHOT_OPTIONS } from "./utils";
-import PlayerSelect from "../../../Components/PlayerSelect";
-import { useDispatch } from "react-redux";
-import { setToast } from "../../../../common/store/toastSlice";
+import { OUT_OPTIONS, RESULT_OPTIONS, SHOT_OPTIONS } from './utils'
+import PlayerSelect from '../../../Components/PlayerSelect'
+import { useDispatch } from 'react-redux'
+import { setToast } from '../../../../common/store/toastSlice'
 
 const ResultOptions = ({
   score,
@@ -22,22 +22,22 @@ const ResultOptions = ({
   antiSquad,
   batsmanOnStrike,
   batsmanOnNonStrike,
-  bowler,
+  bowler
 }) => {
-  const [playedShot, setPlayedShot] = useState(null);
-  const [result, setResult] = useState(25);
-  const [outType, setOutType] = useState(null);
-  const [isWide, setIsWide] = useState(false);
-  const [isNoBall, setIsNoBall] = useState(false);
-  const [validRuns, setValidRuns] = useState();
-  const [byeRuns, setByeRuns] = useState();
-  const [legByeRuns, setLegByeRuns] = useState();
-  const [penatlyRuns, setPenaltyRuns] = useState();
-  const [helpingPlayer, setHelpingPlayer] = useState();
-  const [runOutPlayer, setRunOutPlayer] = useState();
-  const [show, setShow] = useState(false);
+  const [playedShot, setPlayedShot] = useState(null)
+  const [result, setResult] = useState(25)
+  const [outType, setOutType] = useState(null)
+  const [isWide, setIsWide] = useState(false)
+  const [isNoBall, setIsNoBall] = useState(false)
+  const [validRuns, setValidRuns] = useState()
+  const [byeRuns, setByeRuns] = useState()
+  const [legByeRuns, setLegByeRuns] = useState()
+  const [penatlyRuns, setPenaltyRuns] = useState()
+  const [helpingPlayer, setHelpingPlayer] = useState()
+  const [runOutPlayer, setRunOutPlayer] = useState()
+  const [show, setShow] = useState(false)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const { insertBall, loading: loadingIns } = useInsertBall({
     matchLoading: loading,
@@ -70,50 +70,50 @@ const ResultOptions = ({
     validRuns,
     playedShot,
     runOutPlayer,
-    helpingPlayer,
-  });
+    helpingPlayer
+  })
 
   const handleResultOptionClick = (value) => {
     if (!batsmanOnNonStrike || !batsmanOnNonStrike || !bowler) {
       dispatch(
         setToast({
-          severity: "error",
-          summary: "No Batsman/ Bowler Selected",
-          detail: "Please select batsman and bowler.",
-          life: 3000,
+          severity: 'error',
+          summary: 'No Batsman/ Bowler Selected',
+          detail: 'Please select batsman and bowler.',
+          life: 3000
         })
-      );
-      return;
+      )
+      return
     }
-    setShow(true);
+    setShow(true)
     if (value === 12) {
-      setIsNoBall(true);
+      setIsNoBall(true)
     } else {
-      setIsNoBall(false);
+      setIsNoBall(false)
     }
 
-    console.log(value, "balll");
-    if (value == 11) {
-      setIsWide(true);
+    console.log(value, 'balll')
+    if (value === 11) {
+      setIsWide(true)
     } else {
-      setIsWide(false);
+      setIsWide(false)
     }
-    if (value == 25) {
-      setOutType("bold");
+    if (value === 25) {
+      setOutType('bold')
     } else {
-      setOutType("");
+      setOutType('')
     }
-    setResult(value);
-  };
+    setResult(value)
+  }
 
   const handleHelpingPlayer = (e) => {
-    setHelpingPlayer(e.target.value);
-  };
+    setHelpingPlayer(e.target.value)
+  }
 
   const handleRunOutPlayer = (e) => {
-    setRunOutPlayer(e.target.value);
-    console.log(e.target.value);
-  };
+    setRunOutPlayer(e.target.value)
+    console.log(e.target.value)
+  }
 
   return (
     <>
@@ -146,7 +146,7 @@ const ResultOptions = ({
                         : styles.child
                     }
                     onClick={() => {
-                      setOutType(outObject?.value);
+                      setOutType(outObject?.value)
                     }}
                     key={index}
                   >
@@ -154,7 +154,8 @@ const ResultOptions = ({
                   </div>
                 ))}
               </div>
-              {outType === "run_out" ? (
+              {outType === 'run_out'
+                ? (
                 <>
                   <div className="text-16 my-16 color-theme">
                     Which player Is out?
@@ -167,20 +168,22 @@ const ResultOptions = ({
                       ),
                       squad.players.find(
                         (player) => player.id === batsmanOnNonStrike
-                      ),
+                      )
                     ]}
                     onChange={handleRunOutPlayer}
                   />
                 </>
-              ) : null}
-              {["stumps", "catch_out", "run_out"]?.includes(outType) ? (
+                  )
+                : null}
+              {['stumps', 'catch_out', 'run_out']?.includes(outType)
+                ? (
                 <>
                   <div className="text-16 my-16 color-theme">
                     {
                       {
-                        catch_out: "Catch out by",
-                        run_out: "Run out by",
-                        stumps: "Stumped by",
+                        catch_out: 'Catch out by',
+                        run_out: 'Run out by',
+                        stumps: 'Stumped by'
                       }[outType]
                     }
                   </div>
@@ -189,7 +192,8 @@ const ResultOptions = ({
                     onChange={handleHelpingPlayer}
                   />
                 </>
-              ) : null}
+                  )
+                : null}
 
               <div className="text-16 my-16 color-theme">
                 Wide / No ball / Valid Runs
@@ -200,8 +204,8 @@ const ResultOptions = ({
                   onLabel="Wide"
                   offLabel="Wide"
                   onChange={(e) => {
-                    setIsWide(e.value);
-                    setIsNoBall(false);
+                    setIsWide(e.value)
+                    setIsNoBall(false)
                   }}
                 />
                 <ToggleButton
@@ -209,8 +213,8 @@ const ResultOptions = ({
                   onLabel="No Ball"
                   offLabel="No Ball"
                   onChange={(e) => {
-                    setIsNoBall(e.value);
-                    setIsWide(false);
+                    setIsNoBall(e.value)
+                    setIsWide(false)
                   }}
                 />
                 <InputText
@@ -246,7 +250,7 @@ const ResultOptions = ({
                         : styles.child
                     }
                     onClick={async () => {
-                      setPlayedShot(shot?.value);
+                      setPlayedShot(shot?.value)
                       // await insertBall({ result, playedShot: shot?.value });
                     }}
                     key={index}
@@ -258,7 +262,8 @@ const ResultOptions = ({
             </>
           )}
 
-          {[11, 12, 14, 15, 25].includes(result) ? (
+          {[11, 12, 14, 15, 25].includes(result)
+            ? (
             <>
               <div className="text-16 my-16 color-theme">Extra Runs</div>
               <div className="flex gap-10">
@@ -267,7 +272,8 @@ const ResultOptions = ({
                   value={byeRuns}
                   placeholder="BYE Runs"
                   onChange={(e) => {
-                    setByeRuns(e.target.value), setLegByeRuns("");
+                    setByeRuns(e.target.value)
+                    setLegByeRuns('')
                   }}
                 />
                 <InputText
@@ -275,19 +281,21 @@ const ResultOptions = ({
                   value={legByeRuns}
                   placeholder="LEG BYE Runs"
                   onChange={(e) => {
-                    setLegByeRuns(e.target.value), setByeRuns("");
+                    setLegByeRuns(e.target.value)
+                    setByeRuns('')
                   }}
                 />
               </div>
             </>
-          ) : null}
+              )
+            : null}
           <div className="my-8">
             <Button
               onClick={() => {
                 insertBall({
                   result,
-                  playedShot: null,
-                });
+                  playedShot: null
+                })
               }}
               value="Save"
             />
@@ -295,6 +303,6 @@ const ResultOptions = ({
         </Modal>
       </div>
     </>
-  );
-};
-export default ResultOptions;
+  )
+}
+export default ResultOptions

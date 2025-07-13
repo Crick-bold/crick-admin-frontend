@@ -1,4 +1,4 @@
-import styles from "../styles.module.css";
+import styles from '../styles.module.css'
 const Poll = ({ item, children, _key, height }) => {
   return (
     <>
@@ -10,6 +10,6 @@ const Poll = ({ item, children, _key, height }) => {
         <div className={styles.label}>{item?.key}</div>
       </div>
     </>
-  );
-};
-export default Poll;
+  )
+}
+export default Poll

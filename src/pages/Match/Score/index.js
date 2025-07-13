@@ -1,21 +1,20 @@
-import { useForm } from "react-hook-form";
-import ScoreCard from "./ScoreCard";
-import style from "./styles.module.css";
-import control from "./addplayer";
-import Layout from "../../Components/Layout";
-import useUpdateStrike from "../hooks/useUpdateStrike";
-import { useEffect, useState } from "react";
-import Pill from "../../Components/Pill";
-import Button from "../../Components/Button";
-import useStartMatch from "../hooks/useStartMatch";
-import ResultOptions from "./ResultOptions";
-import Tabs from "../../Components/Tabs";
-import useGetScore from "../hooks/useGetScore";
-import Dashboard from "../Dashboard";
-import Toss from "../Toss";
-import { act } from "react";
-import Modal from "../../Components/Modal";
-import { findPlayerById, getOversFromBalls } from "../../../common";
+import { useForm } from 'react-hook-form'
+import ScoreCard from './ScoreCard'
+import style from './styles.module.css'
+import control from './addplayer'
+import Layout from '../../Components/Layout'
+import useUpdateStrike from '../hooks/useUpdateStrike'
+import { useEffect, useState, act } from 'react'
+import Pill from '../../Components/Pill'
+import Button from '../../Components/Button'
+import useStartMatch from '../hooks/useStartMatch'
+import ResultOptions from './ResultOptions'
+import Tabs from '../../Components/Tabs'
+import useGetScore from '../hooks/useGetScore'
+import Dashboard from '../Dashboard'
+import Toss from '../Toss'
+import Modal from '../../Components/Modal'
+import { findPlayerById, getOversFromBalls } from '../../../common'
 
 const Score = ({
   squad,
@@ -28,59 +27,62 @@ const Score = ({
   matchData,
   loading,
   active,
-  setActive,
+  setActive
 }) => {
   const {
     loading: loadingScore,
     score,
-    getScoreData,
+    getScoreData
   } = useGetScore({
     matchId,
     team1: matchData?.team1?.id,
-    team2: matchData?.team2?.id,
-  });
+    team2: matchData?.team2?.id
+  })
 
   const controls = control({
     playerOptions1: squad?.players,
     playerOptions2: antiSquad?.players,
-    squad,
-  });
+    squad
+  })
 
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
-  } = useForm();
+    formState: { errors }
+  } = useForm()
   const { updateStrike } = useUpdateStrike({
     battingTeam,
     squadId: squad?.id,
     getMatchById,
     matchId,
-    wickets: battingTeam === 1 ? score?.team1?.wickets : score?.team2?.wickets,
-  });
+    wickets: battingTeam === 1 ? score?.team1?.wickets : score?.team2?.wickets
+  })
 
   useEffect(() => {
-    setValue("batsmanOnStrike", squad?.batsmanOnStrike);
-    setValue("batsmanOnNonStrike", squad?.batsmanOnNonStrike);
-    setValue("bowler", squad?.bowler);
-  }, [battingTeam, squad]);
+    setValue('batsmanOnStrike', squad?.batsmanOnStrike)
+    setValue('batsmanOnNonStrike', squad?.batsmanOnNonStrike)
+    setValue('bowler', squad?.bowler)
+  }, [battingTeam, squad])
 
   return (
     <>
-      {battingTeam === 0 ? (
+      {battingTeam === 0
+        ? (
         <Toss
           battingTeam={battingTeam}
           matchData={matchData}
           getMatchById={getMatchById}
         />
-      ) : (
+          )
+        : (
         <>
           <div className={style.dashboard}>
             {squad &&
             (!squad?.batsmanOnStrike ||
               !squad?.batsmanOnNonStrike ||
-              !squad?.bowler) ? (
+              !squad?.bowler)
+              ? (
               <Modal show={true} setShow={() => {}} size="md">
                 <Layout
                   register={register}
@@ -91,7 +93,8 @@ const Score = ({
                   submitBtnName="Update"
                 />
               </Modal>
-            ) : null}
+                )
+              : null}
 
             <Tabs
               tabs={[score?.team1?.name, score?.team2?.name]}
@@ -153,13 +156,13 @@ const Score = ({
                     squad={battingTeam === 1 ? squad1 : squad2}
                   />
                 </div>
-              )}
+            )}
           </div>
           <Dashboard score={score} battingTeam={battingTeam} active={active} />
         </>
-      )}
+          )}
     </>
-  );
-};
+  )
+}
 
-export default Score;
+export default Score

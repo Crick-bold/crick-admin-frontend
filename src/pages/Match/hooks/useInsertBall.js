@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
-import useRequest from "../../../common/hooks/useRequest";
-import { setToast } from "../../../common/store/toastSlice";
+import { useDispatch } from 'react-redux'
+import useRequest from '../../../common/hooks/useRequest'
+import { setToast } from '../../../common/store/toastSlice'
 const useInsertBall = ({
   matchData,
   getScoreData,
@@ -19,29 +19,29 @@ const useInsertBall = ({
   validRuns,
   playedShot,
   helpingPlayer,
-  runOutPlayer,
+  runOutPlayer
 }) => {
   const { data, loading, trigger } = useRequest({
-    url: "ball",
-    method: "post",
+    url: 'ball',
+    method: 'post',
     autoLoad,
-    isConfig: true,
-  });
+    isConfig: true
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const insertBall = async ({ result }) => {
-    if (loading) return;
+    if (loading) return
     if (battingTeam === 0) {
       dispatch(
         setToast({
-          severity: "error",
-          summary: "Match not started yet",
-          detail: "Please start the match first.",
-          life: 3000,
+          severity: 'error',
+          summary: 'Match not started yet',
+          detail: 'Please start the match first.',
+          life: 3000
         })
-      );
-      return;
+      )
+      return
     }
     if (batPlayerId && batsmanOnNonStrike && ballPlayerId) {
       const payload = {
@@ -56,31 +56,31 @@ const useInsertBall = ({
           validRuns: [25, 12, 11, 13, 14, 15].includes(result)
             ? validRuns
             : result,
-          runOutPlayerId: runOutPlayer,
+          runOutPlayerId: runOutPlayer
         },
 
-        playedShot,
-      };
-      await trigger(payload);
-      await getScoreData();
-      await getMatchById(matchData?.id);
-      return data;
+        playedShot
+      }
+      await trigger(payload)
+      await getScoreData()
+      await getMatchById(matchData?.id)
+      return data
     } else {
       dispatch(
         setToast({
-          severity: "error",
-          summary: "No Batsman/ Bowler Selected",
-          detail: "Please select batsman and bowler.",
-          life: 3000,
+          severity: 'error',
+          summary: 'No Batsman/ Bowler Selected',
+          detail: 'Please select batsman and bowler.',
+          life: 3000
         })
-      );
+      )
     }
-  };
+  }
 
   return {
     loading,
     data: data?.data,
-    insertBall,
-  };
-};
-export default useInsertBall;
+    insertBall
+  }
+}
+export default useInsertBall

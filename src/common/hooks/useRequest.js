@@ -1,45 +1,45 @@
-import axios from "axios";
-import { useState } from "react";
+import axios from 'axios'
+import { useState } from 'react'
 
 const useRequest = ({
   url,
-  method = "post",
+  method = 'post',
   isConfig = false,
-  autoLoad = true,
+  autoLoad = true
 }) => {
   const config = {
     headers: {
-      Authorization: `${localStorage.getItem("token")}`,
-    },
-  };
-  const [loading, setLoading] = useState(autoLoad);
-  const [data, setData] = useState([]);
+      Authorization: `${localStorage.getItem('token')}`
+    }
+  }
+  const [loading, setLoading] = useState(autoLoad)
+  const [data, setData] = useState([])
 
   const trigger = async (data) => {
-    let res = [];
-    setLoading(true);
-    if (method === "post") {
+    let res = []
+    setLoading(true)
+    if (method === 'post') {
       res = await axios.post(
         process.env.REACT_APP_BACKEND + url,
         data,
         isConfig ? config : {}
-      );
+      )
     }
-    if (method === "get") {
+    if (method === 'get') {
       res = await axios.get(
         process.env.REACT_APP_BACKEND + url,
         isConfig ? config : {}
-      );
+      )
     }
-    setData(res);
-    setLoading(false);
-    return res;
-  };
+    setData(res)
+    setLoading(false)
+    return res
+  }
 
   return {
     data,
     loading,
-    trigger,
-  };
-};
-export default useRequest;
+    trigger
+  }
+}
+export default useRequest

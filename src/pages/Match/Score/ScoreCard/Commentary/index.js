@@ -1,6 +1,6 @@
-import Item from "./Item";
+import Item from './Item'
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css'
 const Commentary = ({ comments }) => {
   return (
     <>
@@ -10,6 +10,6 @@ const Commentary = ({ comments }) => {
         ))}
       </div>
     </>
-  );
-};
-export default Commentary;
+  )
+}
+export default Commentary

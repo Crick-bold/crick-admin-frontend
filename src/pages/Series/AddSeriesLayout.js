@@ -1,20 +1,20 @@
-import { useForm } from "react-hook-form";
-import Layout from "../Components/Layout";
-import useCreateSeries from "./hooks/useCreateSeries";
-import playerControls from "./utlis/series-control";
+import { useForm } from 'react-hook-form'
+import Layout from '../Components/Layout'
+import useCreateSeries from './hooks/useCreateSeries'
+import playerControls from './utlis/series-control'
 
 const AddSeriesLayout = ({ setShow, onCreateSeries }) => {
-  const controls = playerControls();
+  const controls = playerControls()
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors }
+  } = useForm()
 
   const { createSeries } = useCreateSeries({
     setShow,
-    listSeries: onCreateSeries,
-  });
+    listSeries: onCreateSeries
+  })
   return (
     <>
       <Layout
@@ -25,6 +25,6 @@ const AddSeriesLayout = ({ setShow, onCreateSeries }) => {
         errors={errors}
       />
     </>
-  );
-};
-export default AddSeriesLayout;
+  )
+}
+export default AddSeriesLayout

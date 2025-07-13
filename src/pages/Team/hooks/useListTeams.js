@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import useRequest from "../../../common/hooks/useRequest";
-const useListTeams = ({ searchText = "", primaryCall = true }) => {
-  const [count, setCount] = useState(0);
+import { useEffect, useState } from 'react'
+import useRequest from '../../../common/hooks/useRequest'
+const useListTeams = ({ searchText = '', primaryCall = true }) => {
+  const [count, setCount] = useState(0)
 
   const { data, loading, trigger } = useRequest({
     url: 'list_teams',
@@ -12,31 +12,31 @@ const useListTeams = ({ searchText = "", primaryCall = true }) => {
   const listTeams = async () => {
     const payload = {
       filters: {
-        created_by: 0,
+        created_by: 0
       },
       like: {
-        name: searchText,
-      },
-    };
-    trigger(payload);
-  };
+        name: searchText
+      }
+    }
+    trigger(payload)
+  }
 
   useEffect(() => {
     if (primaryCall) {
-      listTeams();
+      listTeams()
     } else {
       if (count >= 1) {
-        listTeams();
+        listTeams()
       }
     }
-    setCount(count + 1);
-  }, [searchText]);
+    setCount(count + 1)
+  }, [searchText])
 
   return {
     loading,
     data: data?.data,
     options: data?.data,
-    listTeams,
-  };
-};
-export default useListTeams;
+    listTeams
+  }
+}
+export default useListTeams

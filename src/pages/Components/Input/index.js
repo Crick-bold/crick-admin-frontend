@@ -1,4 +1,4 @@
-import style from "../Layout/styles.module.css";
+import style from '../Layout/styles.module.css'
 const Input = ({
   label,
   _key,
@@ -6,7 +6,7 @@ const Input = ({
   required,
   error,
   placeholder,
-  rules,
+  rules
 }) => (
   <>
     <div>
@@ -21,9 +21,9 @@ const Input = ({
         />
       </div>
       <span className={style.error_text}>
-        {error ? rules?.required || "Required" : null}
+        {error ? rules?.required || 'Required' : null}
       </span>
     </div>
   </>
-);
-export default Input;
+)
+export default Input

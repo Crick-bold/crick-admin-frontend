@@ -1,42 +1,42 @@
-import { useForm } from "react-hook-form";
-import useCreateMatch from "../hooks/useCreateMatch";
-import Layout from "../../Components/Layout";
-import useGetDashboard from "../../DashboardPage/hooks/useGetDashboard";
-import MatchControls from "../match-controls";
-import useGetMatches from "../hooks/useGetMatches";
+import { useForm } from 'react-hook-form'
+import useCreateMatch from '../hooks/useCreateMatch'
+import Layout from '../../Components/Layout'
+import useGetDashboard from '../../DashboardPage/hooks/useGetDashboard'
+import MatchControls from '../match-controls'
+import useGetMatches from '../hooks/useGetMatches'
 
 const AddMatchLayout = ({ onCreateMatch = () => {}, seriesData, setShow }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors }
+  } = useForm()
 
-  const { data, getDashboard } = useGetDashboard();
+  const { data, getDashboard } = useGetDashboard()
 
-  const { series = [], teams = [], venues = [] } = data || {};
+  const { series = [], teams = [], venues = [] } = data || {}
 
   const controls = MatchControls({
     teamOptions: teams,
     venueOptions: venues,
     seriesOptions: series,
-    notRequiredInputs: ["overs", "series", "name"],
-  });
+    notRequiredInputs: ['overs', 'series', 'name']
+  })
 
   const {
     data: matchesFromMain,
     getMatches,
-    loadingFromMain,
-  } = useGetMatches();
+    loadingFromMain
+  } = useGetMatches()
 
   const { createMatch } = useCreateMatch({
     getMatches,
     seriesId: seriesData?.id,
     overs: seriesData?.overs,
-    matchName: "League Match",
+    matchName: 'League Match',
     setShow,
-    onCreateMatch,
-  });
+    onCreateMatch
+  })
   return (
     <>
       <Layout
@@ -47,13 +47,13 @@ const AddMatchLayout = ({ onCreateMatch = () => {}, seriesData, setShow }) => {
         errors={errors}
         submitBtnName="CREATE"
         onCreateTeam={() => {
-          getDashboard();
+          getDashboard()
         }}
         onCreateVenue={() => {
-          getDashboard();
+          getDashboard()
         }}
       />
     </>
-  );
-};
-export default AddMatchLayout;
+  )
+}
+export default AddMatchLayout

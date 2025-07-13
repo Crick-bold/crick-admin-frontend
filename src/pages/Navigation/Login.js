@@ -1,8 +1,8 @@
-import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import Button from "../Components/Button";
-import styles from "./styles.module.css";
-const Login = ({ responseMessage, errorMessage, text = "Login" }) => {
+import React from 'react'
+import { GoogleLogin } from '@react-oauth/google'
+import Button from '../Components/Button'
+import styles from './styles.module.css'
+const Login = ({ responseMessage, errorMessage, text = 'Login' }) => {
   return (
     <div className={styles.login_btn}>
       <Button value={text} />
@@ -17,7 +17,7 @@ const Login = ({ responseMessage, errorMessage, text = "Login" }) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

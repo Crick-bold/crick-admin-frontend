@@ -1,20 +1,20 @@
-import { useForm } from "react-hook-form";
-import Layout from "../Components/Layout"
-import useCreateVenue from "./hooks/useCreateVenue";
-import VenueControls from "./venue-controls";
+import { useForm } from 'react-hook-form'
+import Layout from '../Components/Layout'
+import useCreateVenue from './hooks/useCreateVenue'
+import VenueControls from './venue-controls'
 
-const AddVenueLayout = ({listVenues, setShow})=>{
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-    
-    const controls = VenueControls();
+const AddVenueLayout = ({ listVenues, setShow }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm()
 
-    const { addVenue } = useCreateVenue({ listVenues, setShow });
+  const controls = VenueControls()
 
-    return <>
+  const { addVenue } = useCreateVenue({ listVenues, setShow })
+
+  return <>
             <Layout
           register={register}
           handleSubmit={handleSubmit}

@@ -1,9 +1,9 @@
-import Pill from "../../../Components/Pill";
-import styles from "./styles.module.css";
-import Skelton from "../../../Components/Skelton";
-import Commentary from "./Commentary";
-import BatsmanTable from "./BatsmanTable";
-import { getOversFromBalls, isSecondInning } from "../../../../common";
+import Pill from '../../../Components/Pill'
+import styles from './styles.module.css'
+import Skelton from '../../../Components/Skelton'
+import Commentary from './Commentary'
+import BatsmanTable from './BatsmanTable'
+import { getOversFromBalls, isSecondInning } from '../../../../common'
 const ScoreCard = ({
   team,
   batsmanOnStrike,
@@ -15,13 +15,13 @@ const ScoreCard = ({
   allBattingPlayers,
   currentInning,
   result,
-  bowler,
+  bowler
 }) => {
-  const batsmanOnStrikeData = team?.battingPlayers?.[batsmanOnStrike];
+  const batsmanOnStrikeData = team?.battingPlayers?.[batsmanOnStrike]
 
-  const batsmanOnNonStrikeData = team?.battingPlayers?.[batsmanOnNonStrike];
+  const batsmanOnNonStrikeData = team?.battingPlayers?.[batsmanOnNonStrike]
 
-  const bowlereData = team?.bowlingPlayers?.[bowler];
+  const bowlereData = team?.bowlingPlayers?.[bowler]
 
   return (
     <>
@@ -35,14 +35,14 @@ const ScoreCard = ({
                   <img
                     src={team?.imageUrl}
                     style={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "50%",
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: '50%'
                     }}
                   />
                 </div>
                 <div>
-                  {team?.name}{" "}
+                  {team?.name}{' '}
                   {((battingTeam === 1 && index === 1) ||
                     (battingTeam === 2 && index === 2)) && <>*</>}
                 </div>
@@ -52,8 +52,8 @@ const ScoreCard = ({
                 {currentInning === 3
                   ? result
                   : isSecondInning(currentInning)
-                  ? `Target : ${team?.target}`
-                  : ""}
+                    ? `Target : ${team?.target}`
+                    : ''}
               </div>
 
               <div className={styles.run_over}>
@@ -129,7 +129,7 @@ const ScoreCard = ({
                     {batsmanOnStrikeData?.balls})
                   </div>
                   <div>
-                    {batsmanOnNonStrikeData?.name}{" "}
+                    {batsmanOnNonStrikeData?.name}{' '}
                     {batsmanOnNonStrikeData?.runs}(
                     {batsmanOnNonStrikeData?.balls})
                   </div>
@@ -149,7 +149,7 @@ const ScoreCard = ({
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ScoreCard;
+export default ScoreCard

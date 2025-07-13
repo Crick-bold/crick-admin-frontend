@@ -1,23 +1,23 @@
-import axios from "axios";
-import { setToast } from "../../../common/store/toastSlice";
-import { useDispatch } from "react-redux";
+import axios from 'axios'
+import { setToast } from '../../../common/store/toastSlice'
+import { useDispatch } from 'react-redux'
 const useCreateMatch = ({
   getMatches,
   setShow,
   seriesId,
   overs,
   matchName,
-  onCreateMatch = () => {},
+  onCreateMatch = () => {}
 }) => {
   const config = {
     headers: {
-      Authorization: `${localStorage.getItem("token")}`,
-    },
-  };
+      Authorization: `${localStorage.getItem('token')}`
+    }
+  }
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  let res;
+  let res
   const createMatch = async (data) => {
     try {
       const paylaod = {
@@ -28,33 +28,33 @@ const useCreateMatch = ({
         venueId: data?.venue,
         seriesId: data?.series_id || seriesId,
         startTime: data?.start_time,
-        createdBy: 1,
-      };
+        createdBy: 1
+      }
       res = await axios.post(
-        process.env.REACT_APP_BACKEND + "match",
+        process.env.REACT_APP_BACKEND + 'match',
         paylaod,
         config
-      );
-      getMatches();
-      onCreateMatch();
-      setShow(false);
+      )
+      getMatches()
+      onCreateMatch()
+      setShow(false)
     } catch (err) {
-      console.log(err);
+      console.log(err)
       dispatch(
         setToast({
-          severity: "error",
-          summary: "Teams should be different",
+          severity: 'error',
+          summary: 'Teams should be different',
           detail: err?.response?.data?.team2Id || err?.response?.data,
-          life: 3000,
+          life: 3000
         })
-      );
+      )
     }
-  };
+  }
 
   return {
     createMatch,
     data: res?.data,
-    status: res?.status,
-  };
-};
-export default useCreateMatch;
+    status: res?.status
+  }
+}
+export default useCreateMatch

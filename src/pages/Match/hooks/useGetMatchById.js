@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import useRequest from "../../../common/hooks/useRequest";
+import { useEffect } from 'react'
+import useRequest from '../../../common/hooks/useRequest'
 const useGetMatchById = (id) => {
   const { data, loading, trigger } = useRequest({
     url: 'match/' + id,
@@ -8,19 +8,19 @@ const useGetMatchById = (id) => {
   })
 
   const getMatchById = () => {
-    trigger();
-  };
+    trigger()
+  }
 
   useEffect(() => {
     if (id) {
-      getMatchById();
+      getMatchById()
     }
-  }, [id]);
+  }, [id])
   return {
     loading,
     data: data?.data,
     options: data?.data,
-    getMatchById,
-  };
-};
-export default useGetMatchById;
+    getMatchById
+  }
+}
+export default useGetMatchById

@@ -1,65 +1,65 @@
-import axios from "axios";
-import { useState } from "react";
-import { setToast } from "../../../common/store/toastSlice";
-import { useDispatch } from "react-redux";
+import axios from 'axios'
+import { useState } from 'react'
+import { setToast } from '../../../common/store/toastSlice'
+import { useDispatch } from 'react-redux'
 
 const useBulkUploadPlayers = ({
   squadId,
   players,
   getMatchById,
   matchId,
-  setPlayers,
+  setPlayers
 }) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+  const dispatch = useDispatch()
 
   const uploadPlayers = async (data) => {
     const config = {
       headers: {
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-    };
+        Authorization: `${localStorage.getItem('token')}`
+      }
+    }
     const payload = {
       squadId,
       matchId,
-      players: players?.map((player) => player.id),
-    };
+      players: players?.map((player) => player.id)
+    }
     const res = await axios.post(
-      process.env.REACT_APP_BACKEND + "squad/bulk-upload-players",
+      process.env.REACT_APP_BACKEND + 'squad/bulk-upload-players',
       payload,
       config
-    );
-    return res;
-  };
+    )
+    return res
+  }
 
   const uploadPlayersInSquad = (data) => {
-    setLoading(true);
+    setLoading(true)
     uploadPlayers(data)
       .then((res) => {
-        setLoading(false);
-        setData(res);
-        getMatchById(matchId);
-        setPlayers([]);
+        setLoading(false)
+        setData(res)
+        getMatchById(matchId)
+        setPlayers([])
       })
       .catch((err) => {
-        setLoading(false);
+        setLoading(false)
         dispatch(
           setToast({
-            severity: "error",
-            summary: "Please select  11 players.",
+            severity: 'error',
+            summary: 'Please select  11 players.',
             detail: err.response.data?.players || err.response.data,
-            life: 3000,
+            life: 3000
           })
-        );
-      });
-  };
+        )
+      })
+  }
 
   return {
     uploadPlayersInSquad,
     loading,
     data: data?.data,
-    options: data?.data,
-  };
-};
-export default useBulkUploadPlayers;
+    options: data?.data
+  }
+}
+export default useBulkUploadPlayers

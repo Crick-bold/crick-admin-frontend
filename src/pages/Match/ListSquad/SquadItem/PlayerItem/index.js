@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import IconSuccss from "../../../../Components/Icons/IconSuccess";
-import IconFailed from "../../../../Components/Icons/IconFailed";
+import { useEffect, useState } from 'react'
+import IconSuccss from '../../../../Components/Icons/IconSuccess'
+import IconFailed from '../../../../Components/Icons/IconFailed'
 
-import useUpdateSquad from "../../../../Squad/hooks/useUpdateSquad";
-import style from "./styles.module.css";
+import useUpdateSquad from '../../../../Squad/hooks/useUpdateSquad'
+import style from './styles.module.css'
 
 const PlayerItem = ({
   player,
@@ -11,25 +11,25 @@ const PlayerItem = ({
   getMatchById,
   matchId,
   index,
-  isSquadFinal,
+  isSquadFinal
 }) => {
-  const [checked, setChecked] = useState(player?.selected);
+  const [checked, setChecked] = useState(player?.selected)
   const { updatePlayerInSquad } = useUpdateSquad({
     squadId,
     getMatchById,
-    matchId,
-  });
+    matchId
+  })
   const changeSelection = () => {
     if (!isSquadFinal) {
       updatePlayerInSquad({
         playerId: player?.player_id,
-        selected: !checked ? 1 : 0,
-      });
+        selected: !checked ? 1 : 0
+      })
     }
-  };
+  }
   useEffect(() => {
-    setChecked(player?.selected);
-  }, [player]);
+    setChecked(player?.selected)
+  }, [player])
   return (
     <>
       <div
@@ -40,7 +40,7 @@ const PlayerItem = ({
         {player.is_captain === 1 && <>(Captain)</>}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PlayerItem;
+export default PlayerItem

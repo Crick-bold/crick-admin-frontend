@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
-import { controls } from "./utils/openRegistration-controls";
-import Layout from "../../../../Components/Layout";
-import useOpenRegistration from "./hooks/useOpenRegistration";
+import { useForm } from 'react-hook-form'
+import { controls } from './utils/openRegistration-controls'
+import Layout from '../../../../Components/Layout'
+import useOpenRegistration from './hooks/useOpenRegistration'
 const OpenRegistraiton = ({ squad, getMatchById }) => {
-  const { register, handleSubmit } = useForm();
-  const { openRegistration } = useOpenRegistration({ squad, getMatchById });
+  const { register, handleSubmit } = useForm()
+  const { openRegistration } = useOpenRegistration({ squad, getMatchById })
   return (
     <>
       <Layout
@@ -15,6 +15,6 @@ const OpenRegistraiton = ({ squad, getMatchById }) => {
         submitBtnName="Open Registration"
       />
     </>
-  );
-};
-export default OpenRegistraiton;
+  )
+}
+export default OpenRegistraiton

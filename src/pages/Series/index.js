@@ -1,22 +1,22 @@
-import { useParams } from "react-router-dom";
-import useGetSeries from "./hooks/useGetSeries";
-import styles from "./styles.module.css";
-import Tabs from "../Components/Tabs";
-import { useState } from "react";
-import MatchCard from "../Match/MatchCard";
-import Table from "../Components/Table";
+import { useParams } from 'react-router-dom'
+import useGetSeries from './hooks/useGetSeries'
+import styles from './styles.module.css'
+import Tabs from '../Components/Tabs'
+import { useState } from 'react'
+import MatchCard from '../Match/MatchCard'
+import Table from '../Components/Table'
 import {
   batsmanTableColumns,
   bowlerTableColumns,
   top4sPlayers,
-  top6sPlayers,
-} from "./utlis/top-perfromers-columns";
-import SeriesMatches from "./SeriesMatches";
+  top6sPlayers
+} from './utlis/top-perfromers-columns'
+import SeriesMatches from './SeriesMatches'
 
 const Series = () => {
-  const { id: seriesId } = useParams();
-  const [active, setActive] = useState(0);
-  const { loading, data: seriesData, getSeries } = useGetSeries({ seriesId });
+  const { id: seriesId } = useParams()
+  const [active, setActive] = useState(0)
+  const { loading, data: seriesData, getSeries } = useGetSeries({ seriesId })
 
   return (
     <>
@@ -28,7 +28,7 @@ const Series = () => {
         </div>
       </div>
       <Tabs
-        tabs={["Matches", "Leaderboard", "News"]}
+        tabs={['Matches', 'Leaderboard', 'News']}
         active={active}
         onChange={(index) => setActive(index)}
       />
@@ -68,6 +68,6 @@ const Series = () => {
         </div>
       )}
     </>
-  );
-};
-export default Series;
+  )
+}
+export default Series

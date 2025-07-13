@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from './styles.module.css'
 const Tabs = ({ tabs = [], onChange, active, children }) => {
   return (
     <>
@@ -17,6 +17,6 @@ const Tabs = ({ tabs = [], onChange, active, children }) => {
       </div>
       <div className={styles.squads}>{children}</div>
     </>
-  );
-};
-export default Tabs;
+  )
+}
+export default Tabs

@@ -1,27 +1,27 @@
-import useRequest from "../../../common/hooks/useRequest";
+import useRequest from '../../../common/hooks/useRequest'
 const useGetMatches = () => {
   const { data, loading, trigger } = useRequest({
-    url: "list_matches",
-    method: "get",
-    isConfig: true,
-  });
+    url: 'list_matches',
+    method: 'get',
+    isConfig: true
+  })
 
   const getMatches = () => {
     const payload = {
       filters: {
-        created_by: 0,
-      },
-    };
+        created_by: 0
+      }
+    }
     trigger({
-      ...payload,
-    });
-  };
+      ...payload
+    })
+  }
 
   return {
     loading,
     data: data?.data,
     options: data?.data,
-    getMatches,
-  };
-};
-export default useGetMatches;
+    getMatches
+  }
+}
+export default useGetMatches

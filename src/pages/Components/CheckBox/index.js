@@ -1,4 +1,4 @@
-import style from "./styles.module.css";
+import style from './styles.module.css'
 const CheckBox = ({ value, name, label }) => (
   <div>
     <input
@@ -9,5 +9,5 @@ const CheckBox = ({ value, name, label }) => (
     />
     {label}
   </div>
-);
-export default CheckBox;
+)
+export default CheckBox

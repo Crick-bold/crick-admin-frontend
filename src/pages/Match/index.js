@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
-import useGetMatchById from "./hooks/useGetMatchById";
-import Score from "./Score";
+import { useEffect, useState } from 'react'
+import styles from './styles.module.css'
+import useGetMatchById from './hooks/useGetMatchById'
+import Score from './Score'
 
-import { useParams } from "react-router-dom";
-import ListSquad from "./ListSquad";
+import { useParams } from 'react-router-dom'
+import ListSquad from './ListSquad'
 
 const MatchPage = () => {
-  const { id: matchId } = useParams();
-  const { loading, data, getMatchById } = useGetMatchById(matchId);
-  const [battingTeam, setBattingTeam] = useState(data?.currentInning);
+  const { id: matchId } = useParams()
+  const { loading, data, getMatchById } = useGetMatchById(matchId)
+  const [battingTeam, setBattingTeam] = useState(data?.currentInning)
 
   const [active, setActive] = useState(
     parseInt(data?.currentInning) <= 0 ? 0 : 1
-  );
+  )
 
   useEffect(() => {
-    let battingTeam = {
+    const battingTeam = {
       0: 0,
-      "-1": 1,
+      '-1': 1,
       1: 2,
-      "-2": 1,
+      '-2': 1,
       2: 2,
-      3: 3,
-    }[data?.currentInning];
-    setBattingTeam(battingTeam);
-    if (battingTeam === 3) setActive(0);
-    else setActive(battingTeam - 1);
-  }, [data]);
+      3: 3
+    }[data?.currentInning]
+    setBattingTeam(battingTeam)
+    if (battingTeam === 3) setActive(0)
+    else setActive(battingTeam - 1)
+  }, [data])
 
   return (
     <>
@@ -62,7 +62,7 @@ const MatchPage = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MatchPage;
+export default MatchPage

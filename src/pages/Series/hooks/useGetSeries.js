@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import useRequest from "../../../common/hooks/useRequest";
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import useRequest from '../../../common/hooks/useRequest'
 const useGetSeries = ({ seriesId }) => {
   // const [loading, setLoading] = useState(true);
   // const [data, setData] = useState([]);
@@ -30,19 +30,19 @@ const useGetSeries = ({ seriesId }) => {
   })
 
   const getSeries = () => {
-    trigger();
-  };
+    trigger()
+  }
 
   useEffect(() => {
     if (seriesId) {
-      getSeries();
+      getSeries()
     }
-  }, [seriesId]);
+  }, [seriesId])
   return {
     loading,
     data: data?.data,
     options: data?.data,
-    getSeries,
-  };
-};
-export default useGetSeries;
+    getSeries
+  }
+}
+export default useGetSeries

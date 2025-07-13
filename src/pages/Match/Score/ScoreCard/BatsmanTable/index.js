@@ -1,9 +1,9 @@
-import styles from "../styles.module.css";
+import styles from '../styles.module.css'
 const BatsmanTable = ({ allBattingPlayers, batsmanOnStrike, team }) => {
-  console.log(allBattingPlayers);
+  console.log(allBattingPlayers)
   return (
     <>
-      <table className={styles.player_list} style={{ width: "100%" }}>
+      <table className={styles.player_list} style={{ width: '100%' }}>
         <tr className={styles.player_list_row}>
           <th>
             <b>Name</b>
@@ -23,10 +23,10 @@ const BatsmanTable = ({ allBattingPlayers, batsmanOnStrike, team }) => {
         </tr>
         {allBattingPlayers
           ?.filter((player) => {
-            return player?.selected && player?.battingOrder < 12;
+            return player?.selected && player?.battingOrder < 12
           })
           ?.map((player) => {
-            const playerId = player?.id;
+            const playerId = player?.id
             return (
               <>
                 <tr
@@ -49,11 +49,11 @@ const BatsmanTable = ({ allBattingPlayers, batsmanOnStrike, team }) => {
                   <td>{team?.battingPlayers[playerId]?.sixes || 0}</td>
                 </tr>
               </>
-            );
+            )
           })}
       </table>
     </>
-  );
-};
+  )
+}
 
-export default BatsmanTable;
+export default BatsmanTable

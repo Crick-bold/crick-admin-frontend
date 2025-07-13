@@ -1,5 +1,5 @@
-import styles from "./styles.module.css";
-const Button = ({ value, onClick = () => {}, type = "primary" , disabled=false}) => {
+import styles from './styles.module.css'
+const Button = ({ value, onClick = () => {}, type = 'primary', disabled = false }) => {
   return (
     <>
       <button
@@ -9,14 +9,14 @@ const Button = ({ value, onClick = () => {}, type = "primary" , disabled=false})
           {
             primary: styles.primary,
             submit: styles.primary,
-            secondary: styles.secondary,
+            secondary: styles.secondary
           }[type]
         }
       >
         {value}
       </button>
     </>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

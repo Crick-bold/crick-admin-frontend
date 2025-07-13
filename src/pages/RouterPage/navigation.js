@@ -1,32 +1,32 @@
 export const navigation = [
   {
-    path: "/",
+    path: '/'
   },
   {
-    path: "/dashboard",
+    path: '/dashboard'
   },
   {
-    path: "/player",
+    path: '/player'
   },
   {
-    path: "/squad",
+    path: '/squad'
   },
   {
-    path: "/team",
+    path: '/team'
   },
   {
-    path: "/match",
+    path: '/match'
   },
   {
-    path: "/match/:id",
+    path: '/match/:id'
   },
   {
-    path: "/series",
+    path: '/series'
   },
   {
-    path: "/series/:id",
+    path: '/series/:id'
   },
   {
-    path: "/venue",
-  },
-];
+    path: '/venue'
+  }
+]

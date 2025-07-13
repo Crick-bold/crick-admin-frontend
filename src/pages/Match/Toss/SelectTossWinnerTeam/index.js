@@ -1,11 +1,11 @@
-import Button from "../../../Components/Button";
-import styles from "../styeles.module.css";
+import Button from '../../../Components/Button'
+import styles from '../styeles.module.css'
 
 const SelectTossWinnerTeam = ({
   tossWinner,
   setTossWinner,
   matchData,
-  setSteps,
+  setSteps
 }) => {
   return (
     <>
@@ -24,7 +24,7 @@ const SelectTossWinnerTeam = ({
               {matchData?.team1.name}
             </div>
           </div>
-          <div class="p-8 text-24">Who won the toss?</div>
+          <div className="p-8 text-24">Who won the toss?</div>
           <div
             className={
               tossWinner === 2 ? styles.selected_match_card : styles.match_card
@@ -44,6 +44,6 @@ const SelectTossWinnerTeam = ({
         </div>
       </div>
     </>
-  );
-};
-export default SelectTossWinnerTeam;
+  )
+}
+export default SelectTossWinnerTeam

@@ -1,42 +1,42 @@
-import { useForm } from "react-hook-form";
-import Layout from "../../Components/Layout";
-import control from "../team-controls";
-import useCreateTeam from "../hooks/useCreateTeam";
-import useListTeams from "../hooks/useListTeams";
-import globalStyle from "../../Venue/List/styles.module.css";
-import Modal from "../../Components/Modal";
-import { useEffect, useState } from "react";
-import Button from "../../Components/Button";
-import Table from "../../Components/Table";
-import { columns } from "../utlis/team-table";
-import layoutStyle from "../../Components/Layout/styles.module.css";
-import AddTeamLayout from "../AddTeamLayout";
+import { useForm } from 'react-hook-form'
+import Layout from '../../Components/Layout'
+import control from '../team-controls'
+import useCreateTeam from '../hooks/useCreateTeam'
+import useListTeams from '../hooks/useListTeams'
+import globalStyle from '../../Venue/List/styles.module.css'
+import Modal from '../../Components/Modal'
+import { useEffect, useState } from 'react'
+import Button from '../../Components/Button'
+import Table from '../../Components/Table'
+import { columns } from '../utlis/team-table'
+import layoutStyle from '../../Components/Layout/styles.module.css'
+import AddTeamLayout from '../AddTeamLayout'
 
 const List = ({
   teams: teamsFromDashboard,
   loading: loadingFromDashboard,
-  primaryCall = true,
+  primaryCall = true
 }) => {
-  const [teams, setTeams] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [teams, setTeams] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [searchText, setSearchText] = useState('')
   const {
     data: teamsFromMain,
     loadingFromMain,
-    listTeams,
-  } = useListTeams({ searchText, primaryCall });
+    listTeams
+  } = useListTeams({ searchText, primaryCall })
 
   useEffect(() => {
-    setTeams(teamsFromDashboard);
-    setLoading(loadingFromDashboard);
-  }, [JSON.stringify(teamsFromDashboard)]);
+    setTeams(teamsFromDashboard)
+    setLoading(loadingFromDashboard)
+  }, [JSON.stringify(teamsFromDashboard)])
 
   useEffect(() => {
-    setTeams(teamsFromMain);
-    setLoading(loadingFromMain);
-  }, [JSON.stringify(teamsFromMain)]);
+    setTeams(teamsFromMain)
+    setLoading(loadingFromMain)
+  }, [JSON.stringify(teamsFromMain)])
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   return (
     <>
       <Modal show={show} setShow={setShow} size="md">
@@ -62,7 +62,7 @@ const List = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default List;
+export default List

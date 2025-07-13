@@ -1,40 +1,40 @@
-import globalStyle from "../../Venue/List/styles.module.css";
-import Button from "../../Components/Button";
-import Modal from "../../Components/Modal";
-import { useEffect, useState } from "react";
-import Table from "../../Components/Table";
-import { columns } from "../utlis/player-table";
-import layoutStyle from "../../Components/Layout/styles.module.css";
-import useListPlayers from "../hooks/useListPlayers";
-import AddPlayerLayout from "../AddPlayerLayout";
-import UploadPlayersList from "./UploadPlayerList";
+import globalStyle from '../../Venue/List/styles.module.css'
+import Button from '../../Components/Button'
+import Modal from '../../Components/Modal'
+import { useEffect, useState } from 'react'
+import Table from '../../Components/Table'
+import { columns } from '../utlis/player-table'
+import layoutStyle from '../../Components/Layout/styles.module.css'
+import useListPlayers from '../hooks/useListPlayers'
+import AddPlayerLayout from '../AddPlayerLayout'
+import UploadPlayersList from './UploadPlayerList'
 
 const List = ({
   players: playersFromDashboard,
   loading: loadingFromDashboard,
-  primaryCall = true,
+  primaryCall = true
 }) => {
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [players, setPlayers] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [searchText, setSearchText] = useState('')
   const {
     data: playersFromMain,
     loadingFromMain,
-    listPlayers,
-  } = useListPlayers({ searchText, primaryCall });
+    listPlayers
+  } = useListPlayers({ searchText, primaryCall })
 
   useEffect(() => {
-    setPlayers(playersFromDashboard);
-    setLoading(loadingFromDashboard);
-  }, [JSON.stringify(playersFromDashboard)]);
+    setPlayers(playersFromDashboard)
+    setLoading(loadingFromDashboard)
+  }, [JSON.stringify(playersFromDashboard)])
 
   useEffect(() => {
-    setPlayers(playersFromMain);
-    setLoading(loadingFromMain);
-  }, [JSON.stringify(playersFromMain)]);
+    setPlayers(playersFromMain)
+    setLoading(loadingFromMain)
+  }, [JSON.stringify(playersFromMain)])
 
-  const [show, setShow] = useState(false);
-  const [showUploadPlayers, setShowUploadPlayers] = useState(false);
+  const [show, setShow] = useState(false)
+  const [showUploadPlayers, setShowUploadPlayers] = useState(false)
 
   return (
     <>
@@ -71,7 +71,7 @@ const List = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default List;
+export default List

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import style from "../Layout/styles.module.css";
-import AddVenueLayout from "../../Venue/AddVenueLayout";
-import Modal from "../Modal";
+import React, { useState } from 'react'
+import style from '../Layout/styles.module.css'
+import AddVenueLayout from '../../Venue/AddVenueLayout'
+import Modal from '../Modal'
 // eslint-disable-next-line react/display-name
 const VenueSelect = React.forwardRef(
   (
@@ -11,17 +11,16 @@ const VenueSelect = React.forwardRef(
       name,
       label,
       options,
-      placeholder = "",
+      placeholder = '',
       loading,
       error,
       rules,
       disabled,
-      onCreateVenue = ()=>{},
-      showCreateNewBtn = false,
+      onCreateVenue = () => {},
+      showCreateNewBtn = false
     },
-    ref,
-  ) => 
-  {
+    ref
+  ) => {
     const [show, setShow] = useState(false)
     return (
     <>
@@ -41,8 +40,8 @@ const VenueSelect = React.forwardRef(
             ref={ref}
             disabled={disabled}
           >
-            <option value="" disabled selected style={{ display: "none" }}>
-              {placeholder || "Select Venue"}{" "}
+            <option value="" disabled selected style={{ display: 'none' }}>
+              {placeholder || 'Select Venue'}{' '}
             </option>
             {!loading &&
               options?.map((option, index) => (
@@ -53,20 +52,21 @@ const VenueSelect = React.forwardRef(
           </select>
         </div>
         {
-          showCreateNewBtn?
-          <div className={style.create_new_div}>
-              Not in the list 
-              <button onClick={()=>setShow(true)}>Create New</button>
+          showCreateNewBtn
+            ? <div className={style.create_new_div}>
+              Not in the list
+              <button onClick={() => setShow(true)}>Create New</button>
           </div>
 
-          : null
+            : null
         }
         <span className={style.error_text}>
-          {error ? rules?.required || "Required" : null}
+          {error ? rules?.required || 'Required' : null}
         </span>
       </div>
     </>
-  )}
-);
+    )
+  }
+)
 
-export default VenueSelect;
+export default VenueSelect

@@ -1,40 +1,40 @@
-import axios from "axios";
-import { useState } from "react";
-import { setToast } from "../../../common/store/toastSlice";
-import { useDispatch } from "react-redux";
+import axios from 'axios'
+import { useState } from 'react'
+import { setToast } from '../../../common/store/toastSlice'
+import { useDispatch } from 'react-redux'
 const useUpdateStrike = ({
   squadId,
   getMatchById,
   matchId,
   battingTeam,
   wickets,
-  squadPlayerMappingId,
+  squadPlayerMappingId
 }) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+  const dispatch = useDispatch()
 
   const updateStrike = async (values) => {
-    if (loading) return;
+    if (loading) return
     if ([0, 3].includes(battingTeam)) {
-      alert("Match has not started yet.");
-      return;
+      alert('Match has not started yet.')
+      return
     }
     const {
-      batsmanOnStrike: batsmanOnStrike,
-      batsmanOnNonStrike: batsmanOnNonStrike,
-      bowler,
-    } = values;
+      batsmanOnStrike,
+      batsmanOnNonStrike,
+      bowler
+    } = values
 
     if (batsmanOnStrike === batsmanOnNonStrike) {
       dispatch(
         setToast({
-          severity: "error",
-          summary: "Error",
-          detail: "Please select different strike player and not strike player",
-          life: 3000,
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Please select different strike player and not strike player',
+          life: 3000
         })
-      );
+      )
     }
 
     if (
@@ -47,29 +47,29 @@ const useUpdateStrike = ({
         squadId,
         squadPlayerMappingId,
         wickets,
-        ...values,
-      };
+        ...values
+      }
       const config = {
         headers: {
-          Authorization: `${localStorage.getItem("token")}`,
-        },
-      };
+          Authorization: `${localStorage.getItem('token')}`
+        }
+      }
       const res = await axios.post(
-        process.env.REACT_APP_BACKEND + "squad/update-strike",
+        process.env.REACT_APP_BACKEND + 'squad/update-strike',
         payload,
         config
-      );
-      setLoading(false);
-      getMatchById(matchId);
-      setData(res);
-      return res;
+      )
+      setLoading(false)
+      getMatchById(matchId)
+      setData(res)
+      return res
     }
-  };
+  }
 
   return {
     loading,
     data: data?.data,
-    updateStrike,
-  };
-};
-export default useUpdateStrike;
+    updateStrike
+  }
+}
+export default useUpdateStrike

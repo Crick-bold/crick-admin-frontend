@@ -1,47 +1,47 @@
-import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
-import { Link, useLocation } from "react-router-dom";
-import useAuth from "../../Navigation/hooks/useAuth";
+import { useEffect, useState } from 'react'
+import styles from './styles.module.css'
+import { Link, useLocation } from 'react-router-dom'
+import useAuth from '../../Navigation/hooks/useAuth'
 const SideNav = ({ user, setUser, setUserLoaded }) => {
   const options = [
     {
-      key: "/dashboard",
-      label: "Dashboard",
+      key: '/dashboard',
+      label: 'Dashboard'
     },
     {
-      key: "/series",
-      label: "Series",
+      key: '/series',
+      label: 'Series'
     },
     {
-      key: "/match",
-      label: "Match",
+      key: '/match',
+      label: 'Match'
     },
     {
-      key: "/team",
-      label: "Team",
+      key: '/team',
+      label: 'Team'
     },
     {
-      key: "/player",
-      label: "Player",
+      key: '/player',
+      label: 'Player'
     },
     {
-      key: "/venue",
-      label: "Venue",
-    },
-  ];
-  const location = useLocation();
-  const [activeTab, setActiveTab] = useState(location?.pathname);
-  const { responseMessage } = useAuth({ setUser, setUserLoaded });
+      key: '/venue',
+      label: 'Venue'
+    }
+  ]
+  const location = useLocation()
+  const [activeTab, setActiveTab] = useState(location?.pathname)
+  const { responseMessage } = useAuth({ setUser, setUserLoaded })
 
   useEffect(() => {
-    responseMessage({ credential: localStorage.getItem("token") });
-  }, []);
+    responseMessage({ credential: localStorage.getItem('token') })
+  }, [])
 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("profileData");
-    setUser(null);
-  };
+    localStorage.removeItem('token')
+    localStorage.removeItem('profileData')
+    setUser(null)
+  }
 
   return (
     <>
@@ -51,7 +51,7 @@ const SideNav = ({ user, setUser, setUserLoaded }) => {
             <div>
               <img
                 src={user?.imageUrl}
-                style={{ width: "66px", height: "66px", borderRadius: "50%" }}
+                style={{ width: '66px', height: '66px', borderRadius: '50%' }}
               />
             </div>
           )}
@@ -78,6 +78,6 @@ const SideNav = ({ user, setUser, setUserLoaded }) => {
         </div>
       </div>
     </>
-  );
-};
-export default SideNav;
+  )
+}
+export default SideNav

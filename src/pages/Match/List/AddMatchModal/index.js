@@ -1,28 +1,28 @@
-import { useForm } from "react-hook-form";
-import Layout from "../../../Components/Layout";
-import Modal from "../../../Components/Modal";
-import useCreateMatch from "../../hooks/useCreateMatch";
-import MatchControls from "../../match-controls";
-import useGetDashboard from "../../../DashboardPage/hooks/useGetDashboard";
+import { useForm } from 'react-hook-form'
+import Layout from '../../../Components/Layout'
+import Modal from '../../../Components/Modal'
+import useCreateMatch from '../../hooks/useCreateMatch'
+import MatchControls from '../../match-controls'
+import useGetDashboard from '../../../DashboardPage/hooks/useGetDashboard'
 
 const AddMatchModal = ({ show, getMatches, setShow, overs }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors }
+  } = useForm()
 
-  const { data } = useGetDashboard();
+  const { data } = useGetDashboard()
 
-  const { series = [], teams = [], venues = [] } = data || {};
+  const { series = [], teams = [], venues = [] } = data || {}
 
   const controls = MatchControls({
     teamOptions: teams,
     venueOptions: venues,
-    seriesOptions: series,
-  });
+    seriesOptions: series
+  })
 
-  const { createMatch } = useCreateMatch({ getMatches, setShow, overs });
+  const { createMatch } = useCreateMatch({ getMatches, setShow, overs })
 
   return (
     <>
@@ -37,6 +37,6 @@ const AddMatchModal = ({ show, getMatches, setShow, overs }) => {
         />
       </Modal>
     </>
-  );
-};
-export default AddMatchModal;
+  )
+}
+export default AddMatchModal

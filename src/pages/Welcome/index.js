@@ -1,30 +1,30 @@
 // import IconScreen from "../Components/Icons/IconScreen";
 
-import styles from "./styles.module.css";
-import img7 from "./image7.svg";
-import img2 from "./img2.png";
-import img3 from "./img3.png";
-import img4 from "./img4.png";
-import Login from "../Navigation/Login";
-import useAuth from "../Navigation/hooks/useAuth";
-import { useEffect } from "react";
+import styles from './styles.module.css'
+import img7 from './image7.svg'
+import img2 from './img2.png'
+import img3 from './img3.png'
+import img4 from './img4.png'
+import Login from '../Navigation/Login'
+import useAuth from '../Navigation/hooks/useAuth'
+import { useEffect } from 'react'
 const Welcome = ({ user, setUser, setUserLoaded }) => {
-  const { responseMessage, errorMessage } = useAuth({ setUser, setUserLoaded });
+  const { responseMessage, errorMessage } = useAuth({ setUser, setUserLoaded })
   useEffect(() => {
-    responseMessage({ credential: localStorage.getItem("token") });
-  }, []);
+    responseMessage({ credential: localStorage.getItem('token') })
+  }, [])
 
   return (
     <>
-      <div className={styles["main-container"]}>
-        <div className={styles["navbar"]}>
-          <div className={styles["navbar-text"]}>Crick Bold</div>
+      <div className={styles['main-container']}>
+        <div className={styles.navbar}>
+          <div className={styles['navbar-text']}>Crick Bold</div>
         </div>
 
-        <div className={styles["container-1"]}>
-          <div className={styles["container-1-1"]}>
-            <div className={styles["container-1-1-text"]}>
-              <div className={styles["container-1-1-text1"]}>
+        <div className={styles['container-1']}>
+          <div className={styles['container-1-1']}>
+            <div className={styles['container-1-1-text']}>
+              <div className={styles['container-1-1-text1']}>
                 Say No to Pen & Paper
               </div>
 
@@ -38,17 +38,17 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
                 />
               </div>
             </div>
-            <div className={styles["container-1-1-img"]}>
+            <div className={styles['container-1-1-img']}>
               <img src={img7} alt="img1" />
             </div>
           </div>
-          <div className={styles["what-crick"]}>What we do ?</div>
-          <hr className={styles["horizontal-line"]} />
+          <div className={styles['what-crick']}>What we do ?</div>
+          <hr className={styles['horizontal-line']} />
         </div>
 
-        <div className={styles["container-2"]}>
-          <div className={styles["container-2-text"]}>
-            <div className={styles["container-2-text-2"]}>HOST TOURNAMENTS</div>
+        <div className={styles['container-2']}>
+          <div className={styles['container-2-text']}>
+            <div className={styles['container-2-text-2']}>HOST TOURNAMENTS</div>
             <p>
               Create and mangage cricket tournaments with <br />
               ease.Set up matches, manage teams,and keep track <br />
@@ -61,21 +61,21 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
               text="HOST NOW"
             />
           </div>
-          <div className={styles["container-2-img"]}>
+          <div className={styles['container-2-img']}>
             <img src={img2} alt="img2" />
           </div>
         </div>
-        <hr className={styles["horizontal-line"]} />
-        <div className={styles["container-3"]}>
-          <div className={styles["container-2-img"]}>
+        <hr className={styles['horizontal-line']} />
+        <div className={styles['container-3']}>
+          <div className={styles['container-2-img']}>
             <img src={img3} alt="img3" />
           </div>
-          <div className={styles["container-2-text"]}>
-            <div className={styles["container-2-text-2"]}>MANAGE TEAMS</div>
+          <div className={styles['container-2-text']}>
+            <div className={styles['container-2-text-2']}>MANAGE TEAMS</div>
             <p>
               Easily build teams by adding players, customizing
               <br />
-              names, and assigning roles Schedule matches, and track <br />{" "}
+              names, and assigning roles Schedule matches, and track <br />{' '}
               progess-all in one place.
             </p>
             {/* <button>CREATE NOW</button> */}
@@ -86,10 +86,10 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
             />
           </div>
         </div>
-        <hr className={styles["horizontal-line"]} />
-        <div className={styles["container-4"]}>
-          <div className={styles["container-2-text"]}>
-            <div className={styles["container-2-text-2"]}>SCHEDULE MATCH</div>
+        <hr className={styles['horizontal-line']} />
+        <div className={styles['container-4']}>
+          <div className={styles['container-2-text']}>
+            <div className={styles['container-2-text-2']}>SCHEDULE MATCH</div>
             <p>
               Set match dates, times, and venues in just a few clicks
               <br />
@@ -103,12 +103,12 @@ const Welcome = ({ user, setUser, setUserLoaded }) => {
               text="SCHEDULE NOW"
             />
           </div>
-          <div className={styles["container-2-img"]}>
+          <div className={styles['container-2-img']}>
             <img src={img4} alt="img4" />
           </div>
         </div>
       </div>
     </>
-  );
-};
-export default Welcome;
+  )
+}
+export default Welcome

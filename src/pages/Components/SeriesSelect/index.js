@@ -1,5 +1,5 @@
-import React from "react";
-import style from "../Layout/styles.module.css";
+import React from 'react'
+import style from '../Layout/styles.module.css'
 // eslint-disable-next-line react/display-name
 const SeriesSelect = React.forwardRef(
   (
@@ -9,13 +9,13 @@ const SeriesSelect = React.forwardRef(
       name,
       label,
       options,
-      placeholder = "",
+      placeholder = '',
       loading,
       disabled,
       error,
-      rules,
+      rules
     },
-    ref,
+    ref
   ) => (
     <>
       <div>
@@ -31,8 +31,8 @@ const SeriesSelect = React.forwardRef(
             ref={ref}
             disabled={disabled}
           >
-            <option value="" disabled selected style={{ display: "none" }}>
-              {placeholder || "Select Series"}{" "}
+            <option value="" disabled selected style={{ display: 'none' }}>
+              {placeholder || 'Select Series'}{' '}
             </option>
             {!loading &&
               options?.map((option, index) => (
@@ -43,11 +43,11 @@ const SeriesSelect = React.forwardRef(
           </select>
         </div>
         <span className={style.error_text}>
-          {error ? rules?.required || "Required" : null}
+          {error ? rules?.required || 'Required' : null}
         </span>
       </div>
     </>
-  ),
-);
+  )
+)
 
-export default SeriesSelect;
+export default SeriesSelect

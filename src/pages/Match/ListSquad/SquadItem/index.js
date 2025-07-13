@@ -1,58 +1,62 @@
-import PlayerItem from "./PlayerItem";
-import styles from "./styles.module.css";
+import PlayerItem from './PlayerItem'
+import styles from './styles.module.css'
 // import OpenRegistraiton from './OpenRegistration'
-import { useState } from "react";
-import useListPlayers from "../../../Player/hooks/useListPlayers";
-import Button from "../../../Components/Button";
-import useBulkUploadPlayers from "../../../Squad/hooks/useBulkUploadPlayers";
-import PrimeMultiSelect from "../../../Components/PrimeReact/MultiSelect";
-import Modal from "../../../Components/Modal";
-import AddPlayerLayout from "../../../Player/AddPlayerLayout";
+import { useState } from 'react'
+import useListPlayers from '../../../Player/hooks/useListPlayers'
+import Button from '../../../Components/Button'
+import useBulkUploadPlayers from '../../../Squad/hooks/useBulkUploadPlayers'
+import PrimeMultiSelect from '../../../Components/PrimeReact/MultiSelect'
+import Modal from '../../../Components/Modal'
+import AddPlayerLayout from '../../../Player/AddPlayerLayout'
 
 const SquadItem = ({
   squad,
   matchId,
   getMatchById,
   isSquadFinal,
-  antiSquad,
+  antiSquad
 }) => {
-  const [players, setPlayers] = useState([]);
-  const { data: playersOptions, listPlayers } = useListPlayers({});
+  const [players, setPlayers] = useState([])
+  const { data: playersOptions, listPlayers } = useListPlayers({})
   const { uploadPlayersInSquad, loading } = useBulkUploadPlayers({
     squadId: squad.id,
     players,
     getMatchById,
     matchId,
-    setPlayers,
-  });
+    setPlayers
+  })
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   const filterPlayerOptions = () => {
     const players = playersOptions?.filter((player) => {
-      return !antiSquad.players.map((p) => p.id)?.includes(player.id);
-    });
-    return players;
-  };
+      return !antiSquad.players.map((p) => p.id)?.includes(player.id)
+    })
+    return players
+  }
 
   return (
     <>
-      {show ? (
+      {show
+        ? (
         <Modal show={show} setShow={setShow} size="md">
           <AddPlayerLayout setShow={setShow} onCreatePlayers={listPlayers} />
         </Modal>
-      ) : null}
+          )
+        : null}
 
       <div className={styles.squad}>
-        {squad?.players?.length === 0 ? (
+        {squad?.players?.length === 0
+          ? (
           <div className="p-8">
-            {players?.length || "No"} Players selected
+            {players?.length || 'No'} Players selected
             <div className={styles.create_new_div}>
               Player not in the list
               <button onClick={() => setShow(true)}>Create New</button>
             </div>
           </div>
-        ) : null}
+            )
+          : null}
 
         <div className={styles.flex}>
           {squad?.players?.map((player, index) => (
@@ -73,7 +77,7 @@ const SquadItem = ({
               options={filterPlayerOptions()}
               values={players}
               setValues={setPlayers}
-              placeholder={"Select Players"}
+              placeholder={'Select Players'}
             />
             &nbsp;&nbsp;
             <Button
@@ -85,7 +89,7 @@ const SquadItem = ({
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SquadItem;
+export default SquadItem
